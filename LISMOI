@@ -1,0 +1,46 @@
+  ########################
+ ## Programme PorteAil ##
+########################
+
+### À PROPOS ###
+
+PorteAil est un portail web dont le but principal est, comme son nom l'indique,
+ de partager un ensemble de liens amenant vers divers lieux.
+
+Cf. http://fr.wikipedia.org/wiki/Portail_%28web%29 pour de plus amples 
+informations.
+
+PorteAil est un jeu de mot entre Porte, portail et Ail (l'aliment ou le bruit
+ que nous faisons après avoir eu mal ?).
+
+### PRÉ - REQUIS ###
+
+Ce programme fonctionne à l'aide de **GNU Make**.
+
+Il requièrt également quelques commandes du SHELL sh comme : 
+- echo
+- test
+- rm
+- cat
+
+### DESCRIPTION ###
+
+Le script makefile permet de générer un dossier contenant les fichiers 
+suivants : 
+  - index.html : page de garde du portail web 'PorteAil'
+  - defaut.css : feuille de style de PorteAil
+  - img : dossier contenant l'ensemble des fichiers images (icônes) pour 
+l'affichage des éléments dans la page de garde
+
+### INSTALLATION ###
+
+FIXME
+
+### UTILISATION ###
+
+### SOURCES ###
+
+Les sources du programme peuvent être récupérées sur http://git.dossmann.net/ ou via la commande suivante (à l'aide de l'outil git) :
+
+    git clone http://git.dossmann.net/scripts/porteail.git
+

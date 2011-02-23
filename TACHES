@@ -1,0 +1,17 @@
+À FAIRE : 
+----------
+
+- trouver une syntaxe pour les fichiers de catégories contenant des éléments
+- permettre l'ajout facultatif d'un menu
+- rendre la page valide XHTML Strict via validator.w3.org
+- permettre l'ajout de plusieurs CSS dans HEAD
+- permettre l'ajout d'un texte d'introduction au début de la page
+- permettre l'ajout d'un pied de page
+
+FAITES :
+---------
+
+- faire un makefile basique
+- faire un .gitignore pour les fichiers/dossiers inutiles
+- faire un fichier TACHES
+- ajouter une licence/copyright
