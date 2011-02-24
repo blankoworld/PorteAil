@@ -19,6 +19,10 @@ le cas
 - ajouter les éléments de chaque catégorie dans la page html
 - changer les variables contenues dans les fichiers HTML par @@NOM_VARIABLE@@
 (car plus pratique)
+- dans le makefile s'occuper de faire une section pour les catégories contenant
+des éléments
+- faire une section install dans le makefile permettant d'installer dans 
+DESTDIR
 
 FAITES :
 ---------
