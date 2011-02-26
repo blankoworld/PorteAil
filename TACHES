@@ -23,6 +23,7 @@ le cas
 des éléments
 - faire une section install dans le makefile permettant d'installer dans 
 DESTDIR
+- compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
 
 FAITES :
 ---------
