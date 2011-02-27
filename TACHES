@@ -24,6 +24,12 @@ des éléments
 - faire une section install dans le makefile permettant d'installer dans 
 DESTDIR
 - compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
+- dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
+- faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
+- dans dossier categ : un fichier par catégorie et les éléments contenus dans la catégories. Le format est un peu comme celui ci : 
+     #commentaire
+     [[Titre de la catégorie]]Description de la catégorie (pour mettre dans des <p></p>
+     titre_element##URL##Description##adresse_image##titre_image##description_image
 
 FAITES :
 ---------
