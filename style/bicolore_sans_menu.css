@@ -1,10 +1,10 @@
-body {
+html, body {
 height: 100%;
 width: 100%;
 margin: 0;
 padding: 0;
-background-color: #e9ecf4;
-color: #223355;
+background-color: #ffffff;
+color: #000000;
 }
 
 a:link {
@@ -29,7 +29,7 @@ h2 {
 width: 80%;
 padding-left: 2%;
 margin-left: 1%;
-color: #555577;
+color: #000000;
 border-bottom: solid;
 border-left: solid;
 -moz-border-radius: 10px;
@@ -39,32 +39,39 @@ h3 {
 width: 80%;
 padding-left: 3%;
 margin-left: 1%;
-color: #555577;
+color: #000000;
 border-bottom: solid;
 border-left: solid;
 -moz-border-radius: 12px;
 }
 
 div#chapeau {
-position: absolute;
-height: 10%;
+position: relative;
+margin: 0 auto;
+padding: 0;
+height: 50px;
 width: 78%;
 top: 0;
-left: 1%;
-background-color: #223355;
-color: white;
+background-color: #000000;
+color: #ffffff;
 text-align: center;
+font-size: 120%;
+line-height: 15%;
 -moz-border-radius-bottomright: 25px;
 -moz-border-radius-bottomleft: 25px;
 }
 
+div#chapeau h1 {
+margin: 0;
+padding: 0;
+height: 50px;
+line-height: 50px;
+}
+
 div#corps {
-position: absolute;
-width: 78%;
-height: 86%;
+position: relative;
+width: 98%;
 left: 2%;
-top: 13%;
-overflow: auto;
 }
 
 div#corps div.ensemble_element {
@@ -74,13 +81,16 @@ min-height: 10em;
 div#corps div.element {
 height: 9em;
 width: 19ex;
-margin-right: 5px;
-margin-bottom: 5px;
+margin: 0 5px 10px 5px;
 float: left;
+border: thin solid #000000;
+-moz-border-radius: 15px;
+-moz-box-shadow: 1px 1px 8px #000000;
+overflow: hidden;
 }
 
 div#corps div.element:hover {
-background-color: #223355;
+background-color: #000000;
 color: #ffffff;
 }
 
@@ -106,15 +116,15 @@ div#corps div.espace {
 
 div#cartable {
 position: absolute;
-height: 88%;
+height: auto;
 width: 20%;
-top: 10%;
+top: 90px;
 right: 0;
-background-color: #223355;
-color: white;
+background-color: #000000;
+color: #ffffff;
 -moz-border-radius-topleft: 25px;
 -moz-border-radius-bottomleft: 25px;
-overflow: auto;
+overflow: hidden;
 }
 
 div#cartable h3 {
@@ -139,7 +149,18 @@ background-color: #aaaabb;
 color: #223355;
 }
 
-div#souliers {
-
+div#soulier {
+position: relative;
+top: 5px;
+right: 5px;
+height: 20px;
+width: 98%;
+color: #000000;
 }
 
+div#soulier p {
+margin: 0;
+padding: 0;
+font-size: 10px;
+text-align: center;
+}
