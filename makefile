@@ -12,11 +12,13 @@
 ## obligatoires
 DESTINATION = porteail
 INDEX = $(DESTINATION)/index.html
-CSS_DEFAUT = defaut.css
+CSS_DEFAUT = bicolore_sans_menu.css
+CSS_PATCH_AJOUT_MENU = bicolore_ajout_menu.patch
+CSS_NOM = defaut.css
 TITRE = Titre par défaut
 ACCUEIL = Accueil - $(TITRE)
 ## facultatives
-MENU = menu.html
+#MENU = menu.html
 
 # création de tous les fichiers
 all: test index
@@ -32,6 +34,7 @@ test:
 	@test -d style || mkdir style
 	@test -f style/$(CSS_DEFAUT) || exit
 	$(if $(MENU), @test -f $(MENU) || exit, @echo -e "Pas de menu")
+	$(if $(MENU), @test -f style/$(CSS_DEFAUT) || exit)
 	@test -d $(DESTINATION) || mkdir $(DESTINATION)
 	@test -d $(DESTINATION)/image || mkdir $(DESTINATION)/image
 	@echo -e "\t…terminé."
@@ -44,8 +47,9 @@ index:
 	@echo -e "Modification du contenu…"
 	@sed -i "s/TITRE_PORTEAIL/$(TITRE)/g" $(INDEX)
 	@sed -i "s/ACCUEIL_PORTEAIL/$(ACCUEIL)/g" $(INDEX)
-	@cp style/$(CSS_DEFAUT) $(DESTINATION)
-	@sed -i "s#CSS_DEFAUT#./$(CSS_DEFAUT)#g" $(INDEX)
+	@cp style/$(CSS_DEFAUT) $(DESTINATION)/$(CSS_NOM)
+	$(if $(MENU), @patch -u -p0 $(DESTINATION)/$(CSS_NOM) style/$(CSS_PATCH_AJOUT_MENU))
+	@sed -i "s#CSS_DEFAUT#./$(CSS_NOM)#g" $(INDEX)
 	@echo -e "\t…terminée."
 
 # nettoyage des fichiers générés
