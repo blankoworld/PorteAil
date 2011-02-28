@@ -34,6 +34,8 @@ DESTDIR
 - test de l'existence du dossier CATEG dans le script parcours_categ.sh
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
+- Supprimer l'ensemble des variables @@quelque chose@@ dans le fichier à la fin du traitement (pour nettoyage)
+- Valider la page à l'aide de TIDY (doit être facultatif)
 
 FAITES :
 ---------
