@@ -8,8 +8,8 @@
 # définition de cibles particulières
 .PHONY: clean
 
-# définition de variables
-## obligatoires
+## VARIABLES ##
+## configuration
 DESTINATION = porteail
 INDEX = $(DESTINATION)/index.html
 CSS_DEFAUT = bicolore_sans_menu.css
@@ -17,23 +17,27 @@ CSS_PATCH_AJOUT_MENU = bicolore_ajout_menu.patch
 CSS_NOM = defaut.css
 TITRE = Titre par défaut
 ACCUEIL = Accueil - $(TITRE)
-## facultatives
-MENU = menu.html
+DOSSIER_HTML = composants
+## divers
+#MENU = $(DOSSIER_HTML)/menu.html
 ## utiles pour le makefile
 ifndef $(MENU)
 	dependances_css = style/$(CSS_DEFAUT)
 else
 	dependances_css = style/$(CSS_DEFAUT) style/$(CSS_PATCH_AJOUT_MENU)
 endif
-dependances_index = entete.html enqueue.html
+entete = $(DOSSIER_HTML)/entete.html
+enqueue = $(DOSSIER_HTML)/enqueue.html
+dependances_index = $(entete) $(enqueue)
 PROG_ECHO = `which echo`
 
+## DEBUT
 # création de tous les fichiers
 all: test index.html
 
 # divers tests sur l'existence des dossiers/fichiers
 # création si besoin
-test:
+test: 
 	@$(PROG_ECHO) -e "Lancement des tests…"
 	@test -d img || mkdir img
 	@test -d categ || mkdir categ
@@ -53,9 +57,9 @@ css: $(dependances_css)
 	@$(PROG_ECHO) -e "\t…terminée."
 
 # création de la page d'index
-index.html: css $(dependances_index)
+index.html: $(DOSSIER_HTML) css $(dependances_index)
 	@$(PROG_ECHO) -e "Création de la page de garde…"
-	$(if $(MENU), @cat entete.html menu.html enqueue.html > $(INDEX), @cat entete.html enqueue.html > $(INDEX))
+	$(if $(MENU), @cat $(entete) $(MENU) $(enqueue) > $(INDEX), @cat $(entete) $(enqueue) > $(INDEX))
 	@$(PROG_ECHO) -e "\t…terminée."
 	@$(PROG_ECHO) -e "Modification du contenu…"
 	@sed -i "s/TITRE_PORTEAIL/$(TITRE)/g" $(INDEX)
