@@ -30,6 +30,9 @@ DESTDIR
      #commentaire
      [[Titre de la catégorie]]Description de la catégorie (pour mettre dans des <p></p>
      titre_element##URL##Description##adresse_image##titre_image##description_image
+- ajout de l'adresse URL du dépôt GIT dans le pied de page (soulier) du portail : Généré par <a href="http://git.dossmann.net/scripts/porteail.git/" title="Se rendre sur le dépôt source du projet PorteAil">PorteAil</a>
+- créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
+- test de l'existence du dossier CATEG dans le script parcours_categ.sh
 
 FAITES :
 ---------
