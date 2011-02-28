@@ -4,6 +4,7 @@
 - trouver une syntaxe pour les fichiers de catégories contenant des éléments
 Par exemple : ### Ma super catégorie ###
 - permettre l'ajout facultatif d'un menu
+  - gérer le fait que le css change si on a un menu ou pas (Cf. dossier exemple avec le(s) fichier(s) patch)
 - rendre la page valide XHTML Strict via validator.w3.org
 - permettre l'ajout de plusieurs CSS dans HEAD
 - permettre l'ajout d'un texte d'introduction au début de la page
