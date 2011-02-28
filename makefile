@@ -17,11 +17,16 @@ CSS_PATCH_AJOUT_MENU = bicolore_ajout_menu.patch
 CSS_NOM = defaut.css
 TITRE = Titre par défaut
 ACCUEIL = Accueil - $(TITRE)
+## facultatives
+MENU = menu.html
 ## utiles pour le makefile
+ifndef $(MENU)
+	dependances_css = style/$(CSS_DEFAUT)
+else
+	dependances_css = style/$(CSS_DEFAUT) style/$(CSS_PATCH_AJOUT_MENU)
+endif
 dependances_index = entete.html enqueue.html
 PROG_ECHO = `which echo`
-## facultatives
-#MENU = menu.html
 
 # création de tous les fichiers
 all: test index.html
@@ -41,7 +46,7 @@ test:
 	@$(PROG_ECHO) -e "\t…terminé."
 
 # création du fichier CSS
-css:
+css: $(dependances_css)
 	@$(PROG_ECHO) -e "Création du fichier CSS…"
 	@cp style/$(CSS_DEFAUT) $(DESTINATION)/$(CSS_NOM)
 	$(if $(MENU), @patch -u -p0 $(DESTINATION)/$(CSS_NOM) style/$(CSS_PATCH_AJOUT_MENU))
