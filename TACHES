@@ -33,6 +33,7 @@ DESTDIR
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
 - test de l'existence du dossier CATEG dans le script parcours_categ.sh
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
+- Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
 
 FAITES :
 ---------
