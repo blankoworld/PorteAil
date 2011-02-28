@@ -23,10 +23,17 @@ debug() {
   fi
 }
 
+## TESTS
+if ! test -d $dossier
+then
+  echo -e "Dossier '$dossier' manquant."
+  exit 0
+fi
+
 ## DEBUT
 # Parcours du dossier
-#TODO: n'afficher que les fichiers dont l'extension est .txt
-#+ À l'aide de find par exemple
+#TODO: n'afficher que les fichiers dont l'extension est .txt (ou .ail?)
+#+ À l'aide de find par exemple.
 for fichier in `ls $dossier`
 do
         # Calcul du nombre de ligne du fichier
@@ -36,6 +43,14 @@ do
         # Vérification du nombre de lignes retourné
         if [[ $nbre_lignes -gt 0 ]]
         then
+                # Récupération du nom de la catégorie
+                nbre_categories=`grep "\[\[" ${dossier}/${fichier} |wc -l`
+                # Si le nombre de catégorie est égal à 1, on a tout bon
+                if [[ $nbre_categories -eq 0 ]]
+                then
+                  echo "Fichier '${dossier}/${fichier}' mal renseigné : Pas de nom de catégorie"
+                else
+                  echo "Fichier '${dossier}/${fichier}' mal renseigné : Trop de catégorie présentes."
                 # le fichier contient plusieurs lignes, on lit le contenu
                 for ligne in $(cat ${dossier}/${fichier})
                 do
