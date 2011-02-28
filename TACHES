@@ -48,4 +48,4 @@ FAITES :
 - faire une page d'exemple sans menu et avec une feuille de style en noir et blanc
 - permettre l'ajout facultatif d'un menu
   - gérer le fait que le css change si on a un menu ou pas (Cf. dossier exemple avec le(s) fichier(s) patch)
-
+- migration des fichiers .html dans un dossier prévu à cet effet
