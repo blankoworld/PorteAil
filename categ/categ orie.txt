@@ -1,4 +1,4 @@
 [[Categ]]
 ## commentaire
 [[Categ2]]
-element##autre
+element##titre de l'élément [[##autre
