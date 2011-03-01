@@ -49,24 +49,54 @@ do
                 if [[ $nbre_categories -eq 0 ]]
                 then
                   echo "Fichier '${dossier}/${fichier}' mal renseigné : Pas de nom de catégorie"
-                else
+                  exit 0
+                elif [[ $nbre_categories -gt 1 ]]
+                then
                   echo "Fichier '${dossier}/${fichier}' mal renseigné : Trop de catégorie présentes."
+                  exit 0
+                else
+                  echo "Fichier '${dossier}/${fichier}' correct : Catégorie présente."
+                fi
                 # le fichier contient plusieurs lignes, on lit le contenu
                 for ligne in $(cat ${dossier}/${fichier})
                 do
-                        debug $ligne
+                        debug "Contenu ligne : $ligne"
                         # Vérifier les différents cas possibles :
                         #+ SI la chaîne débute par '#'
+                        #+   exemple : # quelque chose
+                        diese_comp=`echo $ligne |sed -e 's@^\(#\).*$@\1@g'`
+                        debug "Comparaison dièse : $diese_comp"
+                        if [[ $diese_comp == "#" ]]
+                        then
+                            echo "La ligne est un commentaire : Aucune action."
+                            continue
+                        fi
                         #+ SI la chaîne commence par '[[' et fini par ']]'
+                        #+   exemple : [[Titre]]Description de ma catégorie
+                        categ_comp=`echo $ligne |sed -e 's#^\(\[\[\).*\(\]\]\).*$#\1\2#g'`
+                        debug "Comparaison '[[]]' : $categ_comp"
+                        if [[ $categ_comp == "[[]]" ]]
+                        then
+                            echo "La ligne est une catégorie : Enregistrement."
+                            titre_categ=`echo $ligne |sed -e 's#^\[\[\(.*\)\]\].*$#\1#g'`
+                            desc_categ=`echo $ligne |sed -e 's#^\[\[.*\]\]\(.*\)$#\1#g'`
+                            debug "$titre_categ : $desc_categ"
+                        fi
                         #+ SI la chaîne contient 6 fois '##'
-
-                        # CAS où la ligne contient des '##' :
-                        #+ Solution temporaire, fonctionne moyennement
-#                        nouv_ligne=`echo $ligne |tr "##" "\n"`
-#                        while read element
-#                        do
-#                                echo $element
-#                        done < $nouv_ligne
+                        #+   exemple : Vous êtes perdus ?##http://perdu.com##Se rendre sur le site perdu.com####Mon image##Description de mon image
+                        element_comp=`echo $ligne |sed -e 's@^.*\(##\).*\(##\).*\(##\).*\(##\).*\(##\).*$@\1\2\3\4\5@g'`
+                        debug "Comparaison element : $element_comp"
+                        if [[ $element_comp == "##########" ]]
+                        then
+                            echo "La ligne est un élément : Enregistrement."
+                            element_titre=`echo $ligne |sed -e 's@^\(.*\)##.*##.*##.*##.*##.*$@\1@g'`
+                            element_url=`echo $ligne |sed -e 's@^.*##\(.*\)##.*##.*##.*##.*$@\1@g'`
+                            element_desc=`echo $ligne |sed -e 's@^.*##.*##\(.*\)##.*##.*##.*$@\1@g'`
+                            element_img_addr=`echo $ligne |sed -e 's@^.*##.*##.*##\(.*\)##.*##.*$@\1@g'`
+                            element_img_titre=`echo $ligne |sed -e 's@^.*##.*##.*##.*##\(.*\)##.*$@\1@g'`
+                            element_img_desc=`echo $ligne |sed -e 's@^.*##.*##.*##.*##.*##\(.*\)$@\1@g'`
+                            debug "Élément : titre=$element_titre, url=$element_url, desc=$element_desc, adresse_image=$element_img_addr, titre_image=$element_img_titre, desc_image=$element_img_desc"
+                        fi
                 done
         else
                 # le fichier ne contient pas de ligne. message d'erreur
