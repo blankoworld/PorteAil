@@ -44,7 +44,7 @@ do
         if [[ $nbre_lignes -gt 0 ]]
         then
                 # Récupération du nom de la catégorie
-                nbre_categories=`grep "\[\[" ${dossier}/${fichier} |wc -l`
+                nbre_categories=`grep -E "^\[\[.*\]\].*$" ${dossier}/${fichier} |wc -l`
                 # Si le nombre de catégorie est égal à 1, on a tout bon
                 if [[ $nbre_categories -eq 0 ]]
                 then
