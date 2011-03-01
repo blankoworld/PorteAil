@@ -38,7 +38,8 @@ DESTDIR
 - Valider la page à l'aide de TIDY (doit être facultatif)
 - Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
 - Transformer le fichier GNUmakefile en makefile pour bmake
-  - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file"
+  - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
+  - changer les VAR= en VAR:=
 
 FAITES :
 ---------
