@@ -34,6 +34,13 @@ fi
 # Parcours du dossier
 #TODO: n'afficher que les fichiers dont l'extension est .txt (ou .ail?)
 #+ À l'aide de find par exemple.
+#TODO: Prendre en compte plusieurs paramètres pour :
+#  - connaître le dossier contenant les fichiers de catégorie
+#  - l'extension des fichiers contenant les catégories
+#  - le fichier contenant le début de la catégorie
+#  - le fichier contenant la fin de la catégorie
+#  - le fichier contenant une trame pour un élément
+#TODO: Faire des tests sur les paramètres avant lancement du programme
 for fichier in `ls $dossier`
 do
   # On met/remet la valeur de CATEG à 0 significative de l'absence 
@@ -72,7 +79,7 @@ do
     for ligne in $(cat ${dossier}/${fichier})
     do
       debug "Contenu ligne : $ligne"
-      # Vérifier les différents cas possibles :
+      # Vérifie les différents cas possibles :
       #+ SI la chaîne débute par '#'
       #+   exemple : # quelque chose
       diese_comp=`echo $ligne |sed -e 's@^\(#\).*$@\1@g'`
@@ -116,7 +123,7 @@ do
         elements_image_addr[$curseur_element]=${element_img_addr:-""}
         elements_image_titre[$curseur_element]=${element_img_titre:-""}
         elements_image_desc[$curseur_element]=${element_img_desc:-""}
-        # Incrémentation
+        # Incrémentation du curseur du tableau contenant les éléments
         curseur_element=$(( $curseur_element + 1 ))
       fi
     done
@@ -132,7 +139,8 @@ do
     #+ Puis ajouter les éléments dans un fichier temporaire à part 
     #+ pour chaque element à chaque fois
     #+ Faire les sed qui vont bien pour chaque élément
-    # tests catégorie et état du curseur
+
+    # Tests sur la valeur de la catégorie et de l'état du curseur
     debug "Catégorie : $titre_categ : $desc_categ"
     debug "État curseur : $curseur_element"
     # Préparation du numéro d'index
@@ -141,15 +149,17 @@ do
     #+ d'un élément
     while [ $i -lt $curseur_element ]
     do
+      # Assignation des valeurs à des variables afin de l'afficher
       e_titre=${elements_titre[$i]:-""}           # titre element
       e_desc=${elements_desc[$i]:-""}             # description element
       e_url=${elements_url[$i]:-""}               # url element
       e_img_addr=${elements_image_addr[$i]:-""}   # adresse image
       e_img_titre=${elements_image_titre[$i]:-""} # titre image
       e_img_desc=${elements_image_desc[$i]:-""}   # description image
+      # Affichage du résultat
       debug "$i : ${e_titre} || ${e_desc} || ${e_url} || ${e_img_addr} || ${e_img_titre} || ${e_img_desc}"
+      # Incrémentation de l'index
       let i++
     done
-    #            echo ${elements_titre[0]:-""}
   fi
 done
