@@ -1,6 +1,7 @@
 À FAIRE : 
 ----------
 
+- indenter le code de parcours_categ.sh pour n'avoir plus que deux espaces au lieu de 4
 - trouver une syntaxe pour les fichiers de catégories contenant des éléments
 Par exemple : ### Ma super catégorie ###
 - rendre la page valide XHTML Strict via validator.w3.org
@@ -40,6 +41,7 @@ DESTDIR
 - Transformer le fichier GNUmakefile en makefile pour bmake
   - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
   - changer les VAR= en VAR:=
+- parcours_categ : normer les variables pour avoir categ_titre et element_titre plutôt que titre_categ et element_titre…
 
 FAITES :
 ---------
