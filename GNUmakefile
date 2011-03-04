@@ -29,7 +29,8 @@ else
 endif
 entete = $(DOSSIER_HTML)/entete.html
 enqueue = $(DOSSIER_HTML)/enqueue.html
-dependances_index = $(entete) $(enqueue)
+contenu_fin = $(DOSSIER_HTML)/contenu_fin.html
+dependances_index = $(entete) $(enqueue) $(contenu_fin)
 # programmes
 PROG_ECHO = `which echo`
 PROG_TEST = `which test`
@@ -85,6 +86,9 @@ index.html: $(DOSSIER_HTML) css $(dependances_index)
 # contenu
 # TODO: insérer ici le contenu
 #	@$(PROG_ECHO) -e "\t…insertion du contenu"
+#	fin du contenu
+	@$(PROG_ECHO) -e "\t…insertion de la fin du contenu"
+	@cat $(contenu_fin) >> $(INDEX)
 # menu
 	$(if $(MENU), @cat $(MENU) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion du menu" || exit)
 # enqueue

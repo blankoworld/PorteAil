@@ -18,7 +18,6 @@ DESTDIR
 - compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
-- ajout de l'adresse URL du dépôt GIT dans le pied de page (soulier) du portail : Généré par <a href="http://git.dossmann.net/scripts/porteail.git/" title="Se rendre sur le dépôt source du projet PorteAil">PorteAil</a>
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
@@ -57,3 +56,4 @@ le cas
 - rendre la page valide XHTML Strict via validator.w3.org
 - permettre l'ajout d'un texte d'introduction au début de la page
 - changer les variables contenues dans les fichiers HTML par @@NOM_VARIABLE@@
+- ajout de l'adresse URL du dépôt GIT dans le pied de page (soulier) du portail : Généré par <a href="http://git.dossmann.net/scripts/porteail.git/" title="Se rendre sur le dépôt source du projet PorteAil">PorteAil</a>
