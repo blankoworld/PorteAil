@@ -56,4 +56,4 @@ Par exemple : ### Ma super catégorie ###
      [[Titre de la catégorie]]Description de la catégorie (pour mettre dans des <p></p>
      titre_element##URL##Description##adresse_image##titre_image##description_image
 - test de l'existence du dossier CATEG dans le script parcours_categ.sh
-
+- BUG : On ne peut pas avoir plusieurs catégories => changer script creation_categ.sh pour ne PAS détruire le fichier categories.html (le makefile doit le faire)

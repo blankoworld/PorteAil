@@ -34,6 +34,12 @@ then
   echo -e "Dossier '$dossier' manquant."
   exit 0
 fi
+# On supprime le fichier ${destination} s'il existe.
+if test -f $destination
+then
+  echo -e "Le fichier '${destination}' existe : Suppression de ce dernier."
+  rm -f $destination
+fi
 
 ## DEBUT
 #TODO: n'afficher que les fichiers dont l'extension est .txt (ou .ail?)
@@ -148,7 +154,7 @@ do
     debug "Fichier de début de catégorie : $deb_categ"
     debug "Destination : $destination"
     # Création du fichier pour les catégories (DÉBUT)
-    cat $deb_categ |sed -e "s|@@TITRE_CATEG@@|${titre_categ}|g" -e "s|@@DESC_CATEG@@|${desc_categ}|g" > ${destination}
+    cat $deb_categ |sed -e "s|@@TITRE_CATEG@@|${titre_categ}|g" -e "s|@@DESC_CATEG@@|${desc_categ}|g" >> ${destination}
     sed -i "s#^\(.*\)@@.*@@\(.*\)#\1\2#g" ${destination}
     # Préparation du numéro d'index
     i=0
