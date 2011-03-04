@@ -11,8 +11,6 @@
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
-- ajouter des ECHO avant chaque ligne pour définir où ça plante quand c'est 
-le cas
 - ajouter les éléments de chaque catégorie dans la page html
 - changer les variables contenues dans les fichiers HTML par @@NOM_VARIABLE@@
 (car plus pratique)
@@ -57,3 +55,5 @@ Par exemple : ### Ma super catégorie ###
      titre_element##URL##Description##adresse_image##titre_image##description_image
 - test de l'existence du dossier CATEG dans le script parcours_categ.sh
 - BUG : On ne peut pas avoir plusieurs catégories => changer script creation_categ.sh pour ne PAS détruire le fichier categories.html (le makefile doit le faire)
+- ajouter des ECHO avant chaque ligne pour définir où ça plante quand c'est 
+le cas
