@@ -10,7 +10,6 @@
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
 - ajouter les éléments de chaque catégorie dans la page html
-- changer les variables contenues dans les fichiers HTML par @@NOM_VARIABLE@@
 (car plus pratique)
 - dans le makefile s'occuper de faire une section pour les catégories contenant
 des éléments
@@ -57,3 +56,4 @@ Par exemple : ### Ma super catégorie ###
 le cas
 - rendre la page valide XHTML Strict via validator.w3.org
 - permettre l'ajout d'un texte d'introduction au début de la page
+- changer les variables contenues dans les fichiers HTML par @@NOM_VARIABLE@@

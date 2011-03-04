@@ -78,7 +78,7 @@ index.html: $(DOSSIER_HTML) css $(dependances_index)
 	@cat $(entete) > $(INDEX)
 # modification du contenu
 	@$(PROG_ECHO) -e "\t…modification du contenu"
-	@sed -i -e "s/TITRE_PORTEAIL/$(TITRE)/g" -e "s/ACCUEIL_PORTEAIL/$(ACCUEIL)/g" -e "s#CSS_DEFAUT#./$(CSS_NOM)#g" $(INDEX)
+	@sed -i -e "s/@@TITRE_PORTEAIL@@/$(TITRE)/g" -e "s/@@ACCUEIL_PORTEAIL@@/$(ACCUEIL)/g" -e "s#@@CSS_DEFAUT@@#./$(CSS_NOM)#g" -e "s/^\(.*\)@@.*@@\(.*\)$$/\1\2/g" $(INDEX)
 	@$(PROG_ECHO) -e "\t  …contenu modifié avec succès !"
 # introduction (SI la variable INTRO est remplie)
 # TODO: insérer ici possibilité de mettre une INTRODUCTION à la page du site
