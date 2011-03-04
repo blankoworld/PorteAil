@@ -1,9 +1,6 @@
 À FAIRE : 
 ----------
 
-- indenter le code de parcours_categ.sh pour n'avoir plus que deux espaces au lieu de 4
-- trouver une syntaxe pour les fichiers de catégories contenant des éléments
-Par exemple : ### Ma super catégorie ###
 - rendre la page valide XHTML Strict via validator.w3.org
 - permettre l'ajout de plusieurs CSS dans HEAD
 - permettre l'ajout d'un texte d'introduction au début de la page
@@ -26,13 +23,8 @@ DESTDIR
 - compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
-- dans dossier categ : un fichier par catégorie et les éléments contenus dans la catégories. Le format est un peu comme celui ci : 
-     #commentaire
-     [[Titre de la catégorie]]Description de la catégorie (pour mettre dans des <p></p>
-     titre_element##URL##Description##adresse_image##titre_image##description_image
 - ajout de l'adresse URL du dépôt GIT dans le pied de page (soulier) du portail : Généré par <a href="http://git.dossmann.net/scripts/porteail.git/" title="Se rendre sur le dépôt source du projet PorteAil">PorteAil</a>
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
-- test de l'existence du dossier CATEG dans le script parcours_categ.sh
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
 - Supprimer l'ensemble des variables @@quelque chose@@ dans le fichier à la fin du traitement (pour nettoyage)
@@ -56,3 +48,12 @@ FAITES :
 - permettre l'ajout facultatif d'un menu
   - gérer le fait que le css change si on a un menu ou pas (Cf. dossier exemple avec le(s) fichier(s) patch)
 - migration des fichiers .html dans un dossier prévu à cet effet
+- indenter le code de parcours_categ.sh pour n'avoir plus que deux espaces au lieu de 4
+- trouver une syntaxe pour les fichiers de catégories contenant des éléments
+Par exemple : ### Ma super catégorie ###
+- dans dossier categ : un fichier par catégorie et les éléments contenus dans la catégories. Le format est un peu comme celui ci : 
+     #commentaire
+     [[Titre de la catégorie]]Description de la catégorie (pour mettre dans des <p></p>
+     titre_element##URL##Description##adresse_image##titre_image##description_image
+- test de l'existence du dossier CATEG dans le script parcours_categ.sh
+

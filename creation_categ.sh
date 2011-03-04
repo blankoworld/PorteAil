@@ -147,8 +147,8 @@ do
     # Tests sur la valeur 
     debug "Fichier de début de catégorie : $deb_categ"
     debug "Destination : $destination"
-    # Création du fichier pour le menu (DÉBUT)
-    cat $deb_categ |sed -e "s|@@TITRE_CATEG@@|${titre_categ}|g" |sed -e "s|@@DESC_CATEG@@|${desc_categ}|g" > ${destination}
+    # Création du fichier pour les catégories (DÉBUT)
+    cat $deb_categ |sed -e "s|@@TITRE_CATEG@@|${titre_categ}|g" -e "s|@@DESC_CATEG@@|${desc_categ}|g" > ${destination}
     sed -i "s#^\(.*\)@@.*@@\(.*\)#\1\2#g" ${destination}
     # Préparation du numéro d'index
     i=0
@@ -166,16 +166,12 @@ do
       # Affichage du résultat
       debug "$i : ${e_titre} || ${e_desc} || ${e_url} || ${e_img_addr} || ${e_img_titre} || ${e_img_desc}"
       # Ajout des informations dans le fichier de destination
-      #FIXME:
-      # TODO: générer fichier HTML ici
-      #+ - faire un cat du début catégorie vers un fichier categories.html (ou autre nom)
-      #+ - faire un sed pour titre
-      #+ - faire un sed pour description
-      #+ - faire un sed pour enlever les @@quelque chose@@
-      #+ - idem pour les éléments, toutes les infos, puis un sed pour 
-      #+ enlever les @@quelque chose@@ afin d'éviter de remplacer plus tard des choses non remplies
+      echo -e "\t…ajout de l'élément '${e_titre}'"
+      cat $elem |sed -e "s|@@TITRE_ELEMENT@@|$e_titre|g" -e "s|@@DESC_ELEMENT@@|${e_desc}|g" -e "s|@@URL_ELEMENT@@|${e_url}|g" -e "s|@@URL_IMAGE@@|${e_img_addr}|g" -e "s|@@TITRE_IMAGE@@|${e_img_titre}|g" -e "s|@@DESC_IMAGE@@|${e_img_desc}|g" -e "s|^\(.*\)@@.*@@\(.*\)$|\1\2|g" >> ${destination}
       # Incrémentation de l'index
       let i++
     done
+    # Ajout de la fin du fichier pour les catégories (FIN)
+    cat $fin_categ >> ${destination}
   fi
 done
