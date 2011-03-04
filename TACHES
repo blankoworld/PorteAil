@@ -2,7 +2,6 @@
 ----------
 
 - permettre l'ajout de plusieurs CSS dans HEAD
-- permettre l'ajout d'un texte d'introduction au début de la page
 - permettre l'ajout d'un pied de page
 - compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
   - les dossiers à avoir
@@ -57,3 +56,4 @@ Par exemple : ### Ma super catégorie ###
 - ajouter des ECHO avant chaque ligne pour définir où ça plante quand c'est 
 le cas
 - rendre la page valide XHTML Strict via validator.w3.org
+- permettre l'ajout d'un texte d'introduction au début de la page

@@ -20,6 +20,7 @@ ACCUEIL = Accueil - $(TITRE)
 DOSSIER_HTML = composants
 ## divers
 MENU = $(DOSSIER_HTML)/menu.html
+INTRO = $(DOSSIER_HTML)/introduction.html
 ## utiles pour le makefile
 ifndef $(MENU)
 	dependances_css = style/$(CSS_DEFAUT)
@@ -35,6 +36,7 @@ PROG_TEST = `which test`
 PROG_SED  = `which sed`
 PROG_PATCH = `which patch`
 PROG_CAT = `which cat`
+PROG_CP = `which cp`
 
 ## DEBUT
 # création de tous les fichiers
@@ -50,9 +52,13 @@ test:
 	@test -d style || mkdir style
 	@$(PROG_ECHO) -e "\t…existence de la feuille de style par défaut : '$(CSS_DEFAUT)'"
 	@test -f style/$(CSS_DEFAUT) || exit
-	@$(PROG_ECHO) -e "\t…vérification du choix de l'utilisateur sur l'ajout d'un menu ou non"
-	$(if $(MENU), @test -f $(MENU) || exit, @$(PROG_ECHO) -e "\t\t-> option menu : désactivée")
-	$(if $(MENU), @test -f style/$(CSS_DEFAUT); $(PROG_ECHO) -e "\t\t-> option menu : activée" || exit)
+	@$(PROG_ECHO) -e "\t…option introduction dans la page"
+	$(if $(INTRO), @test -f $(INTRO) || exit)
+	$(if $(INTRO), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
+	@$(PROG_ECHO) -e "\t…option ajout d'un menu (vérification de l'existence)"
+	$(if $(MENU), @test -f $(MENU) || exit)
+	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
+	$(if $(MENU), @test -f style/$(CSS_PATCH_AJOUT_MENU) || exit)
 	@test -d $(DESTINATION) || mkdir $(DESTINATION)
 	@test -d $(DESTINATION)/image || mkdir $(DESTINATION)/image
 	@$(PROG_ECHO) -e "  …terminé."
@@ -76,6 +82,7 @@ index.html: $(DOSSIER_HTML) css $(dependances_index)
 	@$(PROG_ECHO) -e "\t  …contenu modifié avec succès !"
 # introduction (SI la variable INTRO est remplie)
 # TODO: insérer ici possibilité de mettre une INTRODUCTION à la page du site
+	$(if $(INTRO), @cat $(INTRO) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit)
 # contenu
 # TODO: insérer ici le contenu
 #	@$(PROG_ECHO) -e "\t…insertion du contenu"
