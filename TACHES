@@ -9,8 +9,6 @@
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
-- dans le makefile s'occuper de faire une section pour les catégories contenant
-des éléments
 - faire une section install dans le makefile permettant d'installer dans 
 DESTDIR
 - compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
@@ -60,3 +58,5 @@ le cas
 - ajouter les éléments de chaque catégorie dans la page html
 (car plus pratique)
 - parcours_categ : normer les variables pour avoir categ_titre et element_titre plutôt que titre_categ et element_titre…
+- dans le makefile s'occuper de faire une section pour les catégories contenant
+des éléments
