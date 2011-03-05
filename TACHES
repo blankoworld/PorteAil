@@ -9,8 +9,6 @@
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
-- ajouter les éléments de chaque catégorie dans la page html
-(car plus pratique)
 - dans le makefile s'occuper de faire une section pour les catégories contenant
 des éléments
 - faire une section install dans le makefile permettant d'installer dans 
@@ -60,3 +58,5 @@ le cas
 - amélioration de la recherche des fichiers dans le dossier catégorie, avec choix d'une extension
 - Supprimer l'ensemble des variables @@quelque chose@@ dans le fichier à la fin du traitement (pour nettoyage)
 - ajouter une licence comme LPRAB
+- ajouter les éléments de chaque catégorie dans la page html
+(car plus pratique)

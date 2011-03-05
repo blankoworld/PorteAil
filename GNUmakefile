@@ -47,6 +47,8 @@ entete = $(DOSSIER_HTML)/entete.html
 enqueue = $(DOSSIER_HTML)/enqueue.html
 contenu_fin = $(DOSSIER_HTML)/contenu_fin.html
 dependances_index = $(entete) $(enqueue) $(contenu_fin)
+script_contenu = creation_categ.sh
+contenu = categories.html
 # programmes
 PROG_ECHO = `which echo`
 PROG_TEST = `which test`
@@ -54,6 +56,7 @@ PROG_SED  = `which sed`
 PROG_PATCH = `which patch`
 PROG_CAT = `which cat`
 PROG_CP = `which cp`
+PROG_BASH = `which bash`
 
 ## DEBUT
 # création de tous les fichiers
@@ -87,8 +90,13 @@ css: $(dependances_css)
 	$(if $(MENU), @patch -u -p0 $(DESTINATION)/$(CSS_NOM) style/$(CSS_PATCH_AJOUT_MENU); $(PROG_ECHO) -e "\t…patch pour affichage du menu")
 	@$(PROG_ECHO) -e "  …terminée."
 
+# création du fichier $(contenu)
+contenu: $(script_contenu)
+	@sed -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
+	@$(PROG_BASH) $(script_contenu) || exit
+
 # création de la page d'index
-index.html: $(DOSSIER_HTML) css $(dependances_index)
+index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)
 	@$(PROG_ECHO) -e "Création de la page de garde…"
 # entete
 	@$(PROG_ECHO) -e "\t…insertion de l'entête"
@@ -100,8 +108,8 @@ index.html: $(DOSSIER_HTML) css $(dependances_index)
 # introduction (SI la variable INTRO est remplie)
 	$(if $(INTRO), @cat $(INTRO) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit)
 # contenu
-# TODO: insérer ici le contenu
-#	@$(PROG_ECHO) -e "\t…insertion du contenu"
+	@$(PROG_ECHO) -e "\t…insertion du contenu"
+	@cat $(contenu) >> $(INDEX)
 #	fin du contenu
 	@$(PROG_ECHO) -e "\t…insertion de la fin du contenu"
 	@cat $(contenu_fin) >> $(INDEX)
