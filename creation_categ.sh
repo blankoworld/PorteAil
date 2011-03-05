@@ -9,6 +9,29 @@
 #+ [[Titre de la catégorie]]Description de la catégorie
 #+ titre de l'élément##http://domaine.tld/##description de l'élément##nom_image##Titre de l'image##description de l'image
 
+###########
+# LICENCE #
+###########
+
+# Copyright (C) 2011 DOSSMANN Olivier <olivier@dossmann.net> ##
+
+#  This file is part of PorteAil.
+#
+#  PorteAil is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  PorteAil is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with PorteAil. If not, see <http://www.gnu.org/licenses/>.
+
+######################################################################
+
 ## VARIABLES
 DEBUG=1
 dossier="categ"
