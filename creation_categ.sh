@@ -141,7 +141,7 @@ do
     done
   else
     # le fichier ne contient pas de ligne. message d'erreur
-    echo -e "Fichier '$fichier' non pris en charge : Le fichier semble vide."
+    echo -e "Fichier '${dossier}/$fichier' non pris en charge : Le fichier semble vide."
   fi
   # On débute la création du fichier contenant la catégorie si CATEG=1
   if [[ $CATEG == 1 ]]
