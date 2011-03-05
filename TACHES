@@ -3,12 +3,6 @@
 
 - permettre l'ajout de plusieurs CSS dans HEAD
 - permettre l'ajout d'un pied de page
-- compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
-  - les dossiers à avoir
-  - les fichiers à avoir
-  - les dossiers résultants
-  - les variables à changer pour personnaliser
-  - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
 - faire une section install dans le makefile permettant d'installer dans 
 DESTDIR
 - compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
@@ -25,6 +19,14 @@ DESTDIR
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
 - compléter l'adresse des images pour l'insertion dans le contenu
 - vérifier l'existence de l'image avant de l'ajouter
+
+Pour la v0.1 : 
+- compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
+  - les dossiers à avoir
+  - les fichiers à avoir
+  - les dossiers résultants
+  - les variables à changer pour personnaliser
+  - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
 
 FAITES :
 ---------
