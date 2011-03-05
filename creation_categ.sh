@@ -39,8 +39,8 @@ destination="categories.html"
 IFS="
 "
 dossier_composants="./composants"
-deb_categ="${dossier_composants}/categ_deb.html"
-fin_categ="${dossier_composants}/categ_fin.html"
+categ_deb="${dossier_composants}/categ_deb.html"
+categ_fin="${dossier_composants}/categ_fin.html"
 elem="${dossier_composants}/element.html"
 extension="txt" # Extension des fichiers à prendre en compte
 
@@ -130,9 +130,9 @@ do
       if [[ $categ_comp == "[[]]" ]]
       then
         debug "La ligne est une catégorie : Enregistrement."
-        titre_categ=`echo $ligne |sed -e 's#^\[\[\(.*\)\]\].*$#\1#g'`
-        desc_categ=`echo $ligne |sed -e 's#^\[\[.*\]\]\(.*\)$#\1#g'`
-        debug "$titre_categ : $desc_categ"
+        categ_titre=`echo $ligne |sed -e 's#^\[\[\(.*\)\]\].*$#\1#g'`
+        categ_desc=`echo $ligne |sed -e 's#^\[\[.*\]\]\(.*\)$#\1#g'`
+        debug "$categ_titre : $categ_desc"
         CATEG=1
       fi
       #+ SI la chaîne contient 6 fois '##'
@@ -170,13 +170,13 @@ do
   then
     echo -e "Création d'un bloc Catégorie…"
     # Tests sur la valeur de la catégorie et de l'état du curseur
-    debug "Catégorie : $titre_categ : $desc_categ"
+    debug "Catégorie : $categ_titre : $categ_desc"
     debug "État curseur : $curseur_element"
     # Tests sur la valeur 
-    debug "Fichier de début de catégorie : $deb_categ"
+    debug "Fichier de début de catégorie : $categ_deb"
     debug "Destination : $destination"
     # Création du fichier pour les catégories (DÉBUT)
-    cat $deb_categ |sed -e "s|@@TITRE_CATEG@@|${titre_categ}|g" -e "s|@@DESC_CATEG@@|${desc_categ}|g" >> ${destination}
+    cat $categ_deb |sed -e "s|@@TITRE_CATEG@@|${categ_titre}|g" -e "s|@@DESC_CATEG@@|${categ_desc}|g" >> ${destination}
     sed -i "s#^\(.*\)@@.*@@\(.*\)#\1\2#g" ${destination}
     # Préparation du numéro d'index
     i=0
@@ -200,6 +200,6 @@ do
       let i++
     done
     # Ajout de la fin du fichier pour les catégories (FIN)
-    cat $fin_categ >> ${destination}
+    cat $categ_fin >> ${destination}
   fi
 done

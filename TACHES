@@ -24,7 +24,6 @@ DESTDIR
 - Transformer le fichier GNUmakefile en makefile pour bmake
   - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
   - changer les VAR= en VAR:=
-- parcours_categ : normer les variables pour avoir categ_titre et element_titre plutôt que titre_categ et element_titre…
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
 - ajouter des fichiers images au bon format et sous licence libre
 
@@ -60,3 +59,4 @@ le cas
 - ajouter une licence comme LPRAB
 - ajouter les éléments de chaque catégorie dans la page html
 (car plus pratique)
+- parcours_categ : normer les variables pour avoir categ_titre et element_titre plutôt que titre_categ et element_titre…
