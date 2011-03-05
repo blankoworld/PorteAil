@@ -21,7 +21,6 @@ DESTDIR
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
-- Supprimer l'ensemble des variables @@quelque chose@@ dans le fichier à la fin du traitement (pour nettoyage)
 - Valider la page à l'aide de TIDY (doit être facultatif)
 - Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
 - Transformer le fichier GNUmakefile en makefile pour bmake
@@ -60,3 +59,4 @@ le cas
 - changer les variables contenues dans les fichiers HTML par @@NOM_VARIABLE@@
 - ajout de l'adresse URL du dépôt GIT dans le pied de page (soulier) du portail : Généré par <a href="http://git.dossmann.net/scripts/porteail.git/" title="Se rendre sur le dépôt source du projet PorteAil">PorteAil</a>
 - amélioration de la recherche des fichiers dans le dossier catégorie, avec choix d'une extension
+- Supprimer l'ensemble des variables @@quelque chose@@ dans le fichier à la fin du traitement (pour nettoyage)
