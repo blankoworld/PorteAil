@@ -23,7 +23,8 @@ DESTDIR
   - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
   - changer les VAR= en VAR:=
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
-- ajouter des fichiers images au bon format et sous licence libre
+- compléter l'adresse des images pour l'insertion dans le contenu
+- vérifier l'existence de l'image avant de l'ajouter
 
 FAITES :
 ---------
@@ -60,3 +61,4 @@ le cas
 - parcours_categ : normer les variables pour avoir categ_titre et element_titre plutôt que titre_categ et element_titre…
 - dans le makefile s'occuper de faire une section pour les catégories contenant
 des éléments
+- ajouter des fichiers images au bon format et sous licence libre
