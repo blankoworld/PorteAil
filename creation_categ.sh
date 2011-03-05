@@ -79,11 +79,11 @@ do
     if [[ $nbre_categories -eq 0 ]]
     then
       echo "Fichier '${dossier}/${fichier}' mal renseigné : Pas de nom de catégorie"
-      exit 0
+      continue
     elif [[ $nbre_categories -gt 1 ]]
     then
       echo "Fichier '${dossier}/${fichier}' mal renseigné : Trop de catégorie présentes."
-      exit 0
+      continue
     else
       echo "Fichier '${dossier}/${fichier}' correct : Catégorie présente."
     fi
