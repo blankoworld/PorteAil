@@ -29,6 +29,8 @@ DESTDIR
   - changer les VAR= en VAR:=
 - parcours_categ : normer les variables pour avoir categ_titre et element_titre plutôt que titre_categ et element_titre…
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
+- ajouter une licence comme LPRAB
+- ajouter des fichiers images au bon format et sous licence libre
 
 FAITES :
 ---------
@@ -57,3 +59,4 @@ le cas
 - permettre l'ajout d'un texte d'introduction au début de la page
 - changer les variables contenues dans les fichiers HTML par @@NOM_VARIABLE@@
 - ajout de l'adresse URL du dépôt GIT dans le pied de page (soulier) du portail : Généré par <a href="http://git.dossmann.net/scripts/porteail.git/" title="Se rendre sur le dépôt source du projet PorteAil">PorteAil</a>
+- amélioration de la recherche des fichiers dans le dossier catégorie, avec choix d'une extension

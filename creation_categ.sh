@@ -19,6 +19,7 @@ dossier_composants="./composants"
 deb_categ="${dossier_composants}/categ_deb.html"
 fin_categ="${dossier_composants}/categ_fin.html"
 elem="${dossier_composants}/element.html"
+extension="txt" # Extension des fichiers à prendre en compte
 
 ## FONCTIONS
 debug() {
@@ -42,8 +43,6 @@ then
 fi
 
 ## DEBUT
-#TODO: n'afficher que les fichiers dont l'extension est .txt (ou .ail?)
-#+ À l'aide de find par exemple.
 #TODO: Prendre en compte plusieurs paramètres pour :
 #  - connaître le dossier contenant les fichiers de catégorie
 #  - l'extension des fichiers contenant les catégories
@@ -53,7 +52,7 @@ fi
 #TODO: Faire des tests sur les paramètres avant lancement du programme
 
 # Parcours du dossier
-for fichier in `ls $dossier`
+for fichier in `find categ/ -iname "*.${extension}" -print -type f`
 do
   # On met/remet la valeur de CATEG à 0 significative de l'absence 
   #+ d'une Catégorie
@@ -67,28 +66,28 @@ do
   elements_image_desc=()
   curseur_element=0
   # Calcul du nombre de ligne du fichier
-  nbre_lignes=`cat ${dossier}/${fichier} |wc -l`
+  nbre_lignes=`cat ${fichier} |wc -l`
   # debug
   debug "$fichier: $nbre_lignes"
   # Vérification du nombre de lignes retourné
   if [[ $nbre_lignes -gt 0 ]]
   then
     # Récupération du nom de la catégorie
-    nbre_categories=`grep -E "^\[\[.*\]\].*$" ${dossier}/${fichier} |wc -l`
+    nbre_categories=`grep -E "^\[\[.*\]\].*$" ${fichier} |wc -l`
     # Si le nombre de catégorie est égal à 1, on a tout bon
     if [[ $nbre_categories -eq 0 ]]
     then
-      echo "Fichier '${dossier}/${fichier}' mal renseigné : Pas de nom de catégorie"
+      echo "Fichier '${fichier}' mal renseigné : Pas de nom de catégorie"
       continue
     elif [[ $nbre_categories -gt 1 ]]
     then
-      echo "Fichier '${dossier}/${fichier}' mal renseigné : Trop de catégorie présentes."
+      echo "Fichier '${fichier}' mal renseigné : Trop de catégorie présentes."
       continue
     else
-      echo "Fichier '${dossier}/${fichier}' correct : Catégorie présente."
+      echo "Fichier '${fichier}' correct : Catégorie présente."
     fi
     # le fichier contient plusieurs lignes, on lit le contenu
-    for ligne in $(cat ${dossier}/${fichier})
+    for ligne in $(cat ${fichier})
     do
       debug "Contenu ligne : $ligne"
       # Vérifie les différents cas possibles :
@@ -141,7 +140,7 @@ do
     done
   else
     # le fichier ne contient pas de ligne. message d'erreur
-    echo -e "Fichier '${dossier}/$fichier' non pris en charge : Le fichier semble vide."
+    echo -e "Fichier '$fichier' non pris en charge : Le fichier semble vide."
   fi
   # On débute la création du fichier contenant la catégorie si CATEG=1
   if [[ $CATEG == 1 ]]
