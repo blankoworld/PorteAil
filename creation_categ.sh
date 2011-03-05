@@ -33,7 +33,7 @@
 ######################################################################
 
 ## VARIABLES
-DEBUG=1
+DEBUG=0
 dossier="categ"
 destination="categories.html"
 IFS="
