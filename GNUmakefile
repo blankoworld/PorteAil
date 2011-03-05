@@ -79,8 +79,12 @@ test:
 	$(if $(MENU), @test -f $(MENU) || exit)
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	$(if $(MENU), @test -f style/$(CSS_PATCH_AJOUT_MENU) || exit)
+	@$(PROG_ECHO) -e "\t…création de la destination"
 	@test -d $(DESTINATION) || mkdir $(DESTINATION)
+	@$(PROG_ECHO) -e "\t…création du dossier image"
 	@test -d $(DESTINATION)/image || mkdir $(DESTINATION)/image
+	@$(PROG_ECHO) -e "\t…copie des fichiers images"
+	@cp -r img/* $(DESTINATION)/image
 	@$(PROG_ECHO) -e "  …terminé."
 
 # création du fichier CSS
