@@ -1,6 +1,6 @@
---- bicolore_sans_menu.css	2011-02-26 14:56:15.000000000 +0100
-+++ bicolore_avec_menu.css	2011-02-26 15:03:12.000000000 +0100
-@@ -47,11 +47,12 @@
+--- bicolore_sans_menu.css	2011-03-06 22:45:57.000000000 +0100
++++ bicolore_avec_menu.css	2011-03-06 22:45:31.000000000 +0100
+@@ -51,7 +51,7 @@
  
  div#chapeau {
  position: relative;
@@ -9,12 +9,7 @@
  padding: 0;
  height: 50px;
  width: 78%;
- top: 0;
-+left: 1%;
- background-color: #000000;
- color: #ffffff;
- text-align: center;
-@@ -70,7 +71,7 @@
+@@ -79,7 +79,7 @@
  
  div#corps {
  position: relative;
