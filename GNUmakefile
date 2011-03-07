@@ -28,8 +28,8 @@
 ## configuration
 DESTINATION = porteail
 INDEX = $(DESTINATION)/index.html
-CSS_DEFAUT = bicolore_sans_menu.css
-CSS_PATCH_AJOUT_MENU = bicolore_ajout_menu.patch
+CSS_SANS_MENU = bicolore_sans_menu.css
+CSS_AVEC_MENU = bicolore_avec_menu.css
 CSS_NOM = defaut.css
 TITRE = Titre par défaut
 ACCUEIL = Accueil - $(TITRE)
@@ -39,9 +39,9 @@ MENU = $(DOSSIER_HTML)/menu.html
 INTRO = $(DOSSIER_HTML)/introduction.html
 ## utiles pour le makefile
 ifndef $(MENU)
-	dependances_css = style/$(CSS_DEFAUT)
+	dependances_css = style/$(CSS_SANS_MENU)
 else
-	dependances_css = style/$(CSS_DEFAUT) style/$(CSS_PATCH_AJOUT_MENU)
+	dependances_css = style/$(CSS_AVEC_MENU) 
 endif
 entete = $(DOSSIER_HTML)/entete.html
 enqueue = $(DOSSIER_HTML)/enqueue.html
@@ -70,15 +70,12 @@ test:
 	@test -d img || mkdir img
 	@test -d categ || mkdir categ
 	@test -d style || mkdir style
-	@$(PROG_ECHO) -e "\t…existence de la feuille de style par défaut : '$(CSS_DEFAUT)'"
-	@test -f style/$(CSS_DEFAUT) || exit
 	@$(PROG_ECHO) -e "\t…option introduction dans la page"
 	$(if $(INTRO), @test -f $(INTRO) || exit)
 	$(if $(INTRO), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…option ajout d'un menu (vérification de l'existence)"
 	$(if $(MENU), @test -f $(MENU) || exit)
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
-	$(if $(MENU), @test -f style/$(CSS_PATCH_AJOUT_MENU) || exit)
 	@$(PROG_ECHO) -e "\t…création de la destination"
 	@test -d $(DESTINATION) || mkdir $(DESTINATION)
 	@$(PROG_ECHO) -e "\t…création du dossier image"
@@ -90,8 +87,8 @@ test:
 # création du fichier CSS
 css: $(dependances_css)
 	@$(PROG_ECHO) -e "Création du fichier CSS…"
-	@cp style/$(CSS_DEFAUT) $(DESTINATION)/$(CSS_NOM)
-	$(if $(MENU), @patch -u -p0 $(DESTINATION)/$(CSS_NOM) style/$(CSS_PATCH_AJOUT_MENU); $(PROG_ECHO) -e "\t…patch pour affichage du menu")
+	$(if $(MENU), @cp style/$(CSS_AVEC_MENU) $(DESTINATION)/$(CSS_NOM), @cp style/$(CSS_SANS_MENU) $(DESTINATION)/$(CSS_NOM))
+#	@cp style/$(CSS_DEFAUT) $(DESTINATION)/$(CSS_NOM)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier $(contenu)
