@@ -9,7 +9,6 @@ DESTDIR
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
-- Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
 - Valider la page à l'aide de TIDY (doit être facultatif)
 - Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
 - Transformer le fichier GNUmakefile en makefile pour bmake
@@ -18,6 +17,7 @@ DESTDIR
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
 - compléter l'adresse des images pour l'insertion dans le contenu
 - vérifier l'existence de l'image avant de l'ajouter
+- voir si possibilité de faire un "source configrc" pour inclure les variables modifiables du programme, histoire de n'éditer que le fichier 'configrc' du programme
 
 Pour la v0.1 : 
 - compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
@@ -26,6 +26,8 @@ Pour la v0.1 :
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
+- Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
+
 
 FAITES :
 ---------
