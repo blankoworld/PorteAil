@@ -26,8 +26,6 @@ Pour la v0.1 :
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
-- Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
-
 
 FAITES :
 ---------
@@ -66,3 +64,4 @@ le cas
 des éléments
 - ajouter des fichiers images au bon format et sous licence libre
 - compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
+- Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
