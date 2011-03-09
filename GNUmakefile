@@ -35,8 +35,8 @@ TITRE = Titre par défaut
 ACCUEIL = Accueil - $(TITRE)
 DOSSIER_HTML = composants
 ## divers
-MENU = $(DOSSIER_HTML)/menu.html
-INTRO = $(DOSSIER_HTML)/introduction.html
+#MENU = $(DOSSIER_HTML)/menu.html
+#INTRO = $(DOSSIER_HTML)/introduction.html
 ## utiles pour le makefile
 ifndef $(MENU)
 	dependances_css = style/$(CSS_SANS_MENU)
@@ -125,4 +125,5 @@ index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)
 clean:
 	@$(PROG_ECHO) -e "Nettoyage des fichiers en cours…"
 	@rm -rf $(DESTINATION)
+	@rm -f $(contenu)
 	@$(PROG_ECHO) -e "  …terminé."
