@@ -45,13 +45,192 @@ Le programme requièrt les programmes suivants :
 - wc
 - grep
 
+Normalement ces éléments sont inclus de base dans une distribution GNU/Linux
+ et/ou BSD.
+
 ### INSTALLATION ###
 
-
+Le programme ne requièrt aucune installation particulière. Placez le où vous 
+voudrez.
 
 ### UTILISATION ###
 
+Dans sa version 0.1 le programme s'utilise via plusieurs entrées minimales : 
+- le fichier GNUmakefile
+- le dossier categ
+- le fichier composants/introduction.html
+- le fichier composants/menu.html
+- le dossier img
 
+Pour chaque élément, veuillez vous référer au chapitre adéquat.
+
+Si vous désirez personnaliser encore plus la page PorteAil, vous pouvez
+ lire la section « Pour aller plus loin » qui permet de comprendre un
+ peu mieux le fonctionnement du programme.
+
+#--[[ Mode de fonctionnement basique ]]--#
+
+Pour utiliser le programme, il suffit d'utiliser une console (shell), 
+d'aller dans le dossier contenant PorteAil, et de faire : 
+
+    make
+
+En théorie un nouveau dossier 'porteail' apparaît dans lequel il y a :
+- un fichier 'index.html'
+- une feuille de style nommée 'defaut.css'
+- un dossier 'img' contenant tout un tas d'image
+
+Si vous voulez supprimer les fichiers crées à l'aide de la commande
+'make' ou pour toute autre raison, faites : 
+
+    make clean
+
+et cela aura pour effet de supprimer le dossier 'porteail' et le fichier
+'categories.html' crée par différents scripts au moment de la génération
+de la page.
+
+#--[[ GNUmakefile ]]--#
+
+Ce fichier vous permettra de changer le titre de la page PorteAil et
+ le titre affiché dans un navigateur. Ceci se fait via les deux 
+ lignes suivantes : 
+
+- TITRE=
+- ACCUEIL=
+
+Par exemple pour afficher "Mon super site" sur la page PorteAil et
+avoir "Accueil - Mon super site" dans l'onglet du navigateur, il
+suffit de changer les lignes suivantes du fichier GNUmakefile :
+
+    TITRE = Mon super site
+    ACCUEIL = Accueil - $(TITRE)
+
+Il faut savoir que '$(TITRE)' va se changer en 'Mon super site'.
+C'est la notion même de variables en programmation. Mais passons.
+
+Ces deux variables sont les seules à modifier pour une utilisation 
+simple du programme.
+
+#--[[ Le dossier 'categ' ]]--#
+
+Le dossier 'categ' est le dossier qui va contenir nos catégories
+d'éléments.
+Il faut savoir que :
+- un fichier texte portant l'extension '.txt' est considéré comme 
+ UNE catégorie
+- le programme n'accepte que les fichiers comportant une et une 
+ seule description de catégorie
+- le programme va lire les éléments renseignés dans le fichier
+
+Le format de fichier accepte 3 cas possible de lignes : 
+1. les commentaires
+2. une description d'une catégorie
+3. une description d'un élément
+
+Voici un commentaire : 
+
+    # un commentaire dans le fichier
+
+Voici une description de catégorie :
+
+    [[Titre de ma catégorie]]Description de ma catégorie
+
+Voici une description d'un élément (un par ligne) :
+
+    Titre##URL##DESC##ADDR_IMG##TITRE_IMG##DESC_IMG
+
+où :
+
+- Titre : est le nom affiché sur le portail de l'élément.
+- URL : est l'adresse COMPLÈTE du site sur lequel on pointe
+- DESC : est la description complète de notre élément pour le passage de la 
+ souris sur le lien
+- ADDR_IMG : est l'adresse relative vers l'image (Cf. ci-après pour plus de 
+ renseignements)
+- TITRE_IMG : est le titre de notre image (si jamais l'image ne s'affiche pas)
+- DESC_IMG : est la description de l'image au passage de la souris
+
+Des exemples sont donnés dans le dossier categ. À vous de les modifier comme 
+ bon vous semble.
+
+#--[[ Le dossier 'img' et Adresse de l'image ]]--#
+
+Dans la version 0.1, il faut indiquer clairement l'adresse de l'image à 
+ utiliser pour la page de PorteAil. 
+Sachant que le dossier 'img' contient l'ensemble des images disponibles,
+il faut tout d'abord trouver l'adresse d'une image qu'on voudrait, par
+exemple 'apps/clock.png'.
+
+Il faut donc concaténer deux chaînes de caractères : 
+- './image/' qui est le dossier de destination
+- 'apps/clock.png' qui est l'adresse de l'image actuellement
+
+Ainsi cela ressemble à : 
+
+    ./image/apps/clock.png
+
+#--[[ Le fichier introduction.html ]]--#
+
+Le fichier 'composants/introduction.html' contient du texte en HTML à 
+insérer en début de la page PorteAil, il faut donc connaître un peu le 
+langage HTML pour permettre un affichage correct de ce que vous voulez.
+
+Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
+changer la ligne suivante dans le fichier 'GNUmakefile' :
+
+    #INTRO = $(DOSSIER_HTML)/introduction.html
+
+par
+
+    INTRO = $(DOSSIER_HTML)/introduction.html
+
+Vous l'aurez compris, il suffit d'enlever le premier dièse '#' du début de
+ligne.
+
+#--[[ Le fichier menu.html ]]--#
+
+À l'instar du fichier 'introduction.html', le fichier 'menu.html' permet 
+d'insérer un menu dans la page du PorteAil. Ceci est très utile si vous 
+voulez agrémenter le portail de tout un tas d'autres pages.
+
+Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
+changer la ligne suivante dans el fichier 'GNUmakefile' : 
+
+    #MENU = $(DOSSIER_HTML)/menu.html
+
+par
+
+    MENU = $(DOSSIER_HTML)/menu.html
+
+Comme pour l'introduction, il suffit de supprimer le dièse '#' en début de 
+ligne.
+
+### POUR ALLER PLUS LOIN ###
+
+Tous les éléments expliqués ci-avant ne seront que partiellement ou pas du 
+tout expliqué pour des raisons évidentes.
+
+Nous allons donc aborder plusieurs points qui concernent la personnalisation
+de PorteAil afin d'adapter le programme pour qu'il en résulte une page d'une
+structure différente de celle de base.
+
+Cela est utile dans le cas où :
+- vous connaissez le langage HTML pour faire des pages internet
+- vous connaissez le langage CSS pour manier visuellement la page sans modifier
+le contenu
+- vous n'avez pas peur de modifier quelques lignes dans des fichiers afin de 
+voir le résultat
+
+#FIXME
+- GNUmakefile, pour aller plus loin
+- creation_categ.sh - personnalisation
+- composants - personnalisation
+- le dossier style
+- le dossier img
+
+#--[[ GNUmakefile ]]--#
+
+FIXME
 
 ### SOURCES ###
 
