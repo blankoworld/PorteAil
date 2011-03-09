@@ -32,15 +32,32 @@ suivants :
   - img : dossier contenant l'ensemble des fichiers images (icônes) pour 
 l'affichage des éléments dans la page de garde
 
+### DÉPENDANCES ###
+
+Le programme requièrt les programmes suivants : 
+- GNU make
+- cp
+- sed
+- bash
+- echo
+- test
+- cat
+- wc
+- grep
+
 ### INSTALLATION ###
 
-FIXME
+
 
 ### UTILISATION ###
 
+
+
 ### SOURCES ###
 
-Les sources du programme peuvent être récupérées sur http://git.dossmann.net/ ou via la commande suivante (à l'aide de l'outil git) :
+Les sources du programme peuvent être récupérées sur 
+ http://git.dossmann.net/ ou via la commande suivante (à l'aide de l'outil 
+ git) :
 
     git clone http://git.dossmann.net/scripts/porteail.git
 
