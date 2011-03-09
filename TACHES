@@ -17,6 +17,7 @@ DESTDIR
   - mettre en noir et blanc
   - ajouter le nom des liens en fin de chaque lien
 - créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
+- ne copier QUE les images utilisées
 
 Pour la v0.1 : 
 - compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
