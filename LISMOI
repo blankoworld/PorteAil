@@ -208,7 +208,7 @@ ligne.
 ### POUR ALLER PLUS LOIN ###
 
 Tous les éléments expliqués ci-avant ne seront que partiellement ou pas du 
-tout expliqué pour des raisons évidentes.
+tout expliqué pour des raisons évidentes de redondance d'information.
 
 Nous allons donc aborder plusieurs points qui concernent la personnalisation
 de PorteAil afin d'adapter le programme pour qu'il en résulte une page d'une
@@ -221,16 +221,89 @@ le contenu
 - vous n'avez pas peur de modifier quelques lignes dans des fichiers afin de 
 voir le résultat
 
-#FIXME
-- GNUmakefile, pour aller plus loin
-- creation_categ.sh - personnalisation
-- composants - personnalisation
-- le dossier style
-- le dossier img
+#--[[ Utilisation de la commande make ]]--#
+
+Pour plus d'informations sur l'utilisation de la commande 'make', je vous 
+renvoie à la page de manuel disponible en tapant :
+
+    man make
+
+Cependant sachez que dans le fichier 'GNUmakefile' il existe plusieurs sections
+susceptibles d'être utilisées. Les principales sont : 
+- all : génère la page de PorteAil après avoir fait divers tests d'existence
+des éléments.
+- clean : permet de nettoyer le dossier nommé 'porteail'
+- test : fait quelques tests sur l'existence des ficheirs nécessaires pour 
+la compilation de la page.
 
 #--[[ GNUmakefile ]]--#
 
-FIXME
+Le fichier GNUmakefile contient un ensemble de variables qui sont utiles pour 
+personnaliser la page de résultat. Voici une liste et la description attachée 
+pour chacun des éléments modifiable/utilisable dans le fichier 'GNUmakefile' :
+
+DESTINATION : nom du dossier dans lequel ira le résultat de la génération
+
+INDEX : adresse, à partir du répertoire dans lequel est contenu le fichier 
+'GNUmakefile', dans lequel se trouvera le fichier résultant. Cela donne une 
+indication sur le nom que vous voulez donner au fichier
+
+CSS_SANS_MENU : nom de la feuille de style à utiliser quand la page est générée
+sans menu. À noter que le fichier doit se trouver dans le dossier 'composants'
+
+CSS_AVEC_MENU : nom de la feuille de style à utiliser quand la page est générée
+avec un menu. À noter que le fichier doit se trouver dans le dossier 
+'composants'.
+
+CSS_NOM : nom de la feuille de style dans le résultat final
+
+TITRE : Cf. Chapitre 'GNUmakefile' ci-avant.
+
+ACCUEIL : Cf. Chapitre 'GNUmakefile' ci-avant.
+
+DOSSIER_HTML : nom du dossier contenant l'ensemble des composants. Cf Chapitre
+sur les composants 'Les composants'.
+
+MENU : Cf. Chapitre 'Le fichier menu.html'
+
+INTRO : Cf. Chapitre 'Le fichier introduction.html'
+
+Quelques autres éléments sont modifiables : les composants. Les valeurs
+attachées à ces composants sont les suivantes : 
+
+- entete : fichier entete.html
+- enqueue : fichier enqueue.html
+- contenu_fin : fichier contenu_fin.html
+- script_contenu : script bash permettant de générer les catégories
+- contenu : fichier temporaire possédant le contenu à insérer dans la page
+
+Pour plus de renseignements, veuillez vous référer au chapitre 'Les 
+composants'.
+
+##--[[ Les composants ]]--#
+
+Les composants sont les éléments qui permettent de composer la page.
+À cet effet une page a été scindés en les éléments suivants : 
+- entete.html : contient le début de notre page HTML
+- categ_deb.html : contient le début d'une catégorie
+- element.html : contient l'ensemble du HTML pour UN élément donné
+- categ_fin.html : contient la fin d'une catégorie
+- contenu_fin.html : contient la fin du corps de la page
+- enqueue.html : contient le pied de page
+- introduction.html : contient du HTML pouvant être ajouté après le titre
+principal de la page
+- menu.html : un menu à ajouter à notre page
+
+Pour personnaliser il suffit d'éditer chacun des fichiers afin d'en 
+modifier le code source.
+
+#--[[ La création des catégorie à l'aide de creation_categ.sh ]]--#
+
+#FIXME
+- creation_categ.sh - personnalisation
+- le dossier style
+- le dossier img
+
 
 ### SOURCES ###
 
