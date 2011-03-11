@@ -75,7 +75,7 @@ fi
 #TODO: Faire des tests sur les paramètres avant lancement du programme
 
 # Parcours du dossier
-for fichier in `find categ/ -iname "*.${extension}" -print -type f`
+for fichier in `find categ/ -iname "*.${extension}" -print -type f|sort`
 do
   # On met/remet la valeur de CATEG à 0 significative de l'absence 
   #+ d'une Catégorie
