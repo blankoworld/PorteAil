@@ -36,7 +36,7 @@ ACCUEIL = Accueil - $(TITRE)
 DOSSIER_HTML = composants
 ## divers
 #MENU = $(DOSSIER_HTML)/menu.html
-#INTRO = $(DOSSIER_HTML)/introduction.html
+INTRO = $(DOSSIER_HTML)/introduction.html
 ## utiles pour le makefile
 ifndef $(MENU)
 	dependances_css = style/$(CSS_SANS_MENU)
