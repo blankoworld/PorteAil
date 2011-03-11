@@ -13,6 +13,19 @@ informations.
 PorteAil est un jeu de mot entre Porte, portail et Ail (l'aliment ou le bruit
  que nous faisons après avoir eu mal ?).
 
+#--[[ Contact ]]--#
+
+Cf. Chapitre "Contact / Bugs" en bas de page.
+
+#--[[ Licence ]]--#
+
+Le programme PorteAil est sous licence GPLv3.
+Vous êtes libre de diffuser le programme, de le modifier et de le 
+redistribuer sous la même licence en précisant le nom de l'auteur.
+
+Pour plus de renseignements je vous invite à lire le fichier COPYING
+joint avec les fichiers du programme.
+
 ### PRÉ - REQUIS ###
 
 Ce programme fonctionne à l'aide de **GNU Make**.
@@ -280,7 +293,7 @@ attachées à ces composants sont les suivantes :
 Pour plus de renseignements, veuillez vous référer au chapitre 'Les 
 composants'.
 
-##--[[ Les composants ]]--#
+#--[[ Les composants ]]--#
 
 Les composants sont les éléments qui permettent de composer la page.
 À cet effet une page a été scindés en les éléments suivants : 
@@ -299,11 +312,50 @@ modifier le code source.
 
 #--[[ La création des catégorie à l'aide de creation_categ.sh ]]--#
 
-#FIXME
-- creation_categ.sh - personnalisation
-- le dossier style
-- le dossier img
+Le fichier 'creation_categ.sh' permet de générer le corps de la page.
+À cet effet il va parcourir un dossier, générer les catégories une à une
+et les éléments associés, puis il va tout déposer dans un fichier HTML
+prévu à cet effet.
 
+Comme pour le fichier 'GNUmakefile', il y a des lignes à changer si vous
+voulez personnaliser le script.
+
+Par exemple on peut changer le dossier d'entrée (la source) et le fichier
+de sortie (la destination).
+
+Les variables sont les suivantes : 
+- dossier : contient la source (dossier d'entrée) dans laquelle se trouve
+les fichiers décrivant les catégories et les éléments associés.
+- destination : contient la destination. C'est à dire le fichier dans lequel
+se situera le corps, temporairement évidemment.
+
+D'autres éléments sont aussi modifiables :
+- dossier_composants : ce dossier réunit l'ensemble des composants de notre 
+page finale. Il est utile pour récupérer le fichier 'element.html', 
+disponible d'ailleurs dans la variable 'elem'
+- categ_deb : contenu HTML du début d'une catégorie
+- categ_fin : contenu HTML qui marque la fin d'une catégorie
+- elem : contenu HTML qui contient UN élément
+- extension : extension des fichiers décrivant les catégories et leurs 
+éléments associés
+
+Normalement, avec toutes ces données vous devriez pouvoir tester par vous
+même le résultat du script et améliorer le rendu de vos pages.
+
+#--[[ Le dossier style ]]--#
+
+Le dossier 'style' est prévu pour contenir l'ensemble des feuilles de style
+disponible pour l'apparence de notre page PorteAil.
+
+Déposez donc ici vos feuille de style et changez la variable 'CSS_AVEC_MENU'
+et 'CSS_SANS_MENU' du fichier 'GNUmakefile' (Cf. Chapitre 'GNUmakefile').
+
+#--[[ Le dossier img ]]--#
+
+Le dossier 'img' contient, dans la version 0.1, l'ensemble des images 
+utilisées pour la page finale.
+
+Déposez-y les images que vous voudriez utiliser.
 
 ### SOURCES ###
 

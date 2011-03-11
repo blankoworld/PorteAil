@@ -21,14 +21,6 @@ DESTDIR
 - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
 - favicon.ico ?
 
-Pour la v0.1 : 
-- compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
-  - les dossiers à avoir
-  - les fichiers à avoir
-  - les dossiers résultants
-  - les variables à changer pour personnaliser
-  - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
-
 Pour la v0.2 : 
 - améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
@@ -80,3 +72,9 @@ des éléments
 - Modifier le fichier introduction.html pour donner quelques infos à l'utilisateur sur comment comprendre/utiliser le programme => parler du fichier LISMOI et du dossier 'categ'
 - Enlever le dièse de INTRO
 - Dans la doc : faire un paragraphe "CONTACT" afin de me contacter pour bugs éventuels
+- compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
+  - les dossiers à avoir
+  - les fichiers à avoir
+  - les dossiers résultants
+  - les variables à changer pour personnaliser
+  - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
