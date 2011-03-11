@@ -18,6 +18,8 @@ DESTDIR
   - ajouter le nom des liens en fin de chaque lien
 - créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
 - ne copier QUE les images utilisées
+- Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
+- favicon.ico ?
 
 Pour la v0.1 : 
 - compléter le fichier LISMOI pour expliquer le fonctionnement du logiciel
@@ -26,15 +28,16 @@ Pour la v0.1 :
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
-- Dans la doc : faire un paragraphe "CONTACT" afin de me contacter pour bugs éventuels
 
 Pour la v0.2 : 
+- améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
 - compléter l'adresse des images pour l'insertion dans le contenu
 - vérifier l'existence de l'image avant de l'ajouter
 - si pas d'image ou image inexistante, mettre une image générique
 - voir si possibilité de faire un "source configrc" pour inclure les variables modifiables du programme, histoire de n'éditer que le fichier 'configrc' du programme
+  - trouver une méthode qui permet de récupérer toujours les dernières versions sources sans écraser la version que nous avons. configrc.exemple par exemple, à copier en configrc ;)
 
 FAITES :
 ---------
@@ -76,3 +79,4 @@ des éléments
 - Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
 - Modifier le fichier introduction.html pour donner quelques infos à l'utilisateur sur comment comprendre/utiliser le programme => parler du fichier LISMOI et du dossier 'categ'
 - Enlever le dièse de INTRO
+- Dans la doc : faire un paragraphe "CONTACT" afin de me contacter pour bugs éventuels
