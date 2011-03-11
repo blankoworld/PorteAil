@@ -26,6 +26,9 @@ Pour la v0.1 :
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
+- Modifier le fichier introduction.html pour donner quelques infos à l'utilisateur sur comment comprendre/utiliser le programme => parler du fichier LISMOI et du dossier 'categ'
+- Enlever le dièse de INTRO
+- Dans la doc : faire un paragraphe "CONTACT" afin de me contacter pour bugs éventuels
 
 Pour la v0.2 : 
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
