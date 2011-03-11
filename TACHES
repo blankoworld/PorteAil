@@ -26,8 +26,6 @@ Pour la v0.1 :
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
-- Modifier le fichier introduction.html pour donner quelques infos à l'utilisateur sur comment comprendre/utiliser le programme => parler du fichier LISMOI et du dossier 'categ'
-- Enlever le dièse de INTRO
 - Dans la doc : faire un paragraphe "CONTACT" afin de me contacter pour bugs éventuels
 
 Pour la v0.2 : 
@@ -76,3 +74,5 @@ des éléments
 - ajouter des fichiers images au bon format et sous licence libre
 - compatibilité avec d'autres navigateurs pour le CSS -moz-border-radius et -moz-box-shadow
 - Éviter l'utilisation d'un patch pour le CSS avec/sans menu. Proposer deux variables contenant les deux versions du fichier CSS.
+- Modifier le fichier introduction.html pour donner quelques infos à l'utilisateur sur comment comprendre/utiliser le programme => parler du fichier LISMOI et du dossier 'categ'
+- Enlever le dièse de INTRO
