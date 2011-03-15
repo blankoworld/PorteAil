@@ -3,6 +3,7 @@
 
 - faire une section install dans le makefile permettant d'installer dans 
 DESTDIR
+- faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi
 - permettre l'ajout d'un pied de page
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
