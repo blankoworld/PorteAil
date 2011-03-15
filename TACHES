@@ -25,6 +25,11 @@ DESTDIR
 - Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
 - Essayer de faire en sorte que le lien soit écarté jusqu'aux bords de tout l'élément afin que le clic sur l'élément renvoie sur la page
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
+- Simplifier le code HTML et CSS
+  - enlever les div en trop, par exemple pour l'IMG
+  - changer les div#abc en #abc dans le CSS
+- Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS
+- Meilleur affichage dans les navigateurs textes
 
 Pour la v0.2 : 
 - améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
