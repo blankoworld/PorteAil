@@ -27,7 +27,7 @@
 ## VARIABLES ##
 ## configuration
 DESTINATION = porteail
-INDEX = $(DESTINATION)/index.html
+INDEX = $(DESTINATION)/index.xhtml
 CSS_SANS_MENU = bicolore_sans_menu.css
 CSS_AVEC_MENU = bicolore_avec_menu.css
 CSS_NOM = defaut.css
