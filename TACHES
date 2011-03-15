@@ -30,6 +30,8 @@ DESTDIR
   - changer les div#abc en #abc dans le CSS
 - Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS
 - Meilleur affichage dans les navigateurs textes
+- HTML 5 avec header et footer
+- Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
 
 Pour la v0.2 : 
 - améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
