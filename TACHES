@@ -35,7 +35,6 @@ DESTDIR
 
 Pour la v0.2 : 
 - améliorer visibilité sur écran 22" avec : {margin-left:10%;margin-right:10%;}
-- des h3 mais pas de h2, WTF ?
 - améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
@@ -92,3 +91,4 @@ des éléments
   - les dossiers résultants
   - les variables à changer pour personnaliser
   - ajouter un paragraphe LICENCE pour expliquer la licence appliquée
+- des h3 mais pas de h2, WTF ?
