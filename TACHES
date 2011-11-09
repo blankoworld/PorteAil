@@ -3,7 +3,6 @@
 
 - faire une section install dans le makefile permettant d'installer dans 
 DESTDIR
-- faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi
 - permettre l'ajout d'un pied de page
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
@@ -19,21 +18,13 @@ DESTDIR
   - ajouter le nom des liens en fin de chaque lien
 - créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
 - ne copier QUE les images utilisées
-- Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
 - favicon.ico ?
 - Doc : donner l'astuce pour ordonner les catégories dans le fichier : mettre 00-nom_fichier.txt, puis 01-autre_categorie.txt, etc.
 - Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
 - Essayer de faire en sorte que le lien soit écarté jusqu'aux bords de tout l'élément afin que le clic sur l'élément renvoie sur la page
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
-- Simplifier le code HTML et CSS
-  - enlever les div en trop, par exemple pour l'IMG
-  - changer les div#abc en #abc dans le CSS
-- Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS
-- Meilleur affichage dans les navigateurs textes
-- HTML 5 avec header et footer
-- Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
 
-Pour la v0.2 : 
+Pour la v0.1.1 : 
 - améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
@@ -42,6 +33,17 @@ Pour la v0.2 :
 - si pas d'image ou image inexistante, mettre une image générique
 - voir si possibilité de faire un "source configrc" pour inclure les variables modifiables du programme, histoire de n'éditer que le fichier 'configrc' du programme
   - trouver une méthode qui permet de récupérer toujours les dernières versions sources sans écraser la version que nous avons. configrc.exemple par exemple, à copier en configrc ;)
+
+Pour la v0.2 : 
+- faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi
+- HTML 5 avec header et footer
+- Simplifier le code HTML et CSS
+  - enlever les div en trop, par exemple pour l'IMG
+  - changer les div#abc en #abc dans le CSS
+- Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS
+- Meilleur affichage dans les navigateurs textes
+- Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
+- Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
 
 FAITES :
 ---------
