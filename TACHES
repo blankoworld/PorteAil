@@ -32,6 +32,7 @@ Pour la v0.1.1 :
 - si pas d'image ou image inexistante, mettre une image générique
 - voir si possibilité de faire un "source configrc" pour inclure les variables modifiables du programme, histoire de n'éditer que le fichier 'configrc' du programme
   - trouver une méthode qui permet de récupérer toujours les dernières versions sources sans écraser la version que nous avons. configrc.exemple par exemple, à copier en configrc ;)
+- Prévoir un script d'export des données entrées par l'utilisateur s'il utilise un dépôt git OU trouver un système de mise à jour du logiciel
 
 Pour la v0.2 : 
 - faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi
