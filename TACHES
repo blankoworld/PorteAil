@@ -20,7 +20,6 @@ DESTDIR
 - favicon.ico ?
 - Doc : donner l'astuce pour ordonner les catégories dans le fichier : mettre 00-nom_fichier.txt, puis 01-autre_categorie.txt, etc.
 - Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
-- Essayer de faire en sorte que le lien soit écarté jusqu'aux bords de tout l'élément afin que le clic sur l'élément renvoie sur la page
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
 Pour la v0.1.1 : 
@@ -97,4 +96,5 @@ des éléments
 - des h3 mais pas de h2, WTF ?
 - améliorer visibilité sur écran 22" avec : {margin-left:10%;margin-right:10%;}
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
+- Essayer de faire en sorte que le lien soit écarté jusqu'aux bords de tout l'élément afin que le clic sur l'élément renvoie sur la page
 
