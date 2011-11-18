@@ -88,9 +88,9 @@ div#corps div.ensemble_element {
 min-height: 10em;
 }
 
-div#corps div.element {
+div#corps a.cadre {
 height: 9em;
-width: 19ex;
+width: 11em;
 margin: 0 5px 10px 5px;
 float: left;
 border: thin solid #000000;
@@ -101,31 +101,29 @@ border-radius: 15px;
 box-shadow: 1px 1px 8px #000000;
 -webkit-box-shadow: 1px 1px 8px #000000;
 overflow: hidden;
+text-align: center;
+text-decoration: none;
 }
 
-div#corps div.element:hover {
+div#corps a.cadre:hover {
 background-color: #223355;
 color: #ffffff;
 }
 
-div#corps div.element div.titre {
-height: 3em;
+div#corps a.cadre div.element {
+height: 9em;
 margin-top: 1em;
-text-align: center;
 }
 
-div#corps div.element div.image {
-height: 48px;
-margin: 1em 0 2em 0;
-text-align: center;
-}
-
-div#corps div.element div.image img {
+div#corps a.cadre div.element img {
+margin-top: 2em;
+margin-right: auto;
+margin-left: auto;
 border: 0;
 }
 
 div#corps div.espace {
-  clear: both;
+clear: both;
 }
 
 div#cartable {
