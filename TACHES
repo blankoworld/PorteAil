@@ -23,7 +23,6 @@ DESTDIR
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
 Pour la v0.1.1 : 
-- Faire la feuille de style bleue pour le site avec un menu
 - améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
 - faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
@@ -97,4 +96,4 @@ des éléments
 - améliorer visibilité sur écran 22" avec : {margin-left:10%;margin-right:10%;}
 - créer un site internet parlant de PorteAil avec une page générée par PorteAil comportant l'ensemble des sites utilisant Porteail
 - Essayer de faire en sorte que le lien soit écarté jusqu'aux bords de tout l'élément afin que le clic sur l'élément renvoie sur la page
-
+- Faire la feuille de style bleue pour le site avec un menu
