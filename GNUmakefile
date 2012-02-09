@@ -33,7 +33,7 @@ PROG_TEST = `which test`
 PROG_SED  = `which sed`
 PROG_CAT = `which cat`
 PROG_CP = `which cp`
-PROG_BASH = `which bash`
+PROG_SH = `which sh`
 PROG_RM = `which rm`
 
 ## DEBUT
@@ -72,7 +72,7 @@ css: $(dependances_css)
 # création du fichier $(contenu)
 contenu: $(script_contenu)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
-	@$(PROG_BASH) $(script_contenu) || exit
+	@$(PROG_SH) $(script_contenu) || exit
 
 # création de la page d'index
 index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)

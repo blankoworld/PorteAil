@@ -55,7 +55,7 @@ Le programme requièrt les programmes suivants :
 - GNU make
 - cp
 - sed
-- bash
+- sh
 - echo
 - test
 - cat
