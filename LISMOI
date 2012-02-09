@@ -70,10 +70,17 @@ Normalement ces éléments sont inclus de base dans une distribution GNU/Linux
 Le programme ne requièrt aucune installation particulière. Placez le où vous 
 voudrez.
 
+### CONFIGURATION ###
+
+Copiez le fichier 'configrc.exemple' (ou bien renommez le) en 'configrc'.
+
+Sans ce fichier 'configrc' le programme ne peut pas fonctionner.
+
 ### UTILISATION ###
 
 Dans sa version 0.1 le programme s'utilise via plusieurs entrées minimales : 
 - le fichier GNUmakefile
+- le fichier configrc
 - le dossier categ
 - le fichier composants/introduction.html
 - le fichier composants/menu.html
@@ -108,6 +115,11 @@ de la page.
 
 #--[[ GNUmakefile ]]--#
 
+Ce fichier contient les éléments de base pour lancer PorteAil. Aucun 
+changement particulier ne doit être effectué sur celui-ci.
+
+#--[[ configrc ]]--#
+
 Ce fichier vous permettra de changer le titre de la page PorteAil et
  le titre affiché dans un navigateur. Ceci se fait via les deux 
  lignes suivantes : 
@@ -117,7 +129,7 @@ Ce fichier vous permettra de changer le titre de la page PorteAil et
 
 Par exemple pour afficher "Mon super site" sur la page PorteAil et
 avoir "Accueil - Mon super site" dans l'onglet du navigateur, il
-suffit de changer les lignes suivantes du fichier GNUmakefile :
+suffit de changer les lignes suivantes du fichier 'configrc' :
 
     TITRE = Mon super site
     ACCUEIL = Accueil - $(TITRE)
@@ -193,7 +205,7 @@ insérer en début de la page PorteAil, il faut donc connaître un peu le
 langage HTML pour permettre un affichage correct de ce que vous voulez.
 
 Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
-changer la ligne suivante dans le fichier 'GNUmakefile' :
+changer la ligne suivante dans le fichier 'configrc' :
 
     #INTRO = $(DOSSIER_HTML)/introduction.html
 
@@ -211,7 +223,7 @@ d'insérer un menu dans la page du PorteAil. Ceci est très utile si vous
 voulez agrémenter le portail de tout un tas d'autres pages.
 
 Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
-changer la ligne suivante dans el fichier 'GNUmakefile' : 
+changer la ligne suivante dans el fichier 'configrc' : 
 
     #MENU = $(DOSSIER_HTML)/menu.html
 
@@ -253,11 +265,11 @@ des éléments.
 - test : fait quelques tests sur l'existence des ficheirs nécessaires pour 
 la compilation de la page.
 
-#--[[ GNUmakefile ]]--#
+#--[[ configrc ]]--#
 
-Le fichier GNUmakefile contient un ensemble de variables qui sont utiles pour 
+Le fichier 'configrc' contient un ensemble de variables qui sont utiles pour 
 personnaliser la page de résultat. Voici une liste et la description attachée 
-pour chacun des éléments modifiable/utilisable dans le fichier 'GNUmakefile' :
+pour chacun des éléments modifiable/utilisable dans le fichier 'configrc' :
 
 DESTINATION : nom du dossier dans lequel ira le résultat de la génération
 
@@ -274,9 +286,9 @@ avec un menu. À noter que le fichier doit se trouver dans le dossier
 
 CSS_NOM : nom de la feuille de style dans le résultat final
 
-TITRE : Cf. Chapitre 'GNUmakefile' ci-avant.
+TITRE : Cf. Chapitre 'configrc' ci-avant.
 
-ACCUEIL : Cf. Chapitre 'GNUmakefile' ci-avant.
+ACCUEIL : Cf. Chapitre 'configrc' ci-avant.
 
 DOSSIER_HTML : nom du dossier contenant l'ensemble des composants. Cf Chapitre
 sur les composants 'Les composants'.
@@ -321,7 +333,7 @@ Le fichier 'creation_categ.sh' permet de générer le corps de la page.
 et les éléments associés, puis il va tout déposer dans un fichier HTML
 prévu à cet effet.
 
-Comme pour le fichier 'GNUmakefile', il y a des lignes à changer si vous
+Comme pour le fichier 'configrc', il y a des lignes à changer si vous
 voulez personnaliser le script.
 
 Par exemple on peut changer le dossier d'entrée (la source) et le fichier
@@ -352,7 +364,7 @@ Le dossier 'style' est prévu pour contenir l'ensemble des feuilles de style
 disponible pour l'apparence de notre page PorteAil.
 
 Déposez donc ici vos feuille de style et changez la variable 'CSS_AVEC_MENU'
-et 'CSS_SANS_MENU' du fichier 'GNUmakefile' (Cf. Chapitre 'GNUmakefile').
+et 'CSS_SANS_MENU' du fichier 'configrc' (Cf. Chapitre 'configrc').
 
 #--[[ Le dossier img ]]--#
 
