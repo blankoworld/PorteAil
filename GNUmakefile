@@ -31,7 +31,6 @@ include configrc
 PROG_ECHO = `which echo`
 PROG_TEST = `which test`
 PROG_SED  = `which sed`
-PROG_PATCH = `which patch`
 PROG_CAT = `which cat`
 PROG_CP = `which cp`
 PROG_BASH = `which bash`
