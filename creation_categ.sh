@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # creation_categ.sh
 #
@@ -45,24 +45,25 @@ elem="${dossier_composants}/element.html"
 extension="txt" # Extension des fichiers à prendre en compte
 
 ## FONCTIONS
-debug() {
-  if [[ $DEBUG -eq 1 ]]
+debug( )
+{
+  if [ "$DEBUG" -eq 1 ]
   then
-    echo -e $1
+    printf "$1\n" 1>&2
   fi
 }
 
 ## TESTS
-if ! test -d $dossier
+if ! test -d "$dossier"
 then
-  echo -e "Dossier '$dossier' manquant."
+  echo "Dossier '$dossier' manquant."
   exit 0
 fi
 # On supprime le fichier ${destination} s'il existe.
-if test -f $destination
+if test -f "$destination"
 then
-  echo -e "Le fichier '${destination}' existe : Suppression de ce dernier."
-  rm -f $destination
+  echo "Le fichier '${destination}' existe : Suppression de ce dernier."
+  rm -f "$destination"
 fi
 
 ## DEBUT
@@ -81,28 +82,28 @@ do
   #+ d'une Catégorie
   CATEG=0
   # On met/remet le tableau des elements à 0
-  elements_titre=()
-  elements_url=()
-  elements_desc=()
-  elements_image_addr=()
-  elements_image_titre=()
-  elements_image_desc=()
+  elements_titre=""
+  elements_url=""
+  elements_desc=""
+  elements_image_addr=""
+  elements_image_titre=""
+  elements_image_desc=""
   curseur_element=0
   # Calcul du nombre de ligne du fichier
-  nbre_lignes=`cat ${fichier} |wc -l`
+  nbre_lignes=`cat "${fichier}" |wc -l`
   # debug
   debug "$fichier: $nbre_lignes"
   # Vérification du nombre de lignes retourné
-  if [[ $nbre_lignes -gt 0 ]]
+  if [ "$nbre_lignes" -gt 0 ]
   then
     # Récupération du nom de la catégorie
     nbre_categories=`grep -E "^\[\[.*\]\].*$" ${fichier} |wc -l`
     # Si le nombre de catégorie est égal à 1, on a tout bon
-    if [[ $nbre_categories -eq 0 ]]
+    if [ "$nbre_categories" -eq 0 ]
     then
       echo "Fichier '${fichier}' mal renseigné : Pas de nom de catégorie"
       continue
-    elif [[ $nbre_categories -gt 1 ]]
+    elif [ "$nbre_categories" -gt 1 ]
     then
       echo "Fichier '${fichier}' mal renseigné : Trop de catégorie présentes."
       continue
@@ -110,28 +111,28 @@ do
       echo "Fichier '${fichier}' correct : Catégorie présente."
     fi
     # le fichier contient plusieurs lignes, on lit le contenu
-    for ligne in $(cat ${fichier})
+    for ligne in $(cat "${fichier}")
     do
       debug "Contenu ligne : $ligne"
       # Vérifie les différents cas possibles :
       #+ SI la chaîne débute par '#'
       #+   exemple : # quelque chose
-      diese_comp=`echo $ligne |sed -e 's@^\(#\).*$@\1@g'`
+      diese_comp=`echo "$ligne" |sed -e 's@^\(#\).*$@\1@g'`
       debug "Comparaison dièse : $diese_comp"
-      if [[ $diese_comp == "#" ]]
+      if [ "$diese_comp" = '#' ]
       then
         debug "La ligne est un commentaire : Aucune action."
         continue
       fi
       #+ SI la chaîne commence par '[[' et fini par ']]'
       #+   exemple : [[Titre]]Description de ma catégorie
-      categ_comp=`echo $ligne |sed -e 's#^\(\[\[\).*\(\]\]\).*$#\1\2#g'`
+      categ_comp=`echo "$ligne" |sed -e 's#^\(\[\[\).*\(\]\]\).*$#\1\2#g'`
       debug "Comparaison '[[]]' : $categ_comp"
-      if [[ $categ_comp == "[[]]" ]]
+      if [ "$categ_comp" = "[[]]" ]
       then
         debug "La ligne est une catégorie : Enregistrement."
-        categ_titre=`echo $ligne |sed -e 's#^\[\[\(.*\)\]\].*$#\1#g'`
-        categ_desc=`echo $ligne |sed -e 's#^\[\[.*\]\]\(.*\)$#\1#g'`
+        categ_titre=`echo "$ligne" |sed -e 's#^\[\[\(.*\)\]\].*$#\1#g'`
+        categ_desc=`echo "$ligne" |sed -e 's#^\[\[.*\]\]\(.*\)$#\1#g'`
         debug "$categ_titre : $categ_desc"
         CATEG=1
       fi
@@ -139,7 +140,7 @@ do
       #+   exemple : Vous êtes perdus ?##http://perdu.com##Se rendre sur le site perdu.com####Mon image##Description de mon image
       element_comp=`echo $ligne |sed -e 's@^.*\(##\).*\(##\).*\(##\).*\(##\).*\(##\).*$@\1\2\3\4\5@g'`
       debug "Comparaison element : $element_comp"
-      if [[ $element_comp == "##########" ]]
+      if [ "$element_comp" = "##########" ]
       then
         debug "La ligne est un élément : Enregistrement."
         # Recherche des informations pour l'élément
@@ -151,24 +152,24 @@ do
         element_img_desc=`echo $ligne |sed -e 's@^.*##.*##.*##.*##.*##\(.*\)$@\1@g'`
         debug "Élément : titre=$element_titre, url=$element_url, desc=$element_desc, adresse_image=$element_img_addr, titre_image=$element_img_titre, desc_image=$element_img_desc"
         # Ajout des éléments dans les tableaux appropriés
-        elements_titre[$curseur_element]=${element_titre:-""}
-        elements_url[$curseur_element]=${element_url:-""}
-        elements_desc[$curseur_element]=${element_desc:-""}
-        elements_image_addr[$curseur_element]=${element_img_addr:-""}
-        elements_image_titre[$curseur_element]=${element_img_titre:-""}
-        elements_image_desc[$curseur_element]=${element_img_desc:-""}
+        eval "elements_titre_${curseur_element}=\"${element_titre:-""}\""
+        eval "elements_url_${curseur_element}=\"${element_url:-""}\""
+        eval "elements_desc_${curseur_element}=\"${element_desc:-""}\""
+        eval "elements_image_addr_${curseur_element}=\"${element_img_addr:-""}\""
+        eval "elements_image_titre_${curseur_element}=\"${element_img_titre:-""}\""
+        eval "elements_image_desc_${curseur_element}=\"${element_img_desc:-""}\""
         # Incrémentation du curseur du tableau contenant les éléments
         curseur_element=$(( $curseur_element + 1 ))
       fi
     done
   else
     # le fichier ne contient pas de ligne. message d'erreur
-    echo -e "Fichier '$fichier' non pris en charge : Le fichier semble vide."
+    echo "Fichier '$fichier' non pris en charge : Le fichier semble vide."
   fi
   # On débute la création du fichier contenant la catégorie si CATEG=1
-  if [[ $CATEG == 1 ]]
+  if [ "$CATEG" -eq 1 ]
   then
-    echo -e "Création d'un bloc Catégorie…"
+    echo "Création d'un bloc Catégorie…"
     # Tests sur la valeur de la catégorie et de l'état du curseur
     debug "Catégorie : $categ_titre : $categ_desc"
     debug "État curseur : $curseur_element"
@@ -182,22 +183,28 @@ do
     i=0
     # Parcours des tableaux afin de récupérer toutes les informations
     #+ d'un élément
-    while [ $i -lt $curseur_element ]
+    while [ "$i" -lt "$curseur_element" ]
     do
       # Assignation des valeurs à des variables afin de l'afficher
-      e_titre=${elements_titre[$i]:-""}           # titre element
-      e_desc=${elements_desc[$i]:-""}             # description element
-      e_url=${elements_url[$i]:-""}               # url element
-      e_img_addr=${elements_image_addr[$i]:-""}   # adresse image
-      e_img_titre=${elements_image_titre[$i]:-""} # titre image
-      e_img_desc=${elements_image_desc[$i]:-""}   # description image
+      e_titre_tmp=$(eval echo \$elements_titre_${i})
+      e_titre=${e_titre_tmp:-""}                            # titre element
+      e_desc_tmp=$(eval echo \$elements_desc_${i})
+      e_desc=${e_desc_tmp:-""}                               # description element
+      e_url_tmp=$(eval echo \$elements_url_${i})
+      e_url=${e_url_tmp:-""}                                # url element
+      e_img_addr_tmp=$(eval echo \$elements_image_addr_${i})
+      e_img_addr=${e_img_addr_tmp:-""}                    # adresse image
+      e_img_titre_tmp=$(eval echo \$elements_image_titre_${i})
+      e_img_titre=${e_img_titre_tmp:-""}                  # titre image
+      e_img_desc_tmp=$(eval echo \$elements_image_desc_${i})
+      e_img_desc=${e_img_desc_tmp:-""}                    # description image
       # Affichage du résultat
       debug "$i : ${e_titre} || ${e_desc} || ${e_url} || ${e_img_addr} || ${e_img_titre} || ${e_img_desc}"
       # Ajout des informations dans le fichier de destination
-      echo -e "\t…ajout de l'élément '${e_titre}'"
+      printf "\t…ajout de l'élément '${e_titre}'\n"
       cat $elem |sed -e "s|@@TITRE_ELEMENT@@|$e_titre|g" -e "s|@@DESC_ELEMENT@@|${e_desc}|g" -e "s|@@URL_ELEMENT@@|${e_url}|g" -e "s|@@URL_IMAGE@@|${e_img_addr}|g" -e "s|@@TITRE_IMAGE@@|${e_img_titre}|g" -e "s|@@DESC_IMAGE@@|${e_img_desc}|g" -e "s|^\(.*\)@@.*@@\(.*\)$|\1\2|g" >> ${destination}
       # Incrémentation de l'index
-      let i++
+      i=`expr $i + 1` #let i++
     done
     # Ajout de la fin du fichier pour les catégories (FIN)
     cat $categ_fin >> ${destination}
