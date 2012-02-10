@@ -42,11 +42,11 @@ all: test index.html
 
 # divers tests sur l'existence des dossiers/fichiers
 # création si besoin
-test: 
+test:
 	@$(PROG_ECHO) -e "Lancement des tests…"
 	@$(PROG_ECHO) -e "\t…existence des dossiers img, categ et style"
 	@$(PROG_TEST) -d img || mkdir img
-	@$(PROG_TEST) -d categ || mkdir categ
+	@$(PROG_TEST) -d $(categ) || mkdir $(categ)
 	@$(PROG_TEST) -d style || mkdir style
 	@$(PROG_ECHO) -e "\t…option introduction dans la page"
 	$(if $(INTRO), @test -f $(INTRO) || exit)
@@ -72,7 +72,7 @@ css: $(dependances_css)
 # création du fichier $(contenu)
 contenu: $(script_contenu)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
-	@$(PROG_SH) $(script_contenu) || exit
+	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem) || exit
 
 # création de la page d'index
 index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)

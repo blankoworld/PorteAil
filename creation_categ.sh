@@ -34,15 +34,9 @@
 
 ## VARIABLES
 DEBUG=0
-dossier="categ"
-destination="categories.html"
 IFS="
 "
-dossier_composants="./composants"
-categ_deb="${dossier_composants}/categ_deb.html"
-categ_fin="${dossier_composants}/categ_fin.html"
-elem="${dossier_composants}/element.html"
-extension="txt" # Extension des fichiers à prendre en compte
+PROGRAMME=`basename $0`
 
 ## FONCTIONS
 debug( )
@@ -53,7 +47,29 @@ debug( )
   fi
 }
 
+utilisation( )
+{
+        echo "Utilisation : $PROGRAMME dossier_cat destination.html extension composants entete_cat.html enqueue_cat.html element.html"
+        echo ""
+        echo "Cf. Fichier LISMOI pour plus d'informations."
+}
+
 ## TESTS
+# Test sur les paramètres
+if [ $# -ne 7 ]
+then
+  utilisation
+else
+  # $PROGRAMME dossier_cat destination.html extension composants entete_cat.html enqueue_cat.html element.html
+  dossier=$1
+  destination=$2 #"categories.html"
+  extension=$3 # Extension des fichiers à prendre en compte
+  dossier_composants=$4
+  categ_deb="${dossier_composants}/$5"
+  categ_fin="${dossier_composants}/$6"
+  elem="${dossier_composants}/$7"
+fi
+# Existence dossier
 if ! test -d "$dossier"
 then
   echo "Dossier '$dossier' manquant."
@@ -65,15 +81,6 @@ then
   echo "Le fichier '${destination}' existe : Suppression de ce dernier."
   rm -f "$destination"
 fi
-
-## DEBUT
-#TODO: Prendre en compte plusieurs paramètres pour :
-#  - connaître le dossier contenant les fichiers de catégorie
-#  - l'extension des fichiers contenant les catégories
-#  - le fichier contenant le début de la catégorie
-#  - le fichier contenant la fin de la catégorie
-#  - le fichier contenant une trame pour un élément
-#TODO: Faire des tests sur les paramètres avant lancement du programme
 
 # Parcours du dossier
 for fichier in `find categ/ -iname "*.${extension}" -print -type f|sort`
