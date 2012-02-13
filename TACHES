@@ -23,7 +23,6 @@ DESTDIR
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
 >>> Pour la v0.1.1 : 
-- faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
 - compléter l'adresse des images pour l'insertion dans le contenu
 - vérifier l'existence de l'image avant de l'ajouter
@@ -97,4 +96,5 @@ des éléments
 - améliorer la connexion entre le makefile et creation_categ.sh afin de ne plus toucher aux variables de creation_categ.sh
 - trouver une méthode qui permet de récupérer toujours les dernières versions sources sans écraser la version que nous avons. configrc.exemple par exemple, à copier en configrc ;)
 - Prévoir un script d'export des données entrées par l'utilisateur s'il utilise un dépôt git OU trouver un système de mise à jour du logiciel => réglé avec le fichier configrc.exemple en configrc
+- faire des "which" pour les programmes utilisés (notamment pour sha1 ou md5). Quitter le makefile si dans TEST les "which" sont vides
 
