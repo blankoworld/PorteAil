@@ -58,7 +58,9 @@ utilisation( )
 # Test sur les paramètres
 if [ $# -ne 7 ]
 then
+  echo $#
   utilisation
+  exit 1
 else
   # $PROGRAMME dossier_cat destination.html extension composants entete_cat.html enqueue_cat.html element.html
   dossier=$1

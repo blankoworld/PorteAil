@@ -103,7 +103,15 @@ css: $(dependances_css)
 # création du fichier $(contenu)
 contenu: $(script_contenu)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
-	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem) || exit 1
+	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
+	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(categ)"
+	@$(PROG_ECHO) -e "\t\t- Destination temporaire du contenu : $(contenu)"
+	@$(PROG_ECHO) -e "\t\t- Extension des fichiers à lire : $(ext)"
+	@$(PROG_ECHO) -e "\t\t- Dossier ayant les composants de la page : $(composants)"
+	@$(PROG_ECHO) -e "\t\t- Entête HTML d'une catégorie : $(categ_deb)"
+	@$(PROG_ECHO) -e "\t\t- Enqueue HTML d'une catégorie : $(categ_fin)"
+	@$(PROG_ECHO) -e "\t\t- Code HTML d'un élément : $(elem)"
+	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem)
 
 # création de la page d'index
 index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)
