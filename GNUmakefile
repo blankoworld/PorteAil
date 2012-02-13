@@ -49,10 +49,10 @@ test:
 	@$(PROG_TEST) -d $(categ) || mkdir $(categ)
 	@$(PROG_TEST) -d style || mkdir style
 	@$(PROG_ECHO) -e "\t…option introduction dans la page"
-	$(if $(INTRO), @test -f $(INTRO) || exit)
+	$(if $(INTRO), @$(PROG_TEST) -f $(INTRO) || exit)
 	$(if $(INTRO), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…option ajout d'un menu (vérification de l'existence)"
-	$(if $(MENU), @test -f $(MENU) || exit)
+	$(if $(MENU), @$(PROG_TEST) -f $(MENU) || exit)
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…création de la destination"
 	@$(PROG_TEST) -d $(DESTINATION) || mkdir $(DESTINATION)
