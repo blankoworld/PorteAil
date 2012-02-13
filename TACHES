@@ -24,6 +24,10 @@ DESTDIR
 
 >>> Pour la v0.1.1 : 
 - dans dossier categ on fait une somme sha1 ou md5 de tous les fichiers. On copie dans le dossier porteail. Au début du programme, on compare somme de tous les fichiers du dossier categ avec la somme contenue dans dossier porteail (s'il existe). Si les sommes sont pareilles, alors on quitte le makefile
+  - http://stackoverflow.com/questions/1657232/how-can-i-calculate-an-md5-checksum-of-a-directory
+  - find directory -type f -print0 | xargs -0 md5sum >> file.md5 (ceci est pour vérifier par exemple les *.txt !!!)
+  - Tenter un ls categ |md5sum ou bien for i in `ls categ`; do md5sum categ/$i; done > somme.md5
+  - Utiliser ça pour vérifier sommes de contrôle : md5 * | diff /path/to/md5.checksum -
 - compléter l'adresse des images pour l'insertion dans le contenu
 - vérifier l'existence de l'image avant de l'ajouter
 - si pas d'image ou image inexistante, mettre une image générique
