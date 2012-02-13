@@ -36,6 +36,29 @@ PROG_CP = `which cp`
 PROG_SH = `which sh`
 PROG_RM = `which rm`
 
+# vérification des programmes
+ifndef PROG_ECHO
+error_echo = 1
+endif
+ifndef PROG_TEST
+error_test = 1
+endif
+ifndef PROG_SED
+error_sed = 1
+endif
+ifndef PROG_CAT
+error_cat = 1
+endif
+ifndef PROG_CP
+error_cp = 1
+endif
+ifndef PROG_SH
+error_sh = 1
+endif
+ifndef PROG_RM
+error_rm = 1
+endif
+
 ## DEBUT
 # création de tous les fichiers
 all: test index.html
@@ -43,16 +66,24 @@ all: test index.html
 # divers tests sur l'existence des dossiers/fichiers
 # création si besoin
 test:
+	$(if $(error_echo), exit 1)
 	@$(PROG_ECHO) -e "Lancement des tests…"
+	@$(PROG_ECHO) -e "\t…existence des différents programmes"
+	$(if $(error_test), @$(PROG_ECHO) -e "\t\ttest : MANQUANT." ; exit 1)
+	$(if $(error_sed), @$(PROG_ECHO) -e "\t\tsed : MANQUANT." ; exit 1)
+	$(if $(error_cat), @$(PROG_ECHO) -e "\t\tcat : MANQUANT." ; exit 1)
+	$(if $(error_cp), @$(PROG_ECHO) -e "\t\tcp : MANQUANT." ; exit 1)
+	$(if $(error_sh), @$(PROG_ECHO) -e "\t\tsh : MANQUANT." ; exit 1)
+	$(if $(error_rm), @$(PROG_ECHO) -e "\t\trm : MANQUANT." ; exit 1)
 	@$(PROG_ECHO) -e "\t…existence des dossiers img, categ et style"
 	@$(PROG_TEST) -d img || mkdir img
 	@$(PROG_TEST) -d $(categ) || mkdir $(categ)
 	@$(PROG_TEST) -d style || mkdir style
 	@$(PROG_ECHO) -e "\t…option introduction dans la page"
-	$(if $(INTRO), @$(PROG_TEST) -f $(INTRO) || exit)
+	$(if $(INTRO), @$(PROG_TEST) -f $(INTRO) || exit 1)
 	$(if $(INTRO), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…option ajout d'un menu (vérification de l'existence)"
-	$(if $(MENU), @$(PROG_TEST) -f $(MENU) || exit)
+	$(if $(MENU), @$(PROG_TEST) -f $(MENU) || exit 1)
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…création de la destination"
 	@$(PROG_TEST) -d $(DESTINATION) || mkdir $(DESTINATION)
@@ -72,7 +103,7 @@ css: $(dependances_css)
 # création du fichier $(contenu)
 contenu: $(script_contenu)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
-	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem) || exit
+	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem) || exit 1
 
 # création de la page d'index
 index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)
@@ -85,7 +116,7 @@ index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)
 	@$(PROG_SED) -i -e "s/@@TITRE_PORTEAIL@@/$(TITRE)/g" -e "s/@@ACCUEIL_PORTEAIL@@/$(ACCUEIL)/g" -e "s#@@CSS_DEFAUT@@#./$(CSS_NOM)#g" -e "s/^\(.*\)@@.*@@\(.*\)$$/\1\2/g" $(INDEX)
 	@$(PROG_ECHO) -e "\t  …contenu modifié avec succès !"
 # introduction (SI la variable INTRO est remplie)
-	$(if $(INTRO), @cat $(INTRO) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit)
+	$(if $(INTRO), @cat $(INTRO) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit 1)
 # contenu
 	@$(PROG_ECHO) -e "\t…insertion du contenu"
 	@$(PROG_CAT) $(contenu) >> $(INDEX)
@@ -93,7 +124,7 @@ index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)
 	@$(PROG_ECHO) -e "\t…insertion de la fin du contenu"
 	@$(PROG_CAT) $(contenu_fin) >> $(INDEX)
 # menu
-	$(if $(MENU), @cat $(MENU) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion du menu" || exit)
+	$(if $(MENU), @cat $(MENU) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion du menu" || exit 1)
 # enqueue
 	@$(PROG_ECHO) -e "\t…insertion de l'enqueue"
 	@$(PROG_CAT) $(enqueue) >> $(INDEX)
