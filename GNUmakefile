@@ -35,6 +35,9 @@ PROG_CAT = `which cat`
 PROG_CP = `which cp`
 PROG_SH = `which sh`
 PROG_RM = `which rm`
+PROG_SORT = `which sort`
+PROG_AWK = `which awk`
+PROG_MD5SUM = `which md5sum`
 
 # vérification des programmes
 ifndef PROG_ECHO
@@ -58,6 +61,15 @@ endif
 ifndef PROG_RM
 error_rm = 1
 endif
+ifndef PROG_SORT
+error_sort = 1
+endif
+ifndef PROG_AWK
+error_awk = 1
+endif
+ifndef PROG_MD5SUM
+error_md5sum = 1
+endif
 
 ## DEBUT
 # création de tous les fichiers
@@ -75,6 +87,14 @@ test:
 	$(if $(error_cp), @$(PROG_ECHO) -e "\t\tcp : MANQUANT." ; exit 1)
 	$(if $(error_sh), @$(PROG_ECHO) -e "\t\tsh : MANQUANT." ; exit 1)
 	$(if $(error_rm), @$(PROG_ECHO) -e "\t\trm : MANQUANT." ; exit 1)
+	$(if $(error_sort), @$(PROG_ECHO) -e "\t\tsort : MANQUANT." ; exit 1)
+	$(if $(error_awk), @$(PROG_ECHO) -e "\t\tawk : MANQUANT." ; exit 1)
+	$(if $(error_md5sum), @$(PROG_ECHO) -e "\t\tmd5sum : MANQUANT." ; exit 1)
+	@$(PROG_ECHO) -e "\t…existence de la somme de contrôle MD5"
+	@if $(PROG_TEST) -f $(somme_md5); \
+	then $(PROG_ECHO) -e "\t\t-> OK"; \
+	else $(PROG_ECHO) -e "\t\t-> manquant"; \
+	fi
 	@$(PROG_ECHO) -e "\t…existence des dossiers img, categ et style"
 	@$(PROG_TEST) -d img || mkdir img
 	@$(PROG_TEST) -d $(categ) || mkdir $(categ)
@@ -100,8 +120,14 @@ css: $(dependances_css)
 #	@cp style/$(CSS_DEFAUT) $(DESTINATION)/$(CSS_NOM)
 	@$(PROG_ECHO) -e "  …terminée."
 
+# vérification de la somme de contrôle des catégories et des éléments, création si besoin
+$(somme_md5):
+	@$(PROG_ECHO) -e "Création d'un fichier 'somme de contrôle' pour l'ensemble des catégories…"
+	@$(PROG_FIND) ./$(categ) -type f -name *.$(ext) -exec $(PROG_MD5SUM) {} + | $(PROG_AWK) '{print $1}' | $(PROG_SORT) | $(PROG_MD5SUM) > $(somme_md5)
+	@$(PROG_ECHO) -e "  …terminée."
+
 # création du fichier $(contenu)
-contenu: $(script_contenu)
+contenu: $(script_contenu) $(somme_md5)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(categ)"

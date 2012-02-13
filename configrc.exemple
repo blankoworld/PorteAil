@@ -21,6 +21,7 @@ enqueue = $(DOSSIER_HTML)/enqueue.html
 contenu_fin = $(DOSSIER_HTML)/contenu_fin.html
 dependances_index = $(entete) $(enqueue) $(contenu_fin)
 script_contenu = creation_categ.sh
+somme_md5 = somme.md5
 ## utiles pour le script de parcours du dossier contenant les catégories
 contenu = categories.html # résultat de la génération des catégories
 categ = categ # dossier contenant le détail des catégories
