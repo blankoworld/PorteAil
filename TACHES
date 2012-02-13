@@ -31,7 +31,7 @@ DESTDIR
 
 >>> Pour la v0.2 : 
 - imaginer un système d'héritage des feuilles de style pour ne modifier que les couleurs de la page, en dehors de la structure ?
-- faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi
+- faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi)
 - HTML 5 avec header et footer
 - Simplifier le code HTML et CSS
   - enlever les div en trop, par exemple pour l'IMG
