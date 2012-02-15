@@ -35,9 +35,12 @@ PROG_CAT = `which cat`
 PROG_CP = `which cp`
 PROG_SH = `which sh`
 PROG_RM = `which rm`
+PROG_FIND = `which find`
 PROG_SORT = `which sort`
 PROG_AWK = `which awk`
 PROG_MD5SUM = `which md5sum`
+PROG_DIFF = `which diff`
+PROG_WC = `which wc`
 
 # vérification des programmes
 ifndef PROG_ECHO
@@ -61,6 +64,9 @@ endif
 ifndef PROG_RM
 error_rm = 1
 endif
+ifndef PROG_FIND
+error_find = 1
+endif
 ifndef PROG_SORT
 error_sort = 1
 endif
@@ -69,6 +75,12 @@ error_awk = 1
 endif
 ifndef PROG_MD5SUM
 error_md5sum = 1
+endif
+ifndef PROG_DIFF
+error_diff = 1
+endif
+ifndef PROG_WC
+error_wc = 1
 endif
 
 ## DEBUT
@@ -87,9 +99,12 @@ test:
 	$(if $(error_cp), @$(PROG_ECHO) -e "\t\tcp : MANQUANT." ; exit 1)
 	$(if $(error_sh), @$(PROG_ECHO) -e "\t\tsh : MANQUANT." ; exit 1)
 	$(if $(error_rm), @$(PROG_ECHO) -e "\t\trm : MANQUANT." ; exit 1)
+	$(if $(error_find), @$(PROG_ECHO) -e "\t\tfind : MANQUANT." ; exit 1)
 	$(if $(error_sort), @$(PROG_ECHO) -e "\t\tsort : MANQUANT." ; exit 1)
 	$(if $(error_awk), @$(PROG_ECHO) -e "\t\tawk : MANQUANT." ; exit 1)
 	$(if $(error_md5sum), @$(PROG_ECHO) -e "\t\tmd5sum : MANQUANT." ; exit 1)
+	$(if $(error_diff), @$(PROG_ECHO) -e "\t\tdiff : MANQUANT." ; exit 1)
+	$(if $(error_wc), @$(PROG_ECHO) -e "\t\twc : MANQUANT." ; exit 1)
 	@$(PROG_ECHO) -e "\t…existence de la somme de contrôle MD5"
 	@if $(PROG_TEST) -f $(somme_md5); \
 	then $(PROG_ECHO) -e "\t\t-> OK"; \
@@ -123,7 +138,7 @@ css: $(dependances_css)
 # vérification de la somme de contrôle des catégories et des éléments, création si besoin
 $(somme_md5):
 	@$(PROG_ECHO) -e "Création d'un fichier 'somme de contrôle' pour l'ensemble des catégories…"
-	@$(PROG_FIND) ./$(categ) -type f -name *.$(ext) -exec $(PROG_MD5SUM) {} + | $(PROG_AWK) '{print $1}' | $(PROG_SORT) | $(PROG_MD5SUM) > $(somme_md5)
+	@$(PROG_FIND) ./$(categ) -type f -name *.$(ext) -exec $(PROG_MD5SUM) {} + | $(PROG_AWK) '{print $$1}' | $(PROG_SORT) > $(somme_md5)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier $(contenu)
