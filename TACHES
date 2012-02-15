@@ -28,6 +28,7 @@ DESTDIR
   - find directory -type f -print0 | xargs -0 md5sum >> file.md5 (ceci est pour vérifier par exemple les *.txt !!!)
   - Tenter un ls categ |md5sum ou bien for i in `ls categ`; do md5sum categ/$i; done > somme.md5
   - Utiliser ça pour vérifier sommes de contrôle : md5 * | diff /path/to/md5.checksum -
+  - find categ -type f -name *.txt -exec md5sum {} + | awk '{print $1}' |sort |diff somme.md5 -|wc -l
 - compléter l'adresse des images pour l'insertion dans le contenu
 - vérifier l'existence de l'image avant de l'ajouter
 - si pas d'image ou image inexistante, mettre une image générique
