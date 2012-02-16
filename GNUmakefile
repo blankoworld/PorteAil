@@ -37,9 +37,6 @@ PROG_SH = `which sh`
 PROG_RM = `which rm`
 PROG_FIND = `which find`
 PROG_SORT = `which sort`
-PROG_AWK = `which awk`
-PROG_MD5SUM = `which md5sum`
-PROG_DIFF = `which diff`
 PROG_WC = `which wc`
 
 # vérification des programmes
@@ -70,22 +67,13 @@ endif
 ifndef PROG_SORT
 error_sort = 1
 endif
-ifndef PROG_AWK
-error_awk = 1
-endif
-ifndef PROG_MD5SUM
-error_md5sum = 1
-endif
-ifndef PROG_DIFF
-error_diff = 1
-endif
 ifndef PROG_WC
 error_wc = 1
 endif
 
 ## DEBUT
 # création de tous les fichiers
-all: test index.html
+all: test index
 
 # divers tests sur l'existence des dossiers/fichiers
 # création si besoin
@@ -101,15 +89,7 @@ test:
 	$(if $(error_rm), @$(PROG_ECHO) -e "\t\trm : MANQUANT." ; exit 1)
 	$(if $(error_find), @$(PROG_ECHO) -e "\t\tfind : MANQUANT." ; exit 1)
 	$(if $(error_sort), @$(PROG_ECHO) -e "\t\tsort : MANQUANT." ; exit 1)
-	$(if $(error_awk), @$(PROG_ECHO) -e "\t\tawk : MANQUANT." ; exit 1)
-	$(if $(error_md5sum), @$(PROG_ECHO) -e "\t\tmd5sum : MANQUANT." ; exit 1)
-	$(if $(error_diff), @$(PROG_ECHO) -e "\t\tdiff : MANQUANT." ; exit 1)
 	$(if $(error_wc), @$(PROG_ECHO) -e "\t\twc : MANQUANT." ; exit 1)
-	@$(PROG_ECHO) -e "\t…existence de la somme de contrôle MD5"
-	@if $(PROG_TEST) -f $(somme_md5); \
-	then $(PROG_ECHO) -e "\t\t-> OK"; \
-	else $(PROG_ECHO) -e "\t\t-> manquant"; \
-	fi
 	@$(PROG_ECHO) -e "\t…existence des dossiers img, categ et style"
 	@$(PROG_TEST) -d img || mkdir img
 	@$(PROG_TEST) -d $(categ) || mkdir $(categ)
@@ -129,20 +109,14 @@ test:
 	@$(PROG_ECHO) -e "  …terminé."
 
 # création du fichier CSS
-css: $(dependances_css)
+$(DESTINATION)/$(CSS_NOM): $(dependances_css)
 	@$(PROG_ECHO) -e "Création du fichier CSS…"
 	$(if $(MENU), @cp style/$(CSS_AVEC_MENU) $(DESTINATION)/$(CSS_NOM), @cp style/$(CSS_SANS_MENU) $(DESTINATION)/$(CSS_NOM))
 #	@cp style/$(CSS_DEFAUT) $(DESTINATION)/$(CSS_NOM)
 	@$(PROG_ECHO) -e "  …terminée."
 
-# vérification de la somme de contrôle des catégories et des éléments, création si besoin
-$(somme_md5):
-	@$(PROG_ECHO) -e "Création d'un fichier 'somme de contrôle' pour l'ensemble des catégories…"
-	@$(PROG_FIND) ./$(categ) -type f -name *.$(ext) -exec $(PROG_MD5SUM) {} + | $(PROG_AWK) '{print $$1}' | $(PROG_SORT) > $(somme_md5)
-	@$(PROG_ECHO) -e "  …terminée."
-
 # création du fichier $(contenu)
-contenu: $(script_contenu) $(somme_md5)
+$(contenu): $(script_contenu) */*.txt
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(categ)"
@@ -155,14 +129,20 @@ contenu: $(script_contenu) $(somme_md5)
 	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem)
 
 # création de la page d'index
-index.html: $(DOSSIER_HTML) css contenu $(dependances_index) $(contenu)
+index: $(INDEX)
+$(INDEX): $(DOSSIER_HTML) $(DESTINATION)/$(CSS_NOM) $(dependances_index) $(contenu)
 	@$(PROG_ECHO) -e "Création de la page de garde…"
 # entete
 	@$(PROG_ECHO) -e "\t…insertion de l'entête"
 	@$(PROG_CAT) $(entete) > $(INDEX)
 # modification du contenu
 	@$(PROG_ECHO) -e "\t…modification du contenu"
-	@$(PROG_SED) -i -e "s/@@TITRE_PORTEAIL@@/$(TITRE)/g" -e "s/@@ACCUEIL_PORTEAIL@@/$(ACCUEIL)/g" -e "s#@@CSS_DEFAUT@@#./$(CSS_NOM)#g" -e "s/^\(.*\)@@.*@@\(.*\)$$/\1\2/g" $(INDEX)
+	@$(PROG_SED) -i \
+		-e "s/@@TITRE_PORTEAIL@@/$(TITRE)/g"       \
+		-e "s/@@ACCUEIL_PORTEAIL@@/$(ACCUEIL)/g"   \
+		-e "s#@@CSS_DEFAUT@@#./$(CSS_NOM)#g"       \
+		-e "s/^\(.*\)@@.*@@\(.*\)$$/\1\2/g"        \
+		$(INDEX)
 	@$(PROG_ECHO) -e "\t  …contenu modifié avec succès !"
 # introduction (SI la variable INTRO est remplie)
 	$(if $(INTRO), @cat $(INTRO) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit 1)
