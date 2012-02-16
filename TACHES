@@ -18,9 +18,6 @@ DESTDIR
 - Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
->>> Pour la v0.1.1 : 
-- Doc : donner l'astuce pour ordonner les catégories dans le fichier : mettre 00-nom_fichier.txt, puis 01-autre_categorie.txt, etc.
-
 >>> Pour la v0.2 : 
 - imaginer un système d'héritage des feuilles de style pour ne modifier que les couleurs de la page, en dehors de la structure ?
 - faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi)
@@ -40,6 +37,9 @@ DESTDIR
   - changer l'utilisation du shell par TXTs = $(shell ls $(dossier)/*$(ext)), par exemple.
 - Intégrer le script .sh dans le Makefile
 
+===============================================================================
+
+===============================================================================
 
 FAITES :
 ---------
@@ -107,3 +107,4 @@ des éléments
 - compléter l'adresse des images pour l'insertion dans le contenu
 - vérifier l'existence de l'image avant de l'ajouter
 - si pas d'image ou image inexistante, mettre une image générique
+- Doc : donner l'astuce pour ordonner les catégories dans le fichier : mettre 00-nom_fichier.txt, puis 01-autre_categorie.txt, etc.
