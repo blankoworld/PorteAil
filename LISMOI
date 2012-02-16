@@ -307,12 +307,13 @@ attachées à ces composants sont les suivantes :
 - contenu : fichier temporaire possédant le contenu à insérer dans la page
 - categ : désigne le dossier dans lequel se trouve l'ensemble des descriptions des catégories et des éléments se trouvant à l'intérieur de chacune d'elle
 - ext : extension des fichiers contenus dans le dossier 'categ' (précédemment renseigné) qui contiendra la description de base de chacune des catégories et de ses éléments. Cf. Chapitre "Le dossier 'categ'"
-- composants : dossier dans lequel se trouve l'ensemble des éléments permettant de construire le contenu de la page PorteAil. C'est à dire l'entête et l'enqueue de chaque rubrique ainsi que le code HTML de chaque élément
-- categ_deb : nom du fichier contenant le code HTML d'un début de rubrique. Le fichier doit se trouver dans le dossier renseigné par la variable 'composants'
-- categ_fin : nom du fichier contenant le code HTML d'une fin de rubrique. Le fichier doit se trouver dans le dossier renseigné par la variable 'composants'
+- image : dossier contenant quelques images pour les éléments de chaque catégorie. Toutes les images ne seront pas utilisées
+- dest_image : dossier dans lequel seront mises les images choisies dans chacune des catégories (fichiers décrivant les catégories)
+- image_defaut : image par défaut utilisée si aucune autre image n'est trouvée
+- composants : dossier dans lequel se trouve l'ensemble des éléments permettant de construire le contenu de la page PorteAil. C'est à dire l'entête et l'enqueue de chaque catégorie ainsi que le code HTML de chaque élément
+- categ_deb : nom du fichier contenant le code HTML d'un début de catégorie. Le fichier doit se trouver dans le dossier renseigné par la variable 'composants'
+- categ_fin : nom du fichier contenant le code HTML d'une fin de catégorie. Le fichier doit se trouver dans le dossier renseigné par la variable 'composants'
 - elem : nom du fichier contenant le code HTML d'un élément. Le fichier doit se trouver dans le dossier renseigné par la variable 'composants'
-
-
 
 Pour plus de renseignements, veuillez vous référer au chapitre 'Les 
 composants'.
