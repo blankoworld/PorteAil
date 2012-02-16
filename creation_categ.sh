@@ -49,7 +49,7 @@ debug( )
 
 utilisation( )
 {
-        echo "Utilisation : $PROGRAMME dossier_cat destination.html extension composants entete_cat.html enqueue_cat.html element.html"
+        echo "Utilisation : $PROGRAMME dossier_cat destination.html extension composants entete_cat.html enqueue_cat.html element.html dossier_img destination_img image.png dossier_porteail"
         echo ""
         echo "Cf. Fichier LISMOI pour plus d'informations."
 }

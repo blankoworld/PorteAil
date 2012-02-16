@@ -74,7 +74,8 @@ voudrez.
 
 Copiez le fichier 'configrc.exemple' (ou bien renommez le) en 'configrc'.
 
-Sans ce fichier 'configrc' le programme ne peut pas fonctionner.
+Sans ce fichier 'configrc' le programme ne peut pas fonctionner (depuis la 
+ version 0.1.1).
 
 ### UTILISATION ###
 
@@ -120,9 +121,9 @@ changement particulier ne doit être effectué sur celui-ci.
 
 #--[[ configrc ]]--#
 
-Ce fichier vous permettra de changer le titre de la page PorteAil et
- le titre affiché dans un navigateur. Ceci se fait via les deux 
- lignes suivantes : 
+Ce fichier apparaît depuis la version 0.1.1. Il vous permettra de changer le 
+ titre de la page PorteAil et le titre affiché dans un navigateur. Ceci se 
+ fait via les deux lignes suivantes : 
 
 - TITRE=
 - ACCUEIL=
@@ -182,21 +183,35 @@ où :
 Des exemples sont donnés dans le dossier categ. À vous de les modifier comme 
  bon vous semble.
 
+Astuce : Pour ordonner les catégories dans la page résultante, ajouter des chiffres devant chacun de vos fichiers catégories. Par exemple :
+
+    00-ma_categorie.txt
+    01-autre_categorie.txt
+
+Vous obtiendrez donc "ma_categorie" en premier lieu, puis "autre_categorie" en second lieu.
+
 #--[[ Le dossier 'img' et Adresse de l'image ]]--#
 
-Dans la version 0.1, il faut indiquer clairement l'adresse de l'image à 
- utiliser pour la page de PorteAil. 
+Dans la version 0.1.1, il faut indiquer l'adresse dite absolute de l'image.
+ C'est à dire l'adresse à partir du dossier image source.
+
+Le dossier image source est le dossier contenant l'ensemble des images. C'est 
+ un dossier dans lequel le programme va 'piocher' les éléments.
+
 Sachant que le dossier 'img' contient l'ensemble des images disponibles,
 il faut tout d'abord trouver l'adresse d'une image qu'on voudrait, par
 exemple 'apps/clock.png'.
 
-Il faut donc concaténer deux chaînes de caractères : 
-- './image/' qui est le dossier de destination
-- 'apps/clock.png' qui est l'adresse de l'image actuellement
+Dans un fichier catégorie, on donnera donc l'adresse suivante comme adresse de
+ l'image :
 
-Ainsi cela ressemble à : 
+    apps/clock.png
 
-    ./image/apps/clock.png
+Pour un exemple plus criant, je vous propose de lire le fichier suivante :
+
+    categ/education.txt
+
+qui contient un exemple de catégorie avec plusieurs éléments.
 
 #--[[ Le fichier introduction.html ]]--#
 
@@ -342,27 +357,25 @@ Le fichier 'creation_categ.sh' permet de générer le corps de la page.
 et les éléments associés, puis il va tout déposer dans un fichier HTML
 prévu à cet effet.
 
-Comme pour le fichier 'configrc', il y a des lignes à changer si vous
-voulez personnaliser le script.
-
-Par exemple on peut changer le dossier d'entrée (la source) et le fichier
-de sortie (la destination).
-
-Les variables sont les suivantes : 
-- dossier : contient la source (dossier d'entrée) dans laquelle se trouve
+Le script fonctionne avec un certain nombre de paramètres parmi :  
+- dossier_cat : contient la source (dossier d'entrée) dans laquelle se trouve
 les fichiers décrivant les catégories et les éléments associés.
-- destination : contient la destination. C'est à dire le fichier dans lequel
-se situera le corps, temporairement évidemment.
-
-D'autres éléments sont aussi modifiables :
+- destination.html : contient la destination. C'est à dire le fichier dans 
+lequel se situera le corps, temporairement évidemment.
+- extension : extension des fichiers décrivant les catégories et leurs 
+éléments associés
 - dossier_composants : ce dossier réunit l'ensemble des composants de notre 
 page finale. Il est utile pour récupérer le fichier 'element.html', 
 disponible d'ailleurs dans la variable 'elem'
-- categ_deb : contenu HTML du début d'une catégorie
-- categ_fin : contenu HTML qui marque la fin d'une catégorie
-- elem : contenu HTML qui contient UN élément
-- extension : extension des fichiers décrivant les catégories et leurs 
-éléments associés
+- entete_cat.html : contenu HTML du début d'une catégorie
+- enqueue_cat.html : contenu HTML qui marque la fin d'une catégorie
+- element.html : contenu HTML qui contient UN élément
+- dossier_img : dossier contenant les images dites "sources"
+- destination_img : nom du dossier dans lequel seront stockées les images 
+finales
+- image.png : nom du fichier par défaut utilisé lorsque les images ne sont pas
+trouvées
+- dossier_porteail : nom du dossier dans lequel sera mise la page PorteAil
 
 Normalement, avec toutes ces données vous devriez pouvoir tester par vous
 même le résultat du script et améliorer le rendu de vos pages.
@@ -401,6 +414,6 @@ Pensez à ajouter, en début d'objet de votre courriel, l'élément suivant :
 
     [PorteAil]
 
-Ceci me permettra de savoir directement sur quel sujet le courriel traite.
+Ceci me permettra de savoir directement de quel sujet le courriel traite.
 
 Merci d'avance, et amusez-vous bien avec PorteAil ;-)
