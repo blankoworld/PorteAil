@@ -7,10 +7,6 @@ DESTDIR
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Valider la page à l'aide de TIDY (doit être facultatif)
 - Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
-- Transformer le fichier GNUmakefile en makefile pour bmake
-  - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
-  - changer les VAR= en VAR:=
-  - changer l'utilisation du shell par TXTs = $(shell ls $(dossier)/*$(ext)), par exemple.
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
 - permettre l'ajout de plusieurs CSS dans HEAD
 - faire une page "print.css"
@@ -19,14 +15,11 @@ DESTDIR
 - créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
 - ne copier QUE les images utilisées
 - favicon.ico ?
-- Doc : donner l'astuce pour ordonner les catégories dans le fichier : mettre 00-nom_fichier.txt, puis 01-autre_categorie.txt, etc.
 - Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
 >>> Pour la v0.1.1 : 
-- compléter l'adresse des images pour l'insertion dans le contenu
-- vérifier l'existence de l'image avant de l'ajouter
-- si pas d'image ou image inexistante, mettre une image générique
+- Doc : donner l'astuce pour ordonner les catégories dans le fichier : mettre 00-nom_fichier.txt, puis 01-autre_categorie.txt, etc.
 
 >>> Pour la v0.2 : 
 - imaginer un système d'héritage des feuilles de style pour ne modifier que les couleurs de la page, en dehors de la structure ?
@@ -39,6 +32,14 @@ DESTDIR
 - Meilleur affichage dans les navigateurs textes
 - Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
 - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
+
+>>> Pour la v0.3 : 
+- Transformer le fichier GNUmakefile en makefile pour bmake
+  - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
+  - changer les VAR= en VAR:=
+  - changer l'utilisation du shell par TXTs = $(shell ls $(dossier)/*$(ext)), par exemple.
+- Intégrer le script .sh dans le Makefile
+
 
 FAITES :
 ---------
@@ -103,4 +104,6 @@ des éléments
   - Tenter un ls categ |md5sum ou bien for i in `ls categ`; do md5sum categ/$i; done > somme.md5
   - Utiliser ça pour vérifier sommes de contrôle : md5 * | diff /path/to/md5.checksum -
   - find categ -type f -name *.txt -exec md5sum {} + | awk '{print $1}' |sort |diff somme.md5 -|wc -l
-
+- compléter l'adresse des images pour l'insertion dans le contenu
+- vérifier l'existence de l'image avant de l'ajouter
+- si pas d'image ou image inexistante, mettre une image générique

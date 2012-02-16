@@ -1,5 +1,5 @@
 # [[Nom de la catégorie]]Description
 [[Éducation]]Thème sur l'éducation
 # Titre du lien##Adresse web en HTTP##Description du lien##Nom du fichier image##Titre de l'image##Description de l'image
-Seeks##http://www.seeks-project.info/search.php/websearch-hp##Méta-moteur de recherche décentralisé##./image/apps/nepomuk.png##Seeks##Logo de Nepomuk
-OOo4kids##http://wiki.ooo4kids.org/index.php/Main_Page/fr##Logiciel de bureautique libre pour les enfants de 7 à 12 ans##./image/apps/okteta.png##Oketa##Logo d'Oketa
+Seeks##http://www.seeks-project.info/search.php/websearch-hp##Méta-moteur de recherche décentralisé##apps/nepomuk.png##Seeks##Logo de Nepomuk
+OOo4kids##http://wiki.ooo4kids.org/index.php/Main_Page/fr##Logiciel de bureautique libre pour les enfants de 7 à 12 ans##apps/okteta.png##Oketa##Logo d'Oketa

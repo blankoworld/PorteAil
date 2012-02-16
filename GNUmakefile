@@ -103,10 +103,10 @@ test:
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…création de la destination"
 	@$(PROG_TEST) -d $(DESTINATION) || mkdir $(DESTINATION)
-	@$(PROG_ECHO) -e "\t…création du dossier image"
-	@$(PROG_TEST) -d $(DESTINATION)/image || mkdir $(DESTINATION)/image
-	@$(PROG_ECHO) -e "\t…copie des fichiers images"
-	@$(PROG_CP) -r img/* $(DESTINATION)/image
+	@$(PROG_ECHO) -e "\t…création du dossier '$(dest_image)'"
+	@$(PROG_TEST) -d $(DESTINATION)/$(dest_image) || mkdir $(DESTINATION)/$(dest_image)
+#	@$(PROG_ECHO) -e "\t…copie des fichiers images"
+#	@$(PROG_CP) -r img/* $(DESTINATION)/image
 	@$(PROG_ECHO) -e "  …terminé."
 
 # création du fichier CSS
@@ -117,7 +117,7 @@ $(DESTINATION)/$(CSS_NOM): $(dependances_css)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier $(contenu)
-$(contenu): $(script_contenu) $(SOURCE)
+$(contenu): $(script_contenu) $(SOURCE) $(image_defaut)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(categ)"
@@ -127,7 +127,11 @@ $(contenu): $(script_contenu) $(SOURCE)
 	@$(PROG_ECHO) -e "\t\t- Entête HTML d'une catégorie : $(categ_deb)"
 	@$(PROG_ECHO) -e "\t\t- Enqueue HTML d'une catégorie : $(categ_fin)"
 	@$(PROG_ECHO) -e "\t\t- Code HTML d'un élément : $(elem)"
-	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem)
+	@$(PROG_ECHO) -e "\t\t- Dossier contenant les images sources : $(image)"
+	@$(PROG_ECHO) -e "\t\t- Dossier de destination des images : $(dest_image)"
+	@$(PROG_ECHO) -e "\t\t- Image par défaut : $(image_defaut)"
+	@$(PROG_ECHO) -e "\t\t- Dossier de destination global : $(DESTINATION)"
+	@$(PROG_SH) $(script_contenu) $(categ) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem) $(image) $(dest_image) $(image_defaut) $(DESTINATION)
 
 # création de la page d'index
 index: $(INDEX)

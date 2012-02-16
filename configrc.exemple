@@ -21,19 +21,24 @@ enqueue = $(DOSSIER_HTML)/enqueue.html
 contenu_fin = $(DOSSIER_HTML)/contenu_fin.html
 dependances_index = $(entete) $(enqueue) $(contenu_fin)
 script_contenu = creation_categ.sh
-somme_md5 = somme.md5
 ## utiles pour le script de parcours du dossier contenant les catégories
 # résultat de la génération des catégories
 contenu = categories.html
 # dossier contenant le détail des catégories
 categ = categ
+# Extension des fichiers à prendre en compte dans le dossier contenant les catégories
+ext = txt 
+# dossier contenant les images
+image = img
+# dossier de destination des images
+dest_image = image
+# image par défaut (au cas où aucune ne serait trouvée)
+image_defaut = generique.png
 # dossier contenant les morceaux de la page résultante
-composants = ./composants
+composants = ./$(DOSSIER_HTML)
 # entête des catégories (contenu dans dossier composants)
 categ_deb = categ_deb.html
 # enqueue des catégories (contenu dans dossier composants)
 categ_fin = categ_fin.html 
 # code HTML de chaque élément
 elem = element.html
-# Extension des fichiers à prendre en compte dans le dossier contenant les catégories
-ext = txt 

@@ -56,7 +56,7 @@ utilisation( )
 
 ## TESTS
 # Test sur les paramètres
-if [ $# -ne 7 ]
+if [ $# -ne 11 ]
 then
   echo $#
   utilisation
@@ -70,12 +70,28 @@ else
   categ_deb="${dossier_composants}/$5"
   categ_fin="${dossier_composants}/$6"
   elem="${dossier_composants}/$7"
+  dossier_image=$8
+  dest_image=$9
+  image_defaut=${10}
+  destination_finale=${11}
 fi
 # Existence dossier
 if ! test -d "$dossier"
 then
   echo "Dossier '$dossier' manquant."
-  exit 0
+  exit 1
+fi
+# Existence dossier image
+if ! test -d "$dossier_image"
+then
+  echo "Dossier '$dossier_image' manquant."
+  exit 1
+fi
+# Existence de l'image par défaut
+if ! test -f "$image_defaut"
+then
+  echo "Fichier '$image_defaut' manquant."
+  exit 1
 fi
 # On supprime le fichier ${destination} s'il existe.
 if test -f "$destination"
@@ -85,7 +101,7 @@ then
 fi
 
 # Parcours du dossier
-for fichier in `find categ/ -iname "*.${extension}" -print -type f|sort`
+for fichier in `find $dossier/ -iname "*.${extension}" -print -type f|sort`
 do
   # On met/remet la valeur de CATEG à 0 significative de l'absence 
   #+ d'une Catégorie
@@ -192,21 +208,32 @@ do
     i=0
     # Parcours des tableaux afin de récupérer toutes les informations
     #+ d'un élément
+    debimg=`echo $categ_titre|md5sum |cut -d " " -f 1`
     while [ "$i" -lt "$curseur_element" ]
     do
       # Assignation des valeurs à des variables afin de l'afficher
       e_titre_tmp=$(eval echo \$elements_titre_${i})
       e_titre=${e_titre_tmp:-""}                            # titre element
       e_desc_tmp=$(eval echo \$elements_desc_${i})
-      e_desc=${e_desc_tmp:-""}                               # description element
+      e_desc=${e_desc_tmp:-""}                              # description element
       e_url_tmp=$(eval echo \$elements_url_${i})
       e_url=${e_url_tmp:-""}                                # url element
       e_img_addr_tmp=$(eval echo \$elements_image_addr_${i})
-      e_img_addr=${e_img_addr_tmp:-""}                    # adresse image
+      # Test de l'existence de l'image
+      # On prend le numéro de curseur comme nom d'image
+      if ! test -f "${dossier_image}/${e_img_addr_tmp}"
+      then
+        # si elle n'existe pas, on prend l'image générique
+        cp "$image_defaut" "${destination_finale}/${dest_image}/${debimg}${i}"
+      else
+        # si elle existe, on la copie dans le répertoire image de destination
+        cp "${dossier_image}/${e_img_addr_tmp}" "${destination_finale}/${dest_image}/${debimg}${i}"
+      fi
+      e_img_addr="${dest_image}/${debimg}${i}"                       # adresse image
       e_img_titre_tmp=$(eval echo \$elements_image_titre_${i})
-      e_img_titre=${e_img_titre_tmp:-""}                  # titre image
+      e_img_titre=${e_img_titre_tmp:-""}                    # titre image
       e_img_desc_tmp=$(eval echo \$elements_image_desc_${i})
-      e_img_desc=${e_img_desc_tmp:-""}                    # description image
+      e_img_desc=${e_img_desc_tmp:-""}                      # description image
       # Affichage du résultat
       debug "$i : ${e_titre} || ${e_desc} || ${e_url} || ${e_img_addr} || ${e_img_titre} || ${e_img_desc}"
       # Ajout des informations dans le fichier de destination
