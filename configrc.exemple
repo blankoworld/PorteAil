@@ -23,14 +23,17 @@ dependances_index = $(entete) $(enqueue) $(contenu_fin)
 script_contenu = creation_categ.sh
 somme_md5 = somme.md5
 ## utiles pour le script de parcours du dossier contenant les catégories
-contenu = categories.html # résultat de la génération des catégories
-categ = categ # dossier contenant le détail des catégories
-composants = ./composants # dossier contenant les morceaux de la page 
-#+ résultante
-categ_deb = categ_deb.html # entête des catégories (contenu 
-#+ dans dossier composants) 
-categ_fin = categ_fin.html # enqueue des catégories (contenu 
-#+ dans dossier composants)
-elem = element.html # code HTML de chaque élément
-ext = txt # Extension des fichiers à prendre en compte dans le dossier 
-#+ contenant les catégories
+# résultat de la génération des catégories
+contenu = categories.html
+# dossier contenant le détail des catégories
+categ = categ
+# dossier contenant les morceaux de la page résultante
+composants = ./composants
+# entête des catégories (contenu dans dossier composants)
+categ_deb = categ_deb.html
+# enqueue des catégories (contenu dans dossier composants)
+categ_fin = categ_fin.html 
+# code HTML de chaque élément
+elem = element.html
+# Extension des fichiers à prendre en compte dans le dossier contenant les catégories
+ext = txt 
