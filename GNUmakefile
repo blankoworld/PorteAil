@@ -27,6 +27,7 @@
 ## VARIABLES ##
 # configuration
 include configrc
+SOURCE = $(categ)/*.$(ext)
 # programmes
 PROG_ECHO = `which echo`
 PROG_TEST = `which test`
@@ -116,7 +117,7 @@ $(DESTINATION)/$(CSS_NOM): $(dependances_css)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier $(contenu)
-$(contenu): $(script_contenu) */*.txt
+$(contenu): $(script_contenu) $(SOURCE)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(categ)"
