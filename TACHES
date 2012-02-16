@@ -10,6 +10,7 @@ DESTDIR
 - Transformer le fichier GNUmakefile en makefile pour bmake
   - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
   - changer les VAR= en VAR:=
+  - changer l'utilisation du shell par TXTs = $(shell ls $(dossier)/*$(ext)), par exemple.
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
 - permettre l'ajout de plusieurs CSS dans HEAD
 - faire une page "print.css"
