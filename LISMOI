@@ -54,7 +54,7 @@ l'affichage des éléments dans la page de garde
 Le programme requièrt les programmes suivants : 
 - GNU make
 - cp
-- sed
+- GNU sed
 - sh
 - echo
 - test
@@ -62,8 +62,8 @@ Le programme requièrt les programmes suivants :
 - wc
 - grep
 
-Normalement ces éléments sont inclus de base dans une distribution GNU/Linux
- et/ou BSD.
+Normalement ces éléments sont inclus de base ou disponibles dans
+n’importe quel système d’exploitation POSIX.
 
 ### INSTALLATION ###
 
