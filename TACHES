@@ -29,6 +29,7 @@ DESTDIR
 - Meilleur affichage dans les navigateurs textes
 - Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
 - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
+- commenter le code CSS
 
 >>> Pour la v0.2 : 
 - Transformer le fichier GNUmakefile en makefile pour bmake
