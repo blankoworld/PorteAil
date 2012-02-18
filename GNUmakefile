@@ -113,6 +113,12 @@ $(DESTINATION)/$(CSS_NOM): $(dependances_css)
 	$(if $(MENU), @$(PROG_CP) style/$(CSS_AVEC_MENU) $(DESTINATION)/$(CSS_NOM), @$(PROG_CP) style/$(CSS_SANS_MENU) $(DESTINATION)/$(CSS_NOM))
 	@$(PROG_ECHO) -e "  …terminée."
 
+# création du fichier CSS de couleur
+$(DESTINATION)/$(CSS_COULEUR): style/$(CSS_COULEUR)
+	@$(PROG_ECHO) -e "Création du fichier CSS pour les couleurs…"
+	@$(PROG_CP) style/$(CSS_COULEUR) $(DESTINATION)/$(CSS_COULEUR)
+	@$(PROG_ECHO) -e "  …terminée."
+
 # création du fichier $(contenu)
 $(contenu): $(script_contenu) $(SOURCE) $(image_defaut)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
@@ -132,7 +138,7 @@ $(contenu): $(script_contenu) $(SOURCE) $(image_defaut)
 
 # création de la page d'index
 index: $(INDEX)
-$(INDEX): $(DOSSIER_HTML) $(DESTINATION)/$(CSS_NOM) $(dependances_index) $(contenu)
+$(INDEX): $(DOSSIER_HTML) $(DESTINATION)/$(CSS_NOM) $(dependances_index) $(contenu) $(DESTINATION)/$(CSS_COULEUR)
 	@$(PROG_ECHO) -e "Création de la page de garde…"
 # entete
 	@$(PROG_ECHO) -e "\t…insertion de l'entête"
@@ -143,6 +149,7 @@ $(INDEX): $(DOSSIER_HTML) $(DESTINATION)/$(CSS_NOM) $(dependances_index) $(conte
 		-e "s/@@TITRE_PORTEAIL@@/$(TITRE)/g"       \
 		-e "s/@@ACCUEIL_PORTEAIL@@/$(ACCUEIL)/g"   \
 		-e "s#@@CSS_DEFAUT@@#./$(CSS_NOM)#g"       \
+		-e "s#@@CSS_COULEUR@@#./$(CSS_COULEUR)#g"  \
 		-e "s/^\(.*\)@@.*@@\(.*\)$$/\1\2/g"        \
 		$(INDEX)
 	@$(PROG_ECHO) -e "\t  …contenu modifié avec succès !"

@@ -8,17 +8,13 @@ DESTDIR
 - Valider la page à l'aide de TIDY (doit être facultatif)
 - Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
-- permettre l'ajout de plusieurs CSS dans HEAD
 - faire une page "print.css"
   - mettre en noir et blanc
   - ajouter le nom des liens en fin de chaque lien
-- créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
-- ne copier QUE les images utilisées
 - Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
 >>> Pour la v0.1.2 : 
-- imaginer un système d'héritage des feuilles de style pour ne modifier que les couleurs de la page, en dehors de la structure ?
 - faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi)
 - HTML 5 avec header et footer
 - Simplifier le code HTML et CSS
@@ -28,6 +24,7 @@ DESTDIR
 - Meilleur affichage dans les navigateurs textes
 - Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
 - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
+- Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
 - commenter le code CSS
 - favicon.ico ?
 
@@ -109,3 +106,7 @@ des éléments
 - vérifier l'existence de l'image avant de l'ajouter
 - si pas d'image ou image inexistante, mettre une image générique
 - Doc : donner l'astuce pour ordonner les catégories dans le fichier : mettre 00-nom_fichier.txt, puis 01-autre_categorie.txt, etc.
+- imaginer un système d'héritage des feuilles de style pour ne modifier que les couleurs de la page, en dehors de la structure. => fait avec une double inclusion de feuille de style dans la page HTML
+- permettre l'ajout de plusieurs CSS dans HEAD
+- créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
+- ne copier QUE les images utilisées

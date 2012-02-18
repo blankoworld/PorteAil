@@ -293,11 +293,15 @@ INDEX : adresse, à partir du répertoire dans lequel est contenu le fichier
 indication sur le nom que vous voulez donner au fichier
 
 CSS_SANS_MENU : nom de la feuille de style à utiliser quand la page est générée
-sans menu. À noter que le fichier doit se trouver dans le dossier 'composants'
+sans menu. À noter que le fichier doit se trouver dans le dossier 'style'.
 
 CSS_AVEC_MENU : nom de la feuille de style à utiliser quand la page est générée
 avec un menu. À noter que le fichier doit se trouver dans le dossier 
-'composants'.
+'style'.
+
+CSS_COULEUR : nom de la seconde feuille de style à utiliser pour ajouter des 
+couleurs à votre page. À noter que le fichier doit se trouver dans le dossier
+'style'.
 
 CSS_NOM : nom de la feuille de style dans le résultat final
 
@@ -386,7 +390,8 @@ Le dossier 'style' est prévu pour contenir l'ensemble des feuilles de style
 disponible pour l'apparence de notre page PorteAil.
 
 Déposez donc ici vos feuille de style et changez la variable 'CSS_AVEC_MENU'
-et 'CSS_SANS_MENU' du fichier 'configrc' (Cf. Chapitre 'configrc').
+,'CSS_SANS_MENU' et 'CSS_COULEUR' du fichier 'configrc' (Cf. Chapitre 
+'configrc').
 
 #--[[ Le dossier img ]]--#
 
