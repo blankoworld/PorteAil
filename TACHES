@@ -14,7 +14,6 @@ DESTDIR
   - ajouter le nom des liens en fin de chaque lien
 - créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
 - ne copier QUE les images utilisées
-- favicon.ico ?
 - Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
@@ -30,6 +29,7 @@ DESTDIR
 - Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
 - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
 - commenter le code CSS
+- favicon.ico ?
 
 >>> Pour la v0.2 : 
 - Transformer le fichier GNUmakefile en makefile pour bmake
