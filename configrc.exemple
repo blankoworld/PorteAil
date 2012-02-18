@@ -1,8 +1,9 @@
 ## CONFIGURATION
 DESTINATION = porteail
 INDEX = $(DESTINATION)/index.xhtml
-CSS_SANS_MENU = bicolore_sans_menu.css
-CSS_AVEC_MENU = bicolore_avec_menu.css
+CSS_SANS_MENU = sans_menu.css
+CSS_AVEC_MENU = avec_menu.css
+CSS_COULEUR = noir.css
 CSS_NOM = defaut.css
 TITRE = Titre par défaut
 ACCUEIL = Accueil - $(TITRE)
