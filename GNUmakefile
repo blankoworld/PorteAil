@@ -105,15 +105,12 @@ test:
 	@$(PROG_TEST) -d $(DESTINATION) || mkdir $(DESTINATION)
 	@$(PROG_ECHO) -e "\t…création du dossier '$(dest_image)'"
 	@$(PROG_TEST) -d $(DESTINATION)/$(dest_image) || mkdir $(DESTINATION)/$(dest_image)
-#	@$(PROG_ECHO) -e "\t…copie des fichiers images"
-#	@$(PROG_CP) -r img/* $(DESTINATION)/image
 	@$(PROG_ECHO) -e "  …terminé."
 
 # création du fichier CSS
 $(DESTINATION)/$(CSS_NOM): $(dependances_css)
 	@$(PROG_ECHO) -e "Création du fichier CSS…"
-	$(if $(MENU), @cp style/$(CSS_AVEC_MENU) $(DESTINATION)/$(CSS_NOM), @cp style/$(CSS_SANS_MENU) $(DESTINATION)/$(CSS_NOM))
-#	@cp style/$(CSS_DEFAUT) $(DESTINATION)/$(CSS_NOM)
+	$(if $(MENU), @$(PROG_CP) style/$(CSS_AVEC_MENU) $(DESTINATION)/$(CSS_NOM), @$(PROG_CP) style/$(CSS_SANS_MENU) $(DESTINATION)/$(CSS_NOM))
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier $(contenu)
