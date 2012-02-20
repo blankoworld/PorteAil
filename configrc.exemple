@@ -7,7 +7,7 @@ TITRE = Titre par défaut
 # Feuille de style choisie
 STYLE = noir.css
 # Code HTML du menu (par défaut dans le dossier COMPOSANTS)
-#MENU = $(COMPOSANTS)/menu.html
+#MENU = menu.html
 # Code HTML de l'introduction (par défaut dans le dossier COMPOSANTS)
 INTRO = introduction.html
 CIBLE = porteail
@@ -22,7 +22,7 @@ ACCUEIL = Accueil - $(TITRE)
 script_contenu = creation_categ.sh
 # Extension des fichiers à prendre en compte dans le dossier contenant les 
 #+ catégories
-ext = txt
+CATEGORIES_EXT = txt
 # Image de base si aucune mentionnée (par défaut dans le dossier IMAGES)
 DEFAUT_IMG = generique.png
 
@@ -55,6 +55,7 @@ endif
 
 INTRO_ADDR = $(COMPOSANTS)/$(INTRO)
 INDEX = $(CIBLE)/index.xhtml
+MENU_ADDR = $(COMPOSANTS)/$(MENU)
 entete = $(COMPOSANTS)/entete.html
 enqueue = $(COMPOSANTS)/enqueue.html
 contenu_fin = $(COMPOSANTS)/contenu_fin.html

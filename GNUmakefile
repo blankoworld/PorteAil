@@ -29,7 +29,7 @@
 include configrc
 ## autre configurations
 dependances_index = $(entete) $(enqueue) $(contenu_fin)
-SOURCE = $(CATEGORIES)/*.$(ext)
+SOURCE = $(CATEGORIES)/*.$(CATEGORIES_EXT)
 # programmes
 PROG_ECHO = `which echo`
 PROG_TEST = `which test`
@@ -101,7 +101,7 @@ test:
 	$(if $(INTRO), @$(PROG_TEST) -f $(INTRO_ADDR) || exit 1)
 	$(if $(INTRO), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…option ajout d'un menu (vérification de l'existence)"
-	$(if $(MENU), @$(PROG_TEST) -f $(MENU) || exit 1)
+	$(if $(MENU), @$(PROG_TEST) -f $(MENU_ADDR) || exit 1)
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…création de la destination"
 	@$(PROG_TEST) -d $(CIBLE) || mkdir $(CIBLE)
@@ -127,7 +127,7 @@ $(contenu): $(script_contenu) $(SOURCE) $(DEFAUT_IMG_ADDR)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(CATEGORIES)"
 	@$(PROG_ECHO) -e "\t\t- Destination temporaire du contenu : $(contenu)"
-	@$(PROG_ECHO) -e "\t\t- Extension des fichiers à lire : $(ext)"
+	@$(PROG_ECHO) -e "\t\t- Extension des fichiers à lire : $(CATEGORIES_EXT)"
 	@$(PROG_ECHO) -e "\t\t- Dossier ayant les composants de la page : $(COMPOSANTS)"
 	@$(PROG_ECHO) -e "\t\t- Entête HTML d'une catégorie : $(categ_deb)"
 	@$(PROG_ECHO) -e "\t\t- Enqueue HTML d'une catégorie : $(categ_fin)"
@@ -136,7 +136,7 @@ $(contenu): $(script_contenu) $(SOURCE) $(DEFAUT_IMG_ADDR)
 	@$(PROG_ECHO) -e "\t\t- Dossier de destination des images : $(IMAGES_CIBLE)"
 	@$(PROG_ECHO) -e "\t\t- Image par défaut : $(DEFAUT_IMG_ADDR)"
 	@$(PROG_ECHO) -e "\t\t- Dossier de destination global : $(CIBLE)"
-	@$(PROG_SH) $(script_contenu) $(CATEGORIES) $(contenu) $(ext) $(COMPOSANTS) $(categ_deb) $(categ_fin) $(elem) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
+	@$(PROG_SH) $(script_contenu) $(CATEGORIES) $(contenu) $(CATEGORIES_EXT) $(COMPOSANTS) $(categ_deb) $(categ_fin) $(elem) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
 
 # création de la page d'index
 index: $(INDEX)
@@ -164,7 +164,7 @@ $(INDEX): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(dependances_index) $(contenu) $(CI
 	@$(PROG_ECHO) -e "\t…insertion de la fin du contenu"
 	@$(PROG_CAT) $(contenu_fin) >> $(INDEX)
 # menu
-	$(if $(MENU), @cat $(MENU) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion du menu" || exit 1)
+	$(if $(MENU), @cat $(MENU_ADDR) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion du menu" || exit 1)
 # enqueue
 	@$(PROG_ECHO) -e "\t…insertion de l'enqueue"
 	@$(PROG_CAT) $(enqueue) >> $(INDEX)

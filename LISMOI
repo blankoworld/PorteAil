@@ -242,11 +242,11 @@ voulez agrémenter le portail de tout un tas d'autres pages.
 Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
 changer la ligne suivante dans el fichier 'configrc' : 
 
-    #MENU = $(COMPOSANTS)/menu.html
+    #MENU = menu.html
 
 par
 
-    MENU = $(COMPOSANTS)/menu.html
+    MENU = menu.html
 
 Comme pour l'introduction, il suffit de supprimer le dièse '#' en début de 
 ligne.
@@ -316,6 +316,9 @@ sur les composants 'Les composants'.
 
 MENU : Cf. Chapitre 'Le fichier menu.html'
 
+MENU_ADDR : Adresse exacte du fichier contenant le menu de la future page 
+PorteAil.
+
 INTRO : Cf. Chapitre 'Le fichier introduction.html'
 
 INTRO_ADDR : Adresse exacte du fichier d'introduction de la future page 
@@ -332,7 +335,7 @@ attachées à ces composants sont les suivantes :
 - CATEGORIES : désigne le dossier dans lequel se trouve l'ensemble des 
 descriptions des catégories et des éléments se trouvant à l'intérieur de 
 chacune d'elle
-- ext : extension des fichiers contenus dans le dossier CATEGORIES 
+- CATEGORIES_EXT : extension des fichiers contenus dans le dossier CATEGORIES 
 (précédemment renseigné) qui contiendra la description de base de chacune 
 des catégories et de ses éléments. Cf. Chapitre "Le dossier 'categ'"
 - IMAGES : dossier contenant quelques images pour les éléments de chaque 
