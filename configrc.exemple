@@ -2,10 +2,14 @@
 ## Configuration basique ##
 ###########################
 
+# Titre de votre PorteAil
 TITRE = Titre par défaut
-CSS_COULEUR = noir.css
-#MENU = $(DOSSIER_HTML)/menu.html
-INTRO = $(DOSSIER_HTML)/introduction.html
+# Feuille de style choisie
+STYLE = noir.css
+# Code HTML du menu (par défaut dans le dossier COMPOSANTS)
+#MENU = $(COMPOSANTS)/menu.html
+# Code HTML de l'introduction (par défaut dans le dossier COMPOSANTS)
+INTRO = $(COMPOSANTS)/introduction.html
 DESTINATION = porteail
 
 ###########################
@@ -16,7 +20,8 @@ DESTINATION = porteail
 
 ACCUEIL = Accueil - $(TITRE)
 script_contenu = creation_categ.sh
-# Extension des fichiers à prendre en compte dans le dossier contenant les catégories
+# Extension des fichiers à prendre en compte dans le dossier contenant les 
+#+ catégories
 ext = txt
 # image par défaut (au cas où aucune ne serait trouvée)
 image_defaut = generique.png
@@ -34,7 +39,8 @@ endif
 
 ##--[[ dossiers ]]--##
 
-DOSSIER_HTML = composants
+# Dossier contenant les éléments composants votre page
+COMPOSANTS = composants
 # dossier contenant le détail des catégories
 categ = categ
 # dossier contenant les images
@@ -42,14 +48,14 @@ image = img
 # dossier de destination des images
 dest_image = image
 # dossier contenant les morceaux de la page résultante
-composants = ./$(DOSSIER_HTML)
+composants = ./$(COMPOSANTS)
 
 ##--[[ adresses ]]--##
 
 INDEX = $(DESTINATION)/index.xhtml
-entete = $(DOSSIER_HTML)/entete.html
-enqueue = $(DOSSIER_HTML)/enqueue.html
-contenu_fin = $(DOSSIER_HTML)/contenu_fin.html
+entete = $(COMPOSANTS)/entete.html
+enqueue = $(COMPOSANTS)/enqueue.html
+contenu_fin = $(COMPOSANTS)/contenu_fin.html
 # résultat de la génération des catégories
 contenu = categories.html
 # entête des catégories (contenu dans dossier composants)
@@ -58,6 +64,3 @@ categ_deb = categ_deb.html
 categ_fin = categ_fin.html 
 # code HTML de chaque élément
 elem = element.html
-
-##--[[ dépendances ]]--##
-dependances_index = $(entete) $(enqueue) $(contenu_fin)
