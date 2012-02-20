@@ -9,7 +9,7 @@ STYLE = noir.css
 # Code HTML du menu (par défaut dans le dossier COMPOSANTS)
 #MENU = menu.html
 # Code HTML de l'introduction (par défaut dans le dossier COMPOSANTS)
-INTRO = introduction.html
+#INTRO = introduction.html
 CIBLE = porteail
 
 ###########################
