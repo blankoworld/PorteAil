@@ -79,7 +79,14 @@ Sans ce fichier 'configrc' le programme ne peut pas fonctionner (depuis la
 
 ### UTILISATION ###
 
-Dans sa version 0.1 le programme s'utilise via plusieurs entrées minimales : 
+Il vous suffit de lancer la commande suivante dans le dossier du projet : 
+
+    make
+
+Cela devrait générer le dossier 'porteail' dans lequel se trouve un exemple
+ de résultat possible.
+
+Dans sa version 0.1 le programme s'utilise via plusieurs fichiers : 
 - le fichier GNUmakefile
 - le fichier configrc
 - le dossier categ
