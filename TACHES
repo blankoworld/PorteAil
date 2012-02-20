@@ -33,6 +33,7 @@ DESTDIR
 - commenter le code CSS
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
 - favicon.ico ?
+- ajouter une extension aux fichiers images copiées
 
 >>> Pour la v0.2 : 
 - Transformer le fichier GNUmakefile en makefile pour bmake

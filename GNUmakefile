@@ -93,8 +93,8 @@ test:
 	$(if $(error_find), @$(PROG_ECHO) -e "\t\tfind : MANQUANT." ; exit 1)
 	$(if $(error_sort), @$(PROG_ECHO) -e "\t\tsort : MANQUANT." ; exit 1)
 	$(if $(error_wc), @$(PROG_ECHO) -e "\t\twc : MANQUANT." ; exit 1)
-	@$(PROG_ECHO) -e "\t…existence des dossiers 'img', '$(CATEGORIES)' et 'style'"
-	@$(PROG_TEST) -d img || mkdir img
+	@$(PROG_ECHO) -e "\t…existence des dossiers '$(IMAGES)', '$(CATEGORIES)' et 'style'"
+	@$(PROG_TEST) -d $(IMAGES) || mkdir $(IMAGES)
 	@$(PROG_TEST) -d $(CATEGORIES) || mkdir $(CATEGORIES)
 	@$(PROG_TEST) -d style || mkdir style
 	@$(PROG_ECHO) -e "\t…option introduction dans la page"
@@ -105,8 +105,8 @@ test:
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…création de la destination"
 	@$(PROG_TEST) -d $(CIBLE) || mkdir $(CIBLE)
-	@$(PROG_ECHO) -e "\t…création du dossier '$(dest_image)'"
-	@$(PROG_TEST) -d $(CIBLE)/$(dest_image) || mkdir $(CIBLE)/$(dest_image)
+	@$(PROG_ECHO) -e "\t…création du dossier '$(IMAGES_CIBLE)'"
+	@$(PROG_TEST) -d $(CIBLE)/$(IMAGES_CIBLE) || mkdir $(CIBLE)/$(IMAGES_CIBLE)
 	@$(PROG_ECHO) -e "  …terminé."
 
 # création du fichier CSS
@@ -122,21 +122,21 @@ $(CIBLE)/$(STYLE): style/$(STYLE)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier $(contenu)
-$(contenu): $(script_contenu) $(SOURCE) $(image_defaut)
+$(contenu): $(script_contenu) $(SOURCE) $(DEFAUT_IMG_ADDR)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(CATEGORIES)"
 	@$(PROG_ECHO) -e "\t\t- Destination temporaire du contenu : $(contenu)"
 	@$(PROG_ECHO) -e "\t\t- Extension des fichiers à lire : $(ext)"
-	@$(PROG_ECHO) -e "\t\t- Dossier ayant les composants de la page : $(composants)"
+	@$(PROG_ECHO) -e "\t\t- Dossier ayant les composants de la page : $(COMPOSANTS)"
 	@$(PROG_ECHO) -e "\t\t- Entête HTML d'une catégorie : $(categ_deb)"
 	@$(PROG_ECHO) -e "\t\t- Enqueue HTML d'une catégorie : $(categ_fin)"
 	@$(PROG_ECHO) -e "\t\t- Code HTML d'un élément : $(elem)"
-	@$(PROG_ECHO) -e "\t\t- Dossier contenant les images sources : $(image)"
-	@$(PROG_ECHO) -e "\t\t- Dossier de destination des images : $(dest_image)"
-	@$(PROG_ECHO) -e "\t\t- Image par défaut : $(image_defaut)"
+	@$(PROG_ECHO) -e "\t\t- Dossier contenant les images sources : $(IMAGES)"
+	@$(PROG_ECHO) -e "\t\t- Dossier de destination des images : $(IMAGES_CIBLE)"
+	@$(PROG_ECHO) -e "\t\t- Image par défaut : $(DEFAUT_IMG_ADDR)"
 	@$(PROG_ECHO) -e "\t\t- Dossier de destination global : $(CIBLE)"
-	@$(PROG_SH) $(script_contenu) $(CATEGORIES) $(contenu) $(ext) $(composants) $(categ_deb) $(categ_fin) $(elem) $(image) $(dest_image) $(image_defaut) $(CIBLE)
+	@$(PROG_SH) $(script_contenu) $(CATEGORIES) $(contenu) $(ext) $(COMPOSANTS) $(categ_deb) $(categ_fin) $(elem) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
 
 # création de la page d'index
 index: $(INDEX)

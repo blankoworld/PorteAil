@@ -58,7 +58,6 @@ utilisation( )
 # Test sur les paramètres
 if [ $# -ne 11 ]
 then
-  echo $#
   utilisation
   exit 1
 else

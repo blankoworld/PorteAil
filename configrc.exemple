@@ -23,21 +23,22 @@ script_contenu = creation_categ.sh
 # Extension des fichiers à prendre en compte dans le dossier contenant les 
 #+ catégories
 ext = txt
-# image par défaut (au cas où aucune ne serait trouvée)
-image_defaut = generique.png
+# Image de base si aucune mentionnée (par défaut dans le dossier IMAGES)
+DEFAUT_IMG = generique.png
 
 ##--[[ dossiers ]]--##
 
+## SOURCES
 # Dossier contenant les éléments composants votre page
 COMPOSANTS = composants
 # dossier contenant le détail des catégories
 CATEGORIES = categ
 # dossier contenant les images
-image = img
+IMAGES = img
+
+## DESTINATION (cible)
 # dossier de destination des images
-dest_image = image
-# dossier contenant les morceaux de la page résultante
-composants = ./$(COMPOSANTS)
+IMAGES_CIBLE = image
 
 ##--[[ style ]]--##
 
@@ -65,3 +66,4 @@ categ_deb = categ_deb.html
 categ_fin = categ_fin.html 
 # code HTML de chaque élément
 elem = element.html
+DEFAUT_IMG_ADDR = $(IMAGES)/$(DEFAUT_IMG)
