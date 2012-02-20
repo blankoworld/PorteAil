@@ -222,11 +222,11 @@ langage HTML pour permettre un affichage correct de ce que vous voulez.
 Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
 changer la ligne suivante dans le fichier 'configrc' :
 
-    #INTRO = $(DOSSIER_HTML)/introduction.html
+    #INTRO = $(COMPOSANTS)/introduction.html
 
 par
 
-    INTRO = $(DOSSIER_HTML)/introduction.html
+    INTRO = $(COMPOSANTS)/introduction.html
 
 Vous l'aurez compris, il suffit d'enlever le premier dièse '#' du début de
 ligne.
@@ -240,11 +240,11 @@ voulez agrémenter le portail de tout un tas d'autres pages.
 Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
 changer la ligne suivante dans el fichier 'configrc' : 
 
-    #MENU = $(DOSSIER_HTML)/menu.html
+    #MENU = $(COMPOSANTS)/menu.html
 
 par
 
-    MENU = $(DOSSIER_HTML)/menu.html
+    MENU = $(COMPOSANTS)/menu.html
 
 Comme pour l'introduction, il suffit de supprimer le dièse '#' en début de 
 ligne.
@@ -299,7 +299,7 @@ CSS_AVEC_MENU : nom de la feuille de style à utiliser quand la page est génér
 avec un menu. À noter que le fichier doit se trouver dans le dossier 
 'style'.
 
-CSS_COULEUR : nom de la seconde feuille de style à utiliser pour ajouter des 
+STYLE : nom de la seconde feuille de style à utiliser pour ajouter des 
 couleurs à votre page. À noter que le fichier doit se trouver dans le dossier
 'style'.
 
@@ -309,7 +309,7 @@ TITRE : Cf. Chapitre 'configrc' ci-avant.
 
 ACCUEIL : Cf. Chapitre 'configrc' ci-avant.
 
-DOSSIER_HTML : nom du dossier contenant l'ensemble des composants. Cf Chapitre
+COMPOSANTS : nom du dossier contenant l'ensemble des composants. Cf Chapitre
 sur les composants 'Les composants'.
 
 MENU : Cf. Chapitre 'Le fichier menu.html'
@@ -390,7 +390,7 @@ Le dossier 'style' est prévu pour contenir l'ensemble des feuilles de style
 disponible pour l'apparence de notre page PorteAil.
 
 Déposez donc ici vos feuille de style et changez la variable 'CSS_AVEC_MENU'
-,'CSS_SANS_MENU' et 'CSS_COULEUR' du fichier 'configrc' (Cf. Chapitre 
+,'CSS_SANS_MENU' et 'STYLE' du fichier 'configrc' (Cf. Chapitre 
 'configrc').
 
 #--[[ Le dossier img ]]--#
