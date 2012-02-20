@@ -25,8 +25,9 @@
 .PHONY: clean
 
 ## VARIABLES ##
-# configuration
+## configuration utilisateur
 include configrc
+## autre configurations
 SOURCE = $(categ)/*.$(ext)
 # programmes
 PROG_ECHO = `which echo`

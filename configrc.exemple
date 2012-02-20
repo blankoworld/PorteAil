@@ -1,45 +1,63 @@
-## CONFIGURATION
-DESTINATION = porteail
-INDEX = $(DESTINATION)/index.xhtml
-CSS_SANS_MENU = sans_menu.css
-CSS_AVEC_MENU = avec_menu.css
-CSS_COULEUR = noir.css
-CSS_NOM = defaut.css
+###########################
+## Configuration basique ##
+###########################
+
 TITRE = Titre par défaut
-ACCUEIL = Accueil - $(TITRE)
-DOSSIER_HTML = composants
-## divers
+CSS_COULEUR = noir.css
 #MENU = $(DOSSIER_HTML)/menu.html
 INTRO = $(DOSSIER_HTML)/introduction.html
-## utiles pour le makefile
+DESTINATION = porteail
+
+###########################
+## Configuration avancée ##
+###########################
+
+##--[[ divers ]]--##
+
+ACCUEIL = Accueil - $(TITRE)
+script_contenu = creation_categ.sh
+# Extension des fichiers à prendre en compte dans le dossier contenant les catégories
+ext = txt
+# image par défaut (au cas où aucune ne serait trouvée)
+image_defaut = generique.png
+
+##--[[ style ]]--##
+
+CSS_SANS_MENU = sans_menu.css
+CSS_AVEC_MENU = avec_menu.css
+CSS_NOM = defaut.css
 ifndef $(MENU)
 	dependances_css = style/$(CSS_SANS_MENU)
 else
 	dependances_css = style/$(CSS_AVEC_MENU) 
 endif
-entete = $(DOSSIER_HTML)/entete.html
-enqueue = $(DOSSIER_HTML)/enqueue.html
-contenu_fin = $(DOSSIER_HTML)/contenu_fin.html
-dependances_index = $(entete) $(enqueue) $(contenu_fin)
-script_contenu = creation_categ.sh
-## utiles pour le script de parcours du dossier contenant les catégories
-# résultat de la génération des catégories
-contenu = categories.html
+
+##--[[ dossiers ]]--##
+
+DOSSIER_HTML = composants
 # dossier contenant le détail des catégories
 categ = categ
-# Extension des fichiers à prendre en compte dans le dossier contenant les catégories
-ext = txt 
 # dossier contenant les images
 image = img
 # dossier de destination des images
 dest_image = image
-# image par défaut (au cas où aucune ne serait trouvée)
-image_defaut = generique.png
 # dossier contenant les morceaux de la page résultante
 composants = ./$(DOSSIER_HTML)
+
+##--[[ adresses ]]--##
+
+INDEX = $(DESTINATION)/index.xhtml
+entete = $(DOSSIER_HTML)/entete.html
+enqueue = $(DOSSIER_HTML)/enqueue.html
+contenu_fin = $(DOSSIER_HTML)/contenu_fin.html
+# résultat de la génération des catégories
+contenu = categories.html
 # entête des catégories (contenu dans dossier composants)
 categ_deb = categ_deb.html
 # enqueue des catégories (contenu dans dossier composants)
 categ_fin = categ_fin.html 
 # code HTML de chaque élément
 elem = element.html
+
+##--[[ dépendances ]]--##
+dependances_index = $(entete) $(enqueue) $(contenu_fin)
