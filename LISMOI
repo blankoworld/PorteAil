@@ -180,7 +180,7 @@ où :
 - TITRE_IMG : est le titre de notre image (si jamais l'image ne s'affiche pas)
 - DESC_IMG : est la description de l'image au passage de la souris
 
-Des exemples sont donnés dans le dossier categ. À vous de les modifier comme 
+Des exemples sont donnés dans le dossier 'categ'. À vous de les modifier comme 
  bon vous semble.
 
 Astuce : Pour ordonner les catégories dans la page résultante, ajouter des chiffres devant chacun de vos fichiers catégories. Par exemple :
@@ -207,7 +207,7 @@ Dans un fichier catégorie, on donnera donc l'adresse suivante comme adresse de
 
     apps/clock.png
 
-Pour un exemple plus criant, je vous propose de lire le fichier suivante :
+Pour un exemple plus criant, je vous propose de lire le fichier suivant :
 
     categ/education.txt
 
@@ -222,11 +222,11 @@ langage HTML pour permettre un affichage correct de ce que vous voulez.
 Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
 changer la ligne suivante dans le fichier 'configrc' :
 
-    #INTRO = $(COMPOSANTS)/introduction.html
+    #INTRO = introduction.html
 
 par
 
-    INTRO = $(COMPOSANTS)/introduction.html
+    INTRO = introduction.html
 
 Vous l'aurez compris, il suffit d'enlever le premier dièse '#' du début de
 ligne.
@@ -286,7 +286,7 @@ Le fichier 'configrc' contient un ensemble de variables qui sont utiles pour
 personnaliser la page de résultat. Voici une liste et la description attachée 
 pour chacun des éléments modifiable/utilisable dans le fichier 'configrc' :
 
-DESTINATION : nom du dossier dans lequel ira le résultat de la génération
+CIBLE : nom du dossier dans lequel ira le résultat de la génération
 
 INDEX : adresse, à partir du répertoire dans lequel est contenu le fichier 
 'GNUmakefile', dans lequel se trouvera le fichier résultant. Cela donne une 
@@ -316,6 +316,9 @@ MENU : Cf. Chapitre 'Le fichier menu.html'
 
 INTRO : Cf. Chapitre 'Le fichier introduction.html'
 
+INTRO_ADDR : Adresse exacte du fichier d'introduction de la future page 
+PorteAil.
+
 Quelques autres éléments sont modifiables : les composants. Les valeurs
 attachées à ces composants sont les suivantes : 
 
@@ -324,8 +327,8 @@ attachées à ces composants sont les suivantes :
 - contenu_fin : fichier contenu_fin.html
 - script_contenu : script bash permettant de générer les catégories
 - contenu : fichier temporaire possédant le contenu à insérer dans la page
-- categ : désigne le dossier dans lequel se trouve l'ensemble des descriptions des catégories et des éléments se trouvant à l'intérieur de chacune d'elle
-- ext : extension des fichiers contenus dans le dossier 'categ' (précédemment renseigné) qui contiendra la description de base de chacune des catégories et de ses éléments. Cf. Chapitre "Le dossier 'categ'"
+- CATEGORIES : désigne le dossier dans lequel se trouve l'ensemble des descriptions des catégories et des éléments se trouvant à l'intérieur de chacune d'elle
+- ext : extension des fichiers contenus dans le dossier CATEGORIES (précédemment renseigné) qui contiendra la description de base de chacune des catégories et de ses éléments. Cf. Chapitre "Le dossier 'categ'"
 - image : dossier contenant quelques images pour les éléments de chaque catégorie. Toutes les images ne seront pas utilisées
 - dest_image : dossier dans lequel seront mises les images choisies dans chacune des catégories (fichiers décrivant les catégories)
 - image_defaut : image par défaut utilisée si aucune autre image n'est trouvée

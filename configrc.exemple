@@ -9,8 +9,8 @@ STYLE = noir.css
 # Code HTML du menu (par défaut dans le dossier COMPOSANTS)
 #MENU = $(COMPOSANTS)/menu.html
 # Code HTML de l'introduction (par défaut dans le dossier COMPOSANTS)
-INTRO = $(COMPOSANTS)/introduction.html
-DESTINATION = porteail
+INTRO = introduction.html
+CIBLE = porteail
 
 ###########################
 ## Configuration avancée ##
@@ -26,6 +26,19 @@ ext = txt
 # image par défaut (au cas où aucune ne serait trouvée)
 image_defaut = generique.png
 
+##--[[ dossiers ]]--##
+
+# Dossier contenant les éléments composants votre page
+COMPOSANTS = composants
+# dossier contenant le détail des catégories
+CATEGORIES = categ
+# dossier contenant les images
+image = img
+# dossier de destination des images
+dest_image = image
+# dossier contenant les morceaux de la page résultante
+composants = ./$(COMPOSANTS)
+
 ##--[[ style ]]--##
 
 CSS_SANS_MENU = sans_menu.css
@@ -37,22 +50,10 @@ else
 	dependances_css = style/$(CSS_AVEC_MENU) 
 endif
 
-##--[[ dossiers ]]--##
-
-# Dossier contenant les éléments composants votre page
-COMPOSANTS = composants
-# dossier contenant le détail des catégories
-categ = categ
-# dossier contenant les images
-image = img
-# dossier de destination des images
-dest_image = image
-# dossier contenant les morceaux de la page résultante
-composants = ./$(COMPOSANTS)
-
 ##--[[ adresses ]]--##
 
-INDEX = $(DESTINATION)/index.xhtml
+INTRO_ADDR = $(COMPOSANTS)/$(INTRO)
+INDEX = $(CIBLE)/index.xhtml
 entete = $(COMPOSANTS)/entete.html
 enqueue = $(COMPOSANTS)/enqueue.html
 contenu_fin = $(COMPOSANTS)/contenu_fin.html
