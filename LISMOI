@@ -361,6 +361,12 @@ Le fichier doit se trouver dans le dossier renseigné par la variable
 'composants'.
 - elem : nom du fichier contenant le code HTML d'un élément. Le fichier doit 
 se trouver dans le dossier renseigné par la variable 'composants'
+- CSS : dossier dans lequel se trouve les feuilles de styles.
+- CSS_AVEC_MENU_ADDR : adresse exacte du fichier contenant la feuille de style 
+ajoutant le menu
+- CSS_SANS_MENU_ADDR : adresse exacte du fichier contenant la feuille de style 
+sans le menu
+- STYLE_ADDR : adresse exacte de la feuille de style choisie par l'utilisateur.
 
 Pour plus de renseignements, veuillez vous référer au chapitre 'Les 
 composants'.

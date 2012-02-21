@@ -28,6 +28,11 @@
 ## configuration utilisateur
 include configrc
 ## autre configurations
+ifndef $(MENU)
+	dependances_css = $(CSS_SANS_MENU_ADDR)
+else
+	dependances_css = $(CSS_AVEC_MENU_ADDR) 
+endif
 dependances_index = $(entete) $(enqueue) $(contenu_fin)
 SOURCE = $(CATEGORIES)/*.$(CATEGORIES_EXT)
 # programmes
@@ -93,10 +98,10 @@ test:
 	$(if $(error_find), @$(PROG_ECHO) -e "\t\tfind : MANQUANT." ; exit 1)
 	$(if $(error_sort), @$(PROG_ECHO) -e "\t\tsort : MANQUANT." ; exit 1)
 	$(if $(error_wc), @$(PROG_ECHO) -e "\t\twc : MANQUANT." ; exit 1)
-	@$(PROG_ECHO) -e "\t…existence des dossiers '$(IMAGES)', '$(CATEGORIES)' et 'style'"
+	@$(PROG_ECHO) -e "\t…existence des dossiers '$(IMAGES)', '$(CATEGORIES)' et '$(CSS)'"
 	@$(PROG_TEST) -d $(IMAGES) || mkdir $(IMAGES)
 	@$(PROG_TEST) -d $(CATEGORIES) || mkdir $(CATEGORIES)
-	@$(PROG_TEST) -d style || mkdir style
+	@$(PROG_TEST) -d $(CSS) || mkdir $(CSS)
 	@$(PROG_ECHO) -e "\t…option introduction dans la page"
 	$(if $(INTRO), @$(PROG_TEST) -f $(INTRO_ADDR) || exit 1)
 	$(if $(INTRO), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
@@ -112,13 +117,13 @@ test:
 # création du fichier CSS
 $(CIBLE)/$(CSS_NOM): $(dependances_css)
 	@$(PROG_ECHO) -e "Création du fichier CSS…"
-	$(if $(MENU), @$(PROG_CP) style/$(CSS_AVEC_MENU) $(CIBLE)/$(CSS_NOM), @$(PROG_CP) style/$(CSS_SANS_MENU) $(CIBLE)/$(CSS_NOM))
+	$(if $(MENU), @$(PROG_CP) $(CSS_AVEC_MENU_ADDR) $(CIBLE)/$(CSS_NOM), @$(PROG_CP) $(CSS_SANS_MENU_ADDR) $(CIBLE)/$(CSS_NOM))
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier CSS de couleur
-$(CIBLE)/$(STYLE): style/$(STYLE)
+$(CIBLE)/$(STYLE): $(STYLE_ADDR)
 	@$(PROG_ECHO) -e "Création du fichier CSS pour les couleurs…"
-	@$(PROG_CP) style/$(STYLE) $(CIBLE)/$(STYLE)
+	@$(PROG_CP) $(STYLE_ADDR) $(CIBLE)/$(STYLE)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier $(contenu)
