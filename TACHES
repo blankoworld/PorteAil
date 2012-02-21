@@ -15,14 +15,19 @@ DESTDIR
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 
 >>> Pour la v0.1.2 : 
-- faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi)
 - HTML 5 avec header et footer
+
 - Simplifier le code HTML et CSS
   - enlever les div en trop, par exemple pour l'IMG
   - changer les div#abc en #abc dans le CSS
+  - commenter le code CSS
+
 - Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS
+
 - Meilleur affichage dans les navigateurs textes
+
 - Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
+
 - Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
   - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
   - ne laisser que la variable CSS_COULEUR ? => trouver une solution potable
@@ -30,10 +35,13 @@ DESTDIR
   - déplacer les variables inutiles à l'utilisateur dans un autre fichier de config qu'on inclue ? Ou bien les mettre avant le include configrc, comme ça l'utilisateur peut les redéfinir si besoin !
   - mettre toutes les variables en majuscules OU en minuscule (peut-être les variables en majuscules pour les principales, et celles du Makefile en minuscule
   - renommer les variables correctement !
-- commenter le code CSS
+
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
+
 - favicon.ico ?
+
 - ajouter une extension aux fichiers images copiées
+
 - Simplifier le fichier LISMOI
   - ne donner que quelques lignes simples pour lancer le programme : installer, configurer, lancer !
   - supprimer les chapitres inutiles
@@ -120,3 +128,4 @@ des éléments
 - permettre l'ajout de plusieurs CSS dans HEAD
 - créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
 - ne copier QUE les images utilisées
+- faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi)
