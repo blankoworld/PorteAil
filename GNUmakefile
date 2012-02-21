@@ -144,12 +144,12 @@ $(contenu): $(script_contenu) $(SOURCE) $(DEFAUT_IMG_ADDR)
 	@$(PROG_SH) $(script_contenu) $(CATEGORIES) $(contenu) $(CATEGORIES_EXT) $(COMPOSANTS) $(categ_deb) $(categ_fin) $(elem) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
 
 # création de la page d'index
-index: $(INDEX)
-$(INDEX): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(dependances_index) $(contenu) $(CIBLE)/$(STYLE)
+index: $(INDEX_ADDR)
+$(INDEX_ADDR): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(dependances_index) $(contenu) $(CIBLE)/$(STYLE)
 	@$(PROG_ECHO) -e "Création de la page de garde…"
 # entete
 	@$(PROG_ECHO) -e "\t…insertion de l'entête"
-	@$(PROG_CAT) $(entete) > $(INDEX)
+	@$(PROG_CAT) $(entete) > $(INDEX_ADDR)
 # modification du contenu
 	@$(PROG_ECHO) -e "\t…modification du contenu"
 	@$(PROG_SED) -i \
@@ -158,21 +158,21 @@ $(INDEX): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(dependances_index) $(contenu) $(CI
 		-e "s#@@CSS_DEFAUT@@#./$(CSS_NOM)#g"       \
 		-e "s#@@CSS_COULEUR@@#./$(STYLE)#g"  \
 		-e "s/^\(.*\)@@.*@@\(.*\)$$/\1\2/g"        \
-		$(INDEX)
+		$(INDEX_ADDR)
 	@$(PROG_ECHO) -e "\t  …contenu modifié avec succès !"
 # introduction (SI la variable INTRO est remplie)
-	$(if $(INTRO), @cat $(INTRO_ADDR) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit 1)
+	$(if $(INTRO), @cat $(INTRO_ADDR) >> $(INDEX_ADDR); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit 1)
 # contenu
 	@$(PROG_ECHO) -e "\t…insertion du contenu"
-	@$(PROG_CAT) $(contenu) >> $(INDEX)
+	@$(PROG_CAT) $(contenu) >> $(INDEX_ADDR)
 #	fin du contenu
 	@$(PROG_ECHO) -e "\t…insertion de la fin du contenu"
-	@$(PROG_CAT) $(contenu_fin) >> $(INDEX)
+	@$(PROG_CAT) $(contenu_fin) >> $(INDEX_ADDR)
 # menu
-	$(if $(MENU), @cat $(MENU_ADDR) >> $(INDEX); $(PROG_ECHO) -e "\t…insertion du menu" || exit 1)
+	$(if $(MENU), @cat $(MENU_ADDR) >> $(INDEX_ADDR); $(PROG_ECHO) -e "\t…insertion du menu" || exit 1)
 # enqueue
 	@$(PROG_ECHO) -e "\t…insertion de l'enqueue"
-	@$(PROG_CAT) $(enqueue) >> $(INDEX)
+	@$(PROG_CAT) $(enqueue) >> $(INDEX_ADDR)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # nettoyage des fichiers générés

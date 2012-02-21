@@ -20,6 +20,7 @@ CIBLE = porteail
 
 ACCUEIL = Accueil - $(TITRE)
 script_contenu = creation_categ.sh
+INDEX = index.xhtml
 # Extension des fichiers à prendre en compte dans le dossier contenant les 
 #+ catégories
 CATEGORIES_EXT = txt
@@ -51,7 +52,7 @@ CSS_NOM = defaut.css
 ##--[[ adresses ]]--##
 
 INTRO_ADDR = $(COMPOSANTS)/$(INTRO)
-INDEX = $(CIBLE)/index.xhtml
+INDEX_ADDR = $(CIBLE)/$(INDEX)
 MENU_ADDR = $(COMPOSANTS)/$(MENU)
 CSS_SANS_MENU_ADDR = $(CSS)/$(CSS_SANS_MENU)
 CSS_AVEC_MENU_ADDR = $(CSS)/$(CSS_AVEC_MENU)
