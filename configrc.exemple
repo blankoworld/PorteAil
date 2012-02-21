@@ -35,6 +35,8 @@ COMPOSANTS = composants
 CATEGORIES = categ
 # dossier contenant les images
 IMAGES = img
+# dossier contenant les feuilles de style
+CSS = style
 
 ## DESTINATION (cible)
 # dossier de destination des images
@@ -45,17 +47,15 @@ IMAGES_CIBLE = image
 CSS_SANS_MENU = sans_menu.css
 CSS_AVEC_MENU = avec_menu.css
 CSS_NOM = defaut.css
-ifndef $(MENU)
-	dependances_css = style/$(CSS_SANS_MENU)
-else
-	dependances_css = style/$(CSS_AVEC_MENU) 
-endif
 
 ##--[[ adresses ]]--##
 
 INTRO_ADDR = $(COMPOSANTS)/$(INTRO)
 INDEX = $(CIBLE)/index.xhtml
 MENU_ADDR = $(COMPOSANTS)/$(MENU)
+CSS_SANS_MENU_ADDR = $(CSS)/$(CSS_SANS_MENU)
+CSS_AVEC_MENU_ADDR = $(CSS)/$(CSS_AVEC_MENU)
+STYLE_ADDR = $(CSS)/$(STYLE)
 entete = $(COMPOSANTS)/entete.html
 enqueue = $(COMPOSANTS)/enqueue.html
 contenu_fin = $(COMPOSANTS)/contenu_fin.html
