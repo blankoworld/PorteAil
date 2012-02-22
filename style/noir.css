@@ -1,8 +1,17 @@
+/*
+Theme: PorteAil - apparence noire
+Version: 0.1
+Author: Olivier DOSSMANN
+Author URI: http://olivier.dossmann.net
+Project: PorteAil
+Project URI: http://porteail.e-mergence.org
+ */
 html, body {
 background-color: #ffffff;
 color: #000000;
 }
 
+/* BASE */
 a:link {
 color: #6276a4;
 }
@@ -24,16 +33,20 @@ h3 {
 color: #000000;
 }
 
+/* ENTÊTE DE PAGE */
 #chapeau {
 background-color: #000000;
 color: #ffffff;
 }
 
+/* CONTENU */
+/* survol d'un élément */
 #corps a.cadre:hover {
 background-color: #000000;
 color: #ffffff;
 }
 
+/* MENU */
 #cartable {
 background-color: #000000;
 color: #ffffff;
@@ -57,6 +70,7 @@ background-color: #aaaabb;
 color: #223355;
 }
 
+/* ENQUEUE DE PAGE */
 #soulier {
 color: #000000;
 }
