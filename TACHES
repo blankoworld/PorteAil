@@ -17,12 +17,7 @@ DESTDIR
 >>> Pour la v0.1.2 : 
 - HTML 5 avec header et footer
 
-- Simplifier le code HTML et CSS
-  - enlever les div en trop, par exemple pour l'IMG
-  - changer les div#abc en #abc dans le CSS
-  - commenter le code CSS
-
-- Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS
+- Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS. Alt = rien du tout, et title = nom donné.
 
 - Meilleur affichage dans les navigateurs textes
 
@@ -129,3 +124,8 @@ des éléments
 - créer plusieurs feuilles de style (couleurs, positionnement des éléments, etc.)
 - ne copier QUE les images utilisées
 - faire un export en XHTML si possible (ajouter l'extension au fichier de destination choisi)
+- Simplifier le code HTML et CSS
+  - enlever les div en trop
+  - changer les div#abc en #abc dans le CSS
+  - commenter le code CSS
+

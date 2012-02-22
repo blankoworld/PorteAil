@@ -1,3 +1,11 @@
+/*
+Theme: PorteAil - avec menu
+Version: 0.1
+Author: Olivier DOSSMANN
+Author URI: http://olivier.dossmann.net
+Project: PorteAil
+Project URI: http://porteail.e-mergence.org
+ */
 html, body {
 height: 100%;
 width: 100%;
@@ -6,6 +14,7 @@ margin: 0;
 padding: 0;
 }
 
+/* BASE */
 a:link {
 text-decoration: underline;
 }
@@ -42,6 +51,7 @@ border-radius: 12px;
 -webkit-border-radius: 12px;
 }
 
+/* ENTÊTE DE PAGE */
 #chapeau {
 position: relative;
 margin: 0;
@@ -68,18 +78,21 @@ height: 50px;
 line-height: 50px;
 }
 
+/* CONTENU */
 #corps {
 position: relative;
 width: 78%;
 left: 2%;
 }
 
+/* CATÉGORIES */
 #corps ul.ensemble_element {
 min-height: 10em;
 list-style-type: none;
 padding: 0 5px;
 }
 
+/* ÉLÉMENT */
 #corps a.cadre {
 height: 9em;
 width: 11em;
@@ -112,10 +125,12 @@ margin-left: auto;
 border: 0;
 }
 
+/* espace en fin de catégorie  */
 #corps .espace {
 clear: both;
 }
 
+/* MENU */
 #cartable {
 position: absolute;
 height: auto;
@@ -151,6 +166,7 @@ text-decoration: underline;
 #cartable a:hover {
 }
 
+/* ENQUEUE DE PAGE */
 #soulier {
 position: relative;
 top: 5px;
@@ -166,6 +182,8 @@ font-size: 10px;
 text-align: center;
 }
 
+/* DIVERS */
+/* permet de cacher les points virgules en fin de LI */
 .cache_cache {
 display: none;
 }
