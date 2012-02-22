@@ -7,7 +7,7 @@
 #+
 #+ # Commentaire dans le fichier
 #+ [[Titre de la catégorie]]Description de la catégorie
-#+ titre de l'élément##http://domaine.tld/##description de l'élément##nom_image##Titre de l'image##description de l'image
+#+ titre de l'élément##http://domaine.tld/##description de l'élément##nom_image
 
 ###########
 # LICENCE #
@@ -110,8 +110,6 @@ do
   elements_url=""
   elements_desc=""
   elements_image_addr=""
-  elements_image_titre=""
-  elements_image_desc=""
   curseur_element=0
   # Calcul du nombre de ligne du fichier
   nbre_lignes=`cat "${fichier}" |wc -l`
@@ -160,20 +158,20 @@ do
         debug "$categ_titre : $categ_desc"
         CATEG=1
       fi
-      #+ SI la chaîne contient 6 fois '##'
-      #+   exemple : Vous êtes perdus ?##http://perdu.com##Se rendre sur le site perdu.com####Mon image##Description de mon image
-      element_comp=`echo $ligne |sed -e 's@^.*\(##\).*\(##\).*\(##\).*\(##\).*\(##\).*$@\1\2\3\4\5@g'`
+      #+ SI la chaîne contient 3 fois '##'
+      #+   exemple : Vous êtes perdus ?##http://perdu.com##Se rendre sur le site perdu.com##apps/image.png
+      element_comp=`echo $ligne |sed -e 's@^.*\(##\).*\(##\).*\(##\).*$@\1\2\3@g'`
       debug "Comparaison element : $element_comp"
-      if [ "$element_comp" = "##########" ]
+      if [ "$element_comp" = "######" ]
       then
         debug "La ligne est un élément : Enregistrement."
         # Recherche des informations pour l'élément
-        element_titre=`echo $ligne |sed -e 's@^\(.*\)##.*##.*##.*##.*##.*$@\1@g'`
-        element_url=`echo $ligne |sed -e 's@^.*##\(.*\)##.*##.*##.*##.*$@\1@g'`
-        element_desc=`echo $ligne |sed -e 's@^.*##.*##\(.*\)##.*##.*##.*$@\1@g'`
-        element_img_addr=`echo $ligne |sed -e 's@^.*##.*##.*##\(.*\)##.*##.*$@\1@g'`
-        element_img_titre=`echo $ligne |sed -e 's@^.*##.*##.*##.*##\(.*\)##.*$@\1@g'`
-        element_img_desc=`echo $ligne |sed -e 's@^.*##.*##.*##.*##.*##\(.*\)$@\1@g'`
+        element_titre=`echo $ligne |sed -e 's@^\(.*\)##.*##.*##.*$@\1@g'`
+        element_url=`echo $ligne |sed -e 's@^.*##\(.*\)##.*##.*$@\1@g'`
+        element_desc=`echo $ligne |sed -e 's@^.*##.*##\(.*\)##.*$@\1@g'`
+        element_img_addr=`echo $ligne |sed -e 's@^.*##.*##.*##\(.*\)$@\1@g'`
+        element_img_titre="${element_desc}"
+        element_img_desc=" "
         debug "Élément : titre=$element_titre, url=$element_url, desc=$element_desc, adresse_image=$element_img_addr, titre_image=$element_img_titre, desc_image=$element_img_desc"
         # Ajout des éléments dans les tableaux appropriés
         eval "elements_titre_${curseur_element}=\"${element_titre:-""}\""

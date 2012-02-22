@@ -1,4 +1,4 @@
 # Ceci est un commentaire
 [[Catégorie d'exemple]]Description de ma catégorie d'exemple
-Vous êtes perdus ?##http://perdu.com##Se rendre sur le site perdu.com##apps/preferences-system-session-services.png##Mon image##Description de mon image
-Exalead##http://exalead.fr##Visiter Exalead##apps/preferences-web-browser-shortcuts.png##Autre image##Autre description
+Vous êtes perdus ?##http://perdu.com##Se rendre sur le site perdu.com##apps/preferences-system-session-services.png
+Exalead##http://exalead.fr##Visiter Exalead##apps/preferences-web-browser-shortcuts.png
