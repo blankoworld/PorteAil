@@ -174,7 +174,7 @@ Voici une description de catégorie :
 
 Voici une description d'un élément (un par ligne) :
 
-    Titre##URL##DESC##ADDR_IMG##TITRE_IMG##DESC_IMG
+    Titre##URL##DESC##ADDR_IMG
 
 où :
 
@@ -184,8 +184,6 @@ où :
  souris sur le lien
 - ADDR_IMG : est l'adresse relative vers l'image (Cf. ci-après pour plus de 
  renseignements)
-- TITRE_IMG : est le titre de notre image (si jamais l'image ne s'affiche pas)
-- DESC_IMG : est la description de l'image au passage de la souris
 
 Des exemples sont donnés dans le dossier 'categ'. À vous de les modifier comme 
  bon vous semble.
