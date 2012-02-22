@@ -24,39 +24,39 @@ h3 {
 color: #555577;
 }
 
-div#chapeau {
+#chapeau {
 background-color: #223355;
 color: #ffffff;
 }
 
-div#corps a.cadre:hover {
+#corps a.cadre:hover {
 background-color: #223355;
 color: #ffffff;
 }
 
-div#cartable {
+#cartable {
 background-color: #223355;
 color: #ffffff;
 }
 
-div#cartable h3 {
+#cartable h3 {
 color: #ffffff;
 border-color: #ffffff;
 }
 
-div#cartable a:link {
+#cartable a:link {
 color: #aaaabb;
 }
 
-div#cartable a:visited {
+#cartable a:visited {
 color: #aaaabb;
 }
 
-div#cartable a:hover {
+#cartable a:hover {
 background-color: #aaaabb;
 color: #223355;
 }
 
-div#soulier {
+#soulier {
 color: #000000;
 }

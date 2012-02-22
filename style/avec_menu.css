@@ -42,7 +42,7 @@ border-radius: 12px;
 -webkit-border-radius: 12px;
 }
 
-div#chapeau {
+#chapeau {
 position: relative;
 margin: 0;
 padding: 0;
@@ -61,26 +61,26 @@ border-bottom-right-radius: 25px;
 -webkit-border-radius-bottomleft: 25px;
 }
 
-div#chapeau h1 {
+#chapeau h1 {
 margin: 0;
 padding: 0;
 height: 50px;
 line-height: 50px;
 }
 
-div#corps {
+#corps {
 position: relative;
 width: 78%;
 left: 2%;
 }
 
-div#corps ul.ensemble_element {
+#corps ul.ensemble_element {
 min-height: 10em;
 list-style-type: none;
 padding: 0 5px;
 }
 
-div#corps a.cadre {
+#corps a.cadre {
 height: 9em;
 width: 11em;
 margin: 0 5px 10px 5px;
@@ -97,26 +97,26 @@ text-align: center;
 text-decoration: none;
 }
 
-div#corps a.cadre:hover {
+#corps a.cadre:hover {
 }
 
-div#corps a.cadre div.element {
+#corps a.cadre .element {
 height: 9em;
 margin-top: 1em;
 }
 
-div#corps a.cadre div.element img {
+#corps a.cadre .element img {
 margin-top: 2em;
 margin-right: auto;
 margin-left: auto;
 border: 0;
 }
 
-div#corps div.espace {
+#corps .espace {
 clear: both;
 }
 
-div#cartable {
+#cartable {
 position: absolute;
 height: auto;
 width: 20%;
@@ -131,7 +131,7 @@ border-bottom-left-radius: 25px;
 overflow: hidden;
 }
 
-div#cartable h3 {
+#cartable h3 {
 width: 90%;
 text-align: center;
 border-bottom: solid;
@@ -141,17 +141,17 @@ border-radius: 12px;
 -webkit-border-radius: 12px;
 }
 
-div#cartable a:link {
+#cartable a:link {
 text-decoration: underline;
 }
 
-div#cartable a:visited {
+#cartable a:visited {
 }
 
-div#cartable a:hover {
+#cartable a:hover {
 }
 
-div#soulier {
+#soulier {
 position: relative;
 top: 5px;
 right: 5px;
@@ -159,7 +159,7 @@ height: 20px;
 width: 98%;
 }
 
-div#soulier p {
+#soulier p {
 margin: 0;
 padding: 0;
 font-size: 10px;
