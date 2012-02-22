@@ -74,8 +74,10 @@ width: 98%;
 left: 2%;
 }
 
-div#corps div.ensemble_element {
+div#corps ul.ensemble_element {
 min-height: 10em;
+list-style-type: none;
+padding: 0 5px;
 }
 
 div#corps a.cadre {
@@ -164,3 +166,6 @@ font-size: 10px;
 text-align: center;
 }
 
+.cache_cache {
+display: none;
+}
