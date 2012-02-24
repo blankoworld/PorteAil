@@ -4,18 +4,18 @@
 
 ### À PROPOS ###
 
-PorteAil est un portail web dont le but principal est, comme son nom l'indique,
- de partager un ensemble de liens amenant vers divers lieux.
+PorteAil est un portail web statique dont le but principal est, comme son nom 
+l'indique, de partager un ensemble de liens divers ou partagé par un seul et
+même projet.
 
 Cf. http://fr.wikipedia.org/wiki/Portail_%28web%29 pour de plus amples 
 informations.
 
-PorteAil est un jeu de mot entre Porte, portail et Ail (l'aliment ou le bruit
- que nous faisons après avoir eu mal ?).
+PorteAil est un jeu de mot entre Porte, portail et Ail.
 
 #--[[ Site Web ]]--#
 
-Rien de plus à dire que : http://porteail.e-mergence.org/
+http://porteail.e-mergence.org/
 
 #--[[ Contact ]]--#
 
@@ -30,16 +30,6 @@ redistribuer sous la même licence en précisant le nom de l'auteur.
 Pour plus de renseignements je vous invite à lire le fichier COPYING
 joint avec les fichiers du programme.
 
-### PRÉ - REQUIS ###
-
-Ce programme fonctionne à l'aide de **GNU Make**.
-
-Il requièrt également quelques commandes du SHELL sh comme : 
-- echo
-- test
-- rm
-- cat
-
 ### DESCRIPTION ###
 
 Le script makefile permet de générer un dossier contenant les fichiers 
@@ -49,11 +39,18 @@ suivants :
   - img : dossier contenant l'ensemble des fichiers images (icônes) pour 
 l'affichage des éléments dans la page de garde
 
-### DÉPENDANCES ###
+### PRÉ - REQUIS ###
 
-Le programme requièrt les programmes suivants : 
+Ce programme fonctionne à l'aide de **GNU Make** que vous pouvez installer 
+sur votre machine, par exemple sous GNU/Linux Debian à l'aide de la 
+commande suivante : 
+
+    apt-get install make
+
+Votre système devrais aussi détenir les commandes suivantes : 
 - GNU make
 - cp
+- rm
 - GNU sed
 - sh
 - echo
@@ -67,8 +64,8 @@ n’importe quel système d’exploitation POSIX.
 
 ### INSTALLATION ###
 
-Le programme ne requièrt aucune installation particulière. Placez le où vous 
-voudrez.
+Le programme ne requièrt aucune installation particulière. Placez le où 
+vous voudrez.
 
 ### CONFIGURATION ###
 
@@ -76,6 +73,8 @@ Copiez le fichier 'configrc.exemple' (ou bien renommez le) en 'configrc'.
 
 Sans ce fichier 'configrc' le programme ne peut pas fonctionner (depuis la 
  version 0.1.1).
+
+Pour de plus amples informations sur ce fichier, lisez le chapitre 'configrc'.
 
 ### UTILISATION ###
 
@@ -86,8 +85,22 @@ Il vous suffit de lancer la commande suivante dans le dossier du projet :
 Cela devrait générer le dossier 'porteail' dans lequel se trouve un exemple
  de résultat possible.
 
+Un nouveau dossier 'porteail' apparaît dans lequel il y a : 
+- un fichier 'index.html'
+- une feuille de style nommée 'defaut.css'
+- un dossier 'img' contenant… des images !
+
+Pour supprimer les fichiers générés, il faut utiliser cette commande : 
+
+    make clean
+
+et cela aura pour effet de supprimer le dossier 'porteail' et le fichier
+'categories.html' crée par différents scripts au moment de la génération
+de la page.
+
+### FONCTIONNEMENT BASIQUE ###
+
 Dans sa version 0.1 le programme s'utilise via plusieurs fichiers : 
-- le fichier GNUmakefile
 - le fichier configrc
 - le dossier categ
 - le fichier composants/introduction.html
@@ -100,53 +113,22 @@ Si vous désirez personnaliser encore plus la page PorteAil, vous pouvez
  lire la section « Pour aller plus loin » qui permet de comprendre un
  peu mieux le fonctionnement du programme.
 
-#--[[ Mode de fonctionnement basique ]]--#
-
-Pour utiliser le programme, il suffit d'utiliser une console (shell), 
-d'aller dans le dossier contenant PorteAil, et de faire : 
-
-    make
-
-En théorie un nouveau dossier 'porteail' apparaît dans lequel il y a :
-- un fichier 'index.html'
-- une feuille de style nommée 'defaut.css'
-- un dossier 'img' contenant tout un tas d'image
-
-Si vous voulez supprimer les fichiers crées à l'aide de la commande
-'make' ou pour toute autre raison, faites : 
-
-    make clean
-
-et cela aura pour effet de supprimer le dossier 'porteail' et le fichier
-'categories.html' crée par différents scripts au moment de la génération
-de la page.
-
-#--[[ GNUmakefile ]]--#
-
-Ce fichier contient les éléments de base pour lancer PorteAil. Aucun 
-changement particulier ne doit être effectué sur celui-ci.
-
 #--[[ configrc ]]--#
 
-Ce fichier apparaît depuis la version 0.1.1. Il vous permettra de changer le 
- titre de la page PorteAil et le titre affiché dans un navigateur. Ceci se 
- fait via les deux lignes suivantes : 
+Ce fichier apparaît depuis la version 0.1.1. Il vous permettra de changer, 
+par exemple, le titre de votre page PorteAil. Ceci se fait via la 
+ligne suivante : 
 
 - TITRE=
-- ACCUEIL=
 
-Par exemple pour afficher "Mon super site" sur la page PorteAil et
-avoir "Accueil - Mon super site" dans l'onglet du navigateur, il
-suffit de changer les lignes suivantes du fichier 'configrc' :
+Par exemple pour afficher "Mon super site" sur la page PorteAil, modifiez ceci
+ dans le fichier configrc : 
 
     TITRE = Mon super site
-    ACCUEIL = Accueil - $(TITRE)
 
-Il faut savoir que '$(TITRE)' va se changer en 'Mon super site'.
-C'est la notion même de variables en programmation. Mais passons.
-
-Ces deux variables sont les seules à modifier pour une utilisation 
-simple du programme.
+D'autres éléments peuvent être modifiés afin de personnaliser le résultat de 
+PorteAil. Pour de plus amples renseignements à ce sujet, je vous invite à lire
+ le chapitre 'Pour aller plus loin' du présent document.
 
 #--[[ Le dossier 'categ' ]]--#
 
@@ -172,14 +154,14 @@ Voici une description de catégorie :
 
     [[Titre de ma catégorie]]Description de ma catégorie
 
-Voici une description d'un élément (un par ligne) :
+Voici la description d'un élément (un élément par ligne) :
 
     Titre##URL##DESC##ADDR_IMG
 
 où :
 
 - Titre : est le nom affiché sur le portail de l'élément.
-- URL : est l'adresse COMPLÈTE du site sur lequel on pointe
+- URL : est l'adresse COMPLÈTE du site sur lequel l'utilisateur ira
 - DESC : est la description complète de notre élément pour le passage de la 
  souris sur le lien
 - ADDR_IMG : est l'adresse relative vers l'image (Cf. ci-après pour plus de 
@@ -199,8 +181,9 @@ Vous obtiendrez donc "ma_categorie" en premier lieu, puis "autre_categorie"
 
 #--[[ Le dossier 'img' et Adresse de l'image ]]--#
 
-Dans la version 0.1.1, il faut indiquer l'adresse dite absolute de l'image.
- C'est à dire l'adresse à partir du dossier image source.
+Dans la version 0.1.1, il faut indiquer l'adresse dite absolue de l'image.
+ C'est à dire l'adresse à partir du dossier image source (par défaut c'est
+ le dossier 'img' dans lequel nous irons chercher les images).
 
 Le dossier image source est le dossier contenant l'ensemble des images. C'est 
  un dossier dans lequel le programme va 'piocher' les éléments.
@@ -245,7 +228,7 @@ d'insérer un menu dans la page du PorteAil. Ceci est très utile si vous
 voulez agrémenter le portail de tout un tas d'autres pages.
 
 Par défaut cet élément n'est pas activé. Pour l'activer il suffit de 
-changer la ligne suivante dans el fichier 'configrc' : 
+changer la ligne suivante dans le fichier 'configrc' : 
 
     #MENU = menu.html
 
@@ -289,11 +272,60 @@ la compilation de la page.
 
 #--[[ configrc ]]--#
 
-Le fichier 'configrc' contient un ensemble de variables qui sont utiles pour 
-personnaliser la page de résultat. Voici une liste et la description attachée 
-pour chacun des éléments modifiable/utilisable dans le fichier 'configrc' :
+Le fichier 'configrc' contient tout les éléments utiles pour personnaliser
+la page de résultat.
 
-CIBLE : nom du dossier dans lequel ira le résultat de la génération
+Les lignes contenant des dièses '#' sont des commentaires pour vous aider
+ à mieux comprendre le contenu du fichier.
+
+Le fichier est scindé en plusieurs parties afin de simplifier la découverte
+ des éléments : 
+- configuration basique : quelques éléments à modifier pour changer 
+rapidement la page de résultat
+- configuration avancée : des éléments plus complexes qui ont un impact
+plus grand sur la page de résultat.
+
+Configuration basique :
+- TITRE : Cf. chapitre 'FONCTIONNEMENT BASIQUE'
+- STYLE : nom de la feuille de style qui ajoutera des couleurs à PorteAil
+- MENU : Cf. chapitre 'FONCTIONNEMENT BASIQUE'
+- INTRO : Cf. chapitre 'FONCTIONNEMENT BASIQUE'
+- CIBLE : nom du dossier dans lequel sera généré le portail web.
+
+Configuration avancée :
+- 
+======================================
+
+
+ACCUEIL = Accueil - $(TITRE)
+script_contenu = creation_categ.sh
+INDEX = index.xhtml
+CATEGORIES_EXT = txt
+DEFAUT_IMG = generique.png
+COMPOSANTS = composants
+CATEGORIES = categ
+IMAGES = img
+CSS = style
+IMAGES_CIBLE = image
+CSS_SANS_MENU = sans_menu.css
+CSS_AVEC_MENU = avec_menu.css
+CSS_NOM = defaut.css
+INTRO_ADDR = $(COMPOSANTS)/$(INTRO)
+INDEX_ADDR = $(CIBLE)/$(INDEX)
+MENU_ADDR = $(COMPOSANTS)/$(MENU)
+CSS_SANS_MENU_ADDR = $(CSS)/$(CSS_SANS_MENU)
+CSS_AVEC_MENU_ADDR = $(CSS)/$(CSS_AVEC_MENU)
+STYLE_ADDR = $(CSS)/$(STYLE)
+entete = $(COMPOSANTS)/entete.html
+enqueue = $(COMPOSANTS)/enqueue.html
+contenu_fin = $(COMPOSANTS)/contenu_fin.html
+contenu = categories.html
+categ_deb = categ_deb.html
+categ_fin = categ_fin.html 
+elem = element.html
+DEFAUT_IMG_ADDR = $(IMAGES)/$(DEFAUT_IMG)
+
+==================================
 
 INDEX : nom du fichier dans lequel se trouvera la page web finale.
 
