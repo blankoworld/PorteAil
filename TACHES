@@ -29,8 +29,6 @@ DESTDIR
 
 - favicon.ico ?
 
-- ajouter une extension aux fichiers images copiées
-
 - Simplifier le fichier LISMOI
   - ne donner que quelques lignes simples pour lancer le programme : installer, configurer, lancer !
   - supprimer les chapitres inutiles
@@ -125,3 +123,4 @@ des éléments
 - Fait. Seulement pas de inline-block pour un meilleur affichage | Changer les DIV en une liste d'éléments puis mettre display: inline-block; pour l'affichage. Si liste, alors mettre des point-virgules à la fin de chaque ligne (et les cacher en css)
 - Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS. Alt = rien du tout, et title = nom donné.
 - Meilleur affichage dans les navigateurs textes (seulement les alt des images à modifier)
+- ajouter une extension aux fichiers images copiées

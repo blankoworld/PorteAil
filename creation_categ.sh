@@ -217,16 +217,21 @@ do
       e_url=${e_url_tmp:-""}                                # url element
       e_img_addr_tmp=$(eval echo \$elements_image_addr_${i})
       # Test de l'existence de l'image
-      # On prend le numéro de curseur comme nom d'image
       if ! test -f "${dossier_image}/${e_img_addr_tmp}"
       then
         # si elle n'existe pas, on prend l'image générique
-        cp "$image_defaut" "${destination_finale}/${dest_image}/${debimg}${i}"
+        nom_img=`basename ${image_defaut}`
+        source_img="$image_defaut"
       else
-        # si elle existe, on la copie dans le répertoire image de destination
-        cp "${dossier_image}/${e_img_addr_tmp}" "${destination_finale}/${dest_image}/${debimg}${i}"
+        nom_img=`basename ${e_img_addr_tmp}`
+        source_img="${dossier_image}/${e_img_addr_tmp}"
       fi
-      e_img_addr="${dest_image}/${debimg}${i}"                       # adresse image
+      # On ne copie que si la destination n'existe pas déjà
+      if ! test -f "${destination_finale}/${dest_image}/${nom_img}"
+      then
+        cp "${source_img}" "${destination_finale}/${dest_image}/${nom_img}"
+      fi
+      e_img_addr="${dest_image}/${nom_img}"                       # adresse image
       e_img_titre_tmp=$(eval echo \$elements_image_titre_${i})
       e_img_titre=${e_img_titre_tmp:-""}                    # titre image
       e_img_desc_tmp=$(eval echo \$elements_image_desc_${i})
