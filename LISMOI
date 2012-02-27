@@ -287,48 +287,57 @@ plus grand sur la page de résultat.
 
 Configuration basique :
 - TITRE : Cf. chapitre 'FONCTIONNEMENT BASIQUE'
-- STYLE : nom de la feuille de style qui ajoutera des couleurs à PorteAil
+- STYLE : nom de la feuille de style qui ajoutera des couleurs à PorteAil 
+ (seconde feuille de style en somme). Redéfinir l'ensemble des classes 
+ CSS de ce fichier vous permettra de reconfigurer toute l'apparence de 
+ PorteAil.
 - MENU : Cf. chapitre 'FONCTIONNEMENT BASIQUE'
 - INTRO : Cf. chapitre 'FONCTIONNEMENT BASIQUE'
 - CIBLE : nom du dossier dans lequel sera généré le portail web.
 
 Configuration avancée :
-- 
-======================================
+- ACCUEIL : Titre de la page tel qu'il s'affichera sur un navigateur
+- script_contenu : script bash lancé au moment de la création des 
+ catégories. C'est ce script qui génère les catégories pour la page
+ finale.
+- INDEX : nom du fichier final. Par exemple index.xhtml
+- CATEGORIES_EXT : extension des fichiers qui seront lus pour générer
+ les catégories
+- DEFAUT_IMG : nom de l'image - contenue par défaut dans le dossier img -
+ par défaut pour un élément qui n'a pas d'image ou n'en a pas trouvé.
+- COMPOSANTS : dossier contenant les éléments qui constitueront la page
+ finale
+- CATEGORIES : dossier contenant les fichiers sources des catégories.
+- IMAGES : dossier par défaut contenant les images pour les éléments.
+- CSS : dossier par défaut des feuilles de style
+- IMAGES_CIBLE : nom du dossier qui contiendra les images utilisées par la
+ page finale
+- CSS_SANS_MENU : nom du fichier CSS qui s'utilise lorsque la page n'a pas
+ de menu
+- CSS_AVEC_MENU : idem que CSS_SANS_MENU, mais pour une page ayant un menu
+- CSS_NOM : nom du fichier CSS final
+- INTRO_ADDR : adresse exacte du fichier HTML contenant l'introduction
+- INDEX_ADDR : adresse exacte de la page finale
+- MENU_ADDR : adresse exacte du fichier HTML contenant le menu
+- CSS_SANS_MENU_ADDR : adresse exacte du fichier contenant le code CSS pour la 
+ page sans menu
+- CSS_AVEC_MENU_ADDR : adresse exacte du fichier contenant le code CSS pour la
+ page avec menu
+- STYLE_ADDR : adresse exacte du second fichier CSS (pour la couleur 
+ généralement)
+- entete : adresse exacte du fichier contenant le code HTML de l'entête de 
+la page HTML finale
+- enqueue : adresse exacte du fichier contenant le code HTML de l'enqueue de 
+la page HTML finale
 
-
-ACCUEIL = Accueil - $(TITRE)
-script_contenu = creation_categ.sh
-INDEX = index.xhtml
-CATEGORIES_EXT = txt
-DEFAUT_IMG = generique.png
-COMPOSANTS = composants
-CATEGORIES = categ
-IMAGES = img
-CSS = style
-IMAGES_CIBLE = image
-CSS_SANS_MENU = sans_menu.css
-CSS_AVEC_MENU = avec_menu.css
-CSS_NOM = defaut.css
-INTRO_ADDR = $(COMPOSANTS)/$(INTRO)
-INDEX_ADDR = $(CIBLE)/$(INDEX)
-MENU_ADDR = $(COMPOSANTS)/$(MENU)
-CSS_SANS_MENU_ADDR = $(CSS)/$(CSS_SANS_MENU)
-CSS_AVEC_MENU_ADDR = $(CSS)/$(CSS_AVEC_MENU)
-STYLE_ADDR = $(CSS)/$(STYLE)
-entete = $(COMPOSANTS)/entete.html
-enqueue = $(COMPOSANTS)/enqueue.html
-contenu_fin = $(COMPOSANTS)/contenu_fin.html
-contenu = categories.html
-categ_deb = categ_deb.html
-categ_fin = categ_fin.html 
-elem = element.html
-DEFAUT_IMG_ADDR = $(IMAGES)/$(DEFAUT_IMG)
+- contenu_fin = $(COMPOSANTS)/contenu_fin.html
+- contenu = categories.html
+- categ_deb = categ_deb.html
+- categ_fin = categ_fin.html 
+- elem = element.html
+- DEFAUT_IMG_ADDR = $(IMAGES)/$(DEFAUT_IMG)
 
 ==================================
-
-INDEX : nom du fichier dans lequel se trouvera la page web finale.
-
 INDEX_ADDR : adresse exacte du fichier final (page web).
 
 CSS_SANS_MENU : nom de la feuille de style à utiliser quand la page est générée
@@ -338,25 +347,13 @@ CSS_AVEC_MENU : nom de la feuille de style à utiliser quand la page est génér
 avec un menu. À noter que le fichier doit se trouver dans le dossier 
 'style'.
 
-STYLE : nom de la seconde feuille de style à utiliser pour ajouter des 
-couleurs à votre page. À noter que le fichier doit se trouver dans le dossier
-'style'.
-
 CSS_NOM : nom de la feuille de style dans le résultat final
-
-TITRE : Cf. Chapitre 'configrc' ci-avant.
-
-ACCUEIL : Cf. Chapitre 'configrc' ci-avant.
 
 COMPOSANTS : nom du dossier contenant l'ensemble des composants. Cf Chapitre
 sur les composants 'Les composants'.
 
-MENU : Cf. Chapitre 'Le fichier menu.html'
-
 MENU_ADDR : Adresse exacte du fichier contenant le menu de la future page 
 PorteAil.
-
-INTRO : Cf. Chapitre 'Le fichier introduction.html'
 
 INTRO_ADDR : Adresse exacte du fichier d'introduction de la future page 
 PorteAil.
@@ -367,7 +364,6 @@ attachées à ces composants sont les suivantes :
 - entete : fichier entete.html
 - enqueue : fichier enqueue.html
 - contenu_fin : fichier contenu_fin.html
-- script_contenu : script bash permettant de générer les catégories
 - contenu : fichier temporaire possédant le contenu à insérer dans la page
 - CATEGORIES : désigne le dossier dans lequel se trouve l'ensemble des 
 descriptions des catégories et des éléments se trouvant à l'intérieur de 
