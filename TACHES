@@ -29,10 +29,6 @@ DESTDIR
 
 - favicon.ico ?
 
-- Simplifier le fichier LISMOI
-  - ne donner que quelques lignes simples pour lancer le programme : installer, configurer, lancer !
-  - supprimer les chapitres inutiles
-
 >>> Pour la v0.2 : 
 - Transformer le fichier GNUmakefile en makefile pour bmake
   - changer les sed -i en "sed -e 's/chaine/autrechaine/g' > file.new && mv file.new file" (avec ou sans -e, c'est selon)
@@ -124,3 +120,7 @@ des éléments
 - Supprimer les descriptions des logos pour un meilleur affichage (Cf. elinks par exemple pour une démonstration verbeuse) : les ajouter dans le CSS. Alt = rien du tout, et title = nom donné.
 - Meilleur affichage dans les navigateurs textes (seulement les alt des images à modifier)
 - ajouter une extension aux fichiers images copiées
+- Simplifier le fichier LISMOI
+  - ne donner que quelques lignes simples pour lancer le programme : installer, configurer, lancer !
+  - supprimer les chapitres inutiles
+
