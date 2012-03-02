@@ -12,7 +12,7 @@
 
 >>> Pour la v0.1.2 : 
 - Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
-  - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
+  - FAIT | Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
   - FAIT | ne laisser que la variable CSS_COULEUR ? => trouver une solution potable
   - ne laisser que les variables fondamentales pour l'utilisateur comme le choix du titre, si intro, si menu
   - FAIT | déplacer les variables inutiles à l'utilisateur dans un autre fichier de config qu'on inclue ? Ou bien les mettre avant le include configrc, comme ça l'utilisateur peut les redéfinir si besoin !

@@ -330,30 +330,6 @@ page finale
  de menu
 - CSS_AVEC_MENU : idem que CSS_SANS_MENU, mais pour une page ayant un menu
 - CSS_NOM : nom du fichier CSS final
-- INTRO_ADDR : adresse exacte du fichier HTML contenant l'introduction
-- INDEX_ADDR : adresse exacte de la page finale
-- MENU_ADDR : adresse exacte du fichier HTML contenant le menu
-- CSS_SANS_MENU_ADDR : adresse exacte du fichier contenant le code CSS pour la 
- page sans menu
-- CSS_AVEC_MENU_ADDR : adresse exacte du fichier contenant le code CSS pour la
- page avec menu
-- STYLE_ADDR : adresse exacte du second fichier CSS (pour la couleur 
- généralement)
-- ENTETE_ADDR : adresse exacte du fichier contenant le code HTML de l'entête de 
-la page HTML finale
-- ENQUEUE_ADDR : adresse exacte du fichier contenant le code HTML de l'enqueue de 
-la page HTML finale
-- POST_CONTENU_ADDR : adresse exacte du fichier contenant le code final du contenu.
- C'est utile pour la génération des catégories.
-- ENTETE_CAT_ADDR : adresse exacte du fichier contenant le code HTML du début
-  d'une catégorie
-- ENQUEUE_CAT_ADDR : adresse exacte du fichier contenant le code HTML de la 
-fin d'une catégorie
-- ELEM_ADDR : adresse exacte du fichier contenant le code HTML d'un élément
-- CONTENU_ADDR : adresse exacte du fichier contenant le code HTML de l'ensemble
- des catégories
-- DEFAUT_IMG_ADDR : adresse exacte de l'image par défaut utilisée si jamais 
-aucune image n'est trouvée pour un élément donné.
 
 Pour plus de renseignements, veuillez vous référer au chapitre 'Les 
 composants'.
