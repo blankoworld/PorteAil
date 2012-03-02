@@ -31,11 +31,11 @@ include configrc.exemple
 include configrc
 ## autre configurations
 ifndef $(MENU)
-	dependances_css = $(CSS_SANS_MENU_ADDR)
+	CSS_DEP = $(CSS_SANS_MENU_ADDR)
 else
-	dependances_css = $(CSS_AVEC_MENU_ADDR) 
+	CSS_DEP = $(CSS_AVEC_MENU_ADDR) 
 endif
-dependances_index = $(entete) $(enqueue) $(contenu_fin)
+INDEX_DEP = $(ENTETE_ADDR) $(ENQUEUE_ADDR) $(POST_CONTENU_ADDR)
 SOURCE = $(CATEGORIES)/*.$(CATEGORIES_EXT)
 # programmes
 PROG_ECHO = `which echo`
@@ -117,7 +117,7 @@ test:
 	@$(PROG_ECHO) -e "  …terminé."
 
 # création du fichier CSS
-$(CIBLE)/$(CSS_NOM): $(dependances_css)
+$(CIBLE)/$(CSS_NOM): $(CSS_DEP)
 	@$(PROG_ECHO) -e "Création du fichier CSS…"
 	$(if $(MENU), @$(PROG_CP) $(CSS_AVEC_MENU_ADDR) $(CIBLE)/$(CSS_NOM), @$(PROG_CP) $(CSS_SANS_MENU_ADDR) $(CIBLE)/$(CSS_NOM))
 	@$(PROG_ECHO) -e "  …terminée."
@@ -128,30 +128,30 @@ $(CIBLE)/$(STYLE): $(STYLE_ADDR)
 	@$(PROG_CP) $(STYLE_ADDR) $(CIBLE)/$(STYLE)
 	@$(PROG_ECHO) -e "  …terminée."
 
-# création du fichier $(contenu)
-$(contenu): $(script_contenu) $(SOURCE) $(DEFAUT_IMG_ADDR)
-	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(script_contenu)
+# création du fichier $(CONTENU_ADDR)
+$(CONTENU_ADDR): $(GEN_CATEGORIES) $(SOURCE) $(DEFAUT_IMG_ADDR)
+	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(GEN_CATEGORIES)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(CATEGORIES)"
-	@$(PROG_ECHO) -e "\t\t- Destination temporaire du contenu : $(contenu)"
+	@$(PROG_ECHO) -e "\t\t- Destination temporaire du contenu : $(CONTENU_ADDR)"
 	@$(PROG_ECHO) -e "\t\t- Extension des fichiers à lire : $(CATEGORIES_EXT)"
 	@$(PROG_ECHO) -e "\t\t- Dossier ayant les composants de la page : $(COMPOSANTS)"
-	@$(PROG_ECHO) -e "\t\t- Entête HTML d'une catégorie : $(categ_deb)"
-	@$(PROG_ECHO) -e "\t\t- Enqueue HTML d'une catégorie : $(categ_fin)"
-	@$(PROG_ECHO) -e "\t\t- Code HTML d'un élément : $(elem)"
+	@$(PROG_ECHO) -e "\t\t- Entête HTML d'une catégorie : $(ENTETE_CAT_ADDR)"
+	@$(PROG_ECHO) -e "\t\t- Enqueue HTML d'une catégorie : $(ENQUEUE_ADDR)"
+	@$(PROG_ECHO) -e "\t\t- Code HTML d'un élément : $(ELEMENT_ADDR)"
 	@$(PROG_ECHO) -e "\t\t- Dossier contenant les images sources : $(IMAGES)"
 	@$(PROG_ECHO) -e "\t\t- Dossier de destination des images : $(IMAGES_CIBLE)"
 	@$(PROG_ECHO) -e "\t\t- Image par défaut : $(DEFAUT_IMG_ADDR)"
 	@$(PROG_ECHO) -e "\t\t- Dossier de destination global : $(CIBLE)"
-	@$(PROG_SH) $(script_contenu) $(CATEGORIES) $(contenu) $(CATEGORIES_EXT) $(COMPOSANTS) $(categ_deb) $(categ_fin) $(elem) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
+	@$(PROG_SH) $(GEN_CATEGORIES) $(CATEGORIES) $(CONTENU_ADDR) $(CATEGORIES_EXT) $(COMPOSANTS) $(ENTETE_CAT_ADDR) $(ENQUEUE_CAT_ADDR) $(ELEMENT_ADDR) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
 
 # création de la page d'index
 index: $(INDEX_ADDR)
-$(INDEX_ADDR): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(dependances_index) $(contenu) $(CIBLE)/$(STYLE)
+$(INDEX_ADDR): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(INDEX_DEP) $(CONTENU_ADDR) $(CIBLE)/$(STYLE)
 	@$(PROG_ECHO) -e "Création de la page de garde…"
 # entete
 	@$(PROG_ECHO) -e "\t…insertion de l'entête"
-	@$(PROG_CAT) $(entete) > $(INDEX_ADDR)
+	@$(PROG_CAT) $(ENTETE_ADDR) > $(INDEX_ADDR)
 # modification du contenu
 	@$(PROG_ECHO) -e "\t…modification du contenu"
 	@$(PROG_SED) -i \
@@ -166,20 +166,20 @@ $(INDEX_ADDR): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(dependances_index) $(contenu)
 	$(if $(INTRO), @cat $(INTRO_ADDR) >> $(INDEX_ADDR); $(PROG_ECHO) -e "\t…insertion de l'introduction" || exit 1)
 # contenu
 	@$(PROG_ECHO) -e "\t…insertion du contenu"
-	@$(PROG_CAT) $(contenu) >> $(INDEX_ADDR)
+	@$(PROG_CAT) $(CONTENU_ADDR) >> $(INDEX_ADDR)
 #	fin du contenu
 	@$(PROG_ECHO) -e "\t…insertion de la fin du contenu"
-	@$(PROG_CAT) $(contenu_fin) >> $(INDEX_ADDR)
+	@$(PROG_CAT) $(POST_CONTENU_ADDR) >> $(INDEX_ADDR)
 # menu
 	$(if $(MENU), @cat $(MENU_ADDR) >> $(INDEX_ADDR); $(PROG_ECHO) -e "\t…insertion du menu" || exit 1)
 # enqueue
 	@$(PROG_ECHO) -e "\t…insertion de l'enqueue"
-	@$(PROG_CAT) $(enqueue) >> $(INDEX_ADDR)
+	@$(PROG_CAT) $(ENQUEUE_ADDR) >> $(INDEX_ADDR)
 	@$(PROG_ECHO) -e "  …terminée."
 
 # nettoyage des fichiers générés
 clean:
 	@$(PROG_ECHO) -e "Nettoyage des fichiers en cours…"
 	@$(PROG_RM) -rf $(CIBLE)
-	@$(PROG_RM) -f $(contenu)
+	@$(PROG_RM) -f $(CONTENU_ADDR)
 	@$(PROG_ECHO) -e "  …terminé."

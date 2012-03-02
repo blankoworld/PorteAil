@@ -297,7 +297,7 @@ Configuration basique :
 
 Configuration avancée :
 - ACCUEIL : Titre de la page tel qu'il s'affichera sur un navigateur
-- script_contenu : script bash lancé au moment de la création des 
+- GEN_CATEGORIES : script bash lancé au moment de la création des 
  catégories. C'est ce script qui génère les catégories pour la page
  finale.
 - INDEX : nom du fichier final. Par exemple index.xhtml
@@ -305,6 +305,20 @@ Configuration avancée :
  les catégories
 - DEFAUT_IMG : nom de l'image - contenue par défaut dans le dossier img -
  par défaut pour un élément qui n'a pas d'image ou n'en a pas trouvé.
+- ELEMENT : nom du fichier contenant le code HTML d'un élément. Se trouve 
+par défaut dans le dossier COMPOSANTS.
+- CONTENU : nom du fichier contenu le résultat de la génération des 
+catégories.
+- ENTETE_CAT : nom du fichier contenant le code HTML du début d'une 
+catégorie. Se trouve par défaut dans le dossier COMPOSANT.
+- ENQUEUE_CAT : nom du fichier contenant le code HTML de la fin d'une 
+catégorie. Se trouve par défaut dans le dossier COMPOSANT.
+- POST_CONTENU : nom du fichier contenant le code HTML à utiliser après 
+le contenu des catégories. Se trouve par défaut dans le dossier COMPOSANT.
+- ENTETE : nom du fichier contenant le code HTML à utiliser en début de la
+ page finale.
+- ENQUEUE = nom du fichier contenant le code HTML à utiliser en fin de la 
+page finale
 - COMPOSANTS : dossier contenant les éléments qui constitueront la page
  finale
 - CATEGORIES : dossier contenant les fichiers sources des catégories.
@@ -325,17 +339,19 @@ Configuration avancée :
  page avec menu
 - STYLE_ADDR : adresse exacte du second fichier CSS (pour la couleur 
  généralement)
-- entete : adresse exacte du fichier contenant le code HTML de l'entête de 
+- ENTETE_ADDR : adresse exacte du fichier contenant le code HTML de l'entête de 
 la page HTML finale
-- enqueue : adresse exacte du fichier contenant le code HTML de l'enqueue de 
+- ENQUEUE_ADDR : adresse exacte du fichier contenant le code HTML de l'enqueue de 
 la page HTML finale
-- contenu_fin : adresse exacte du fichier contenant le code final du contenu.
+- POST_CONTENU_ADDR : adresse exacte du fichier contenant le code final du contenu.
  C'est utile pour la génération des catégories.
-- contenu : nom du fichier temporaire dans lequel sera écrit le code HTML du 
-contenu.
-- categ_deb : code HTML du début d'une catégorie
-- categ_fin : code HTML de la fin d'une catégorie
-- elem : code HTML d'un élément
+- ENTETE_CAT_ADDR : adresse exacte du fichier contenant le code HTML du début
+  d'une catégorie
+- ENQUEUE_CAT_ADDR : adresse exacte du fichier contenant le code HTML de la 
+fin d'une catégorie
+- ELEM_ADDR : adresse exacte du fichier contenant le code HTML d'un élément
+- CONTENU_ADDR : adresse exacte du fichier contenant le code HTML de l'ensemble
+ des catégories
 - DEFAUT_IMG_ADDR : adresse exacte de l'image par défaut utilisée si jamais 
 aucune image n'est trouvée pour un élément donné.
 
