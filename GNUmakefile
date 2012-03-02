@@ -25,18 +25,42 @@
 .PHONY: clean
 
 ## VARIABLES ##
-## configuration par défaut de PorteAil
+
+## CONFIG PAR DEFAUT
 include configrc.exemple
-## configuration utilisateur
+
+## CONFIG UTILISATEUR
 include configrc
-## autre configurations
+
+## AUTRES CONFIGS
+
+##--[[ adresses ]]--##
+INTRO_ADDR = $(COMPOSANTS)/$(INTRO)
+INDEX_ADDR = $(CIBLE)/$(INDEX)
+MENU_ADDR = $(COMPOSANTS)/$(MENU)
+CSS_SANS_MENU_ADDR = $(CSS)/$(CSS_SANS_MENU)
+CSS_AVEC_MENU_ADDR = $(CSS)/$(CSS_AVEC_MENU)
+STYLE_ADDR = $(CSS)/$(STYLE)
+ENTETE_ADDR = $(COMPOSANTS)/$(ENTETE)
+ENQUEUE_ADDR = $(COMPOSANTS)/$(ENQUEUE)
+POST_CONTENU_ADDR = $(COMPOSANTS)/$(POST_CONTENU)
+ENTETE_CAT_ADDR = $(COMPOSANTS)/$(ENTETE_CAT)
+ENQUEUE_CAT_ADDR = $(COMPOSANTS)/$(ENQUEUE_CAT)
+ELEMENT_ADDR = $(COMPOSANTS)/$(ELEMENT)
+CONTENU_ADDR = $(COMPOSANTS)/$(CONTENU)
+DEFAUT_IMG_ADDR = $(IMAGES)/$(DEFAUT_IMG)
+
+##--[[ dépendances ]]--##
 ifndef $(MENU)
 	CSS_DEP = $(CSS_SANS_MENU_ADDR)
 else
 	CSS_DEP = $(CSS_AVEC_MENU_ADDR) 
 endif
 INDEX_DEP = $(ENTETE_ADDR) $(ENQUEUE_ADDR) $(POST_CONTENU_ADDR)
+
+# Éléments sources
 SOURCE = $(CATEGORIES)/*.$(CATEGORIES_EXT)
+
 # programmes
 PROG_ECHO = `which echo`
 PROG_TEST = `which test`
