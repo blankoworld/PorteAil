@@ -9,6 +9,7 @@
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
 - Ajouter une option qui affiche sous chaque cadre la description de l'élément (ou bien une autre façon d'afficher les liens)
+- Ajout d'un lien vers le site dont proviennent les images
 
 >>> Pour la v0.1.2 : 
 - Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
