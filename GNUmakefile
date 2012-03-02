@@ -25,6 +25,8 @@
 .PHONY: clean
 
 ## VARIABLES ##
+## configuration par défaut de PorteAil
+include configrc.exemple
 ## configuration utilisateur
 include configrc
 ## autre configurations
