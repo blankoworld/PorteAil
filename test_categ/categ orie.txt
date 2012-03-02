@@ -1,4 +1,0 @@
-[[Categ]]
-## commentaire
-[[Categ2]]
-element##titre de l'élément [[##autre
