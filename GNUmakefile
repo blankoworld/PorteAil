@@ -27,7 +27,7 @@
 ## VARIABLES ##
 
 ## CONFIG PAR DEFAUT
-include configrc.exemple
+include paconfigrc
 
 ## CONFIG UTILISATEUR
 include configrc
