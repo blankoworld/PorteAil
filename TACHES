@@ -1,22 +1,16 @@
 À FAIRE : 
 ----------
 
-- faire une section install dans le makefile permettant d'installer dans 
-DESTDIR
+- faire une section install dans le makefile permettant d'installer dans DESTDIR
 - permettre l'ajout d'un pied de page
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Valider la page à l'aide de TIDY (doit être facultatif)
 - Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
-- faire une page "print.css"
-  - mettre en noir et blanc
-  - ajouter le nom des liens en fin de chaque lien
-- Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
+- Ajouter une option qui affiche sous chaque cadre la description de l'élément (ou bien une autre façon d'afficher les liens)
 
 >>> Pour la v0.1.2 : 
-- HTML 5 avec header et footer
-
 - Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
   - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
   - FAIT | ne laisser que la variable CSS_COULEUR ? => trouver une solution potable
@@ -25,10 +19,9 @@ DESTDIR
   - FAIT | mettre toutes les variables en majuscules OU en minuscule (peut-être les variables en majuscules pour les principales, et celles du Makefile en minuscule
   - FAIT | renommer les variables correctement !
 
+>>> Pour la v0.1.3 : 
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
-
 - favicon.ico ?
-
 - création du fichier configrc s'il n'existe pas (dans test)
 
 >>> Pour la v0.2 : 
@@ -41,6 +34,13 @@ DESTDIR
 >>> Pour la v0.3 : 
 - Transformer variables en anglais
 - Documentation en anglais
+- faire une page "print.css"
+  - mettre en noir et blanc
+  - ajouter le nom des liens en fin de chaque lien
+- Tenter d'utiliser la description de l'élément pour faire une fenêtre qui s'affiche quand on passe sur le cadre de l'élément (tout en CSS si possible !)
+
+>>> Pour la v0.4 : 
+- HTML 5 avec header et footer
 
 ===============================================================================
 
