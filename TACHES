@@ -19,11 +19,11 @@ DESTDIR
 
 - Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
   - Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
-  - ne laisser que la variable CSS_COULEUR ? => trouver une solution potable
+  - FAIT | ne laisser que la variable CSS_COULEUR ? => trouver une solution potable
   - ne laisser que les variables fondamentales pour l'utilisateur comme le choix du titre, si intro, si menu
-  - déplacer les variables inutiles à l'utilisateur dans un autre fichier de config qu'on inclue ? Ou bien les mettre avant le include configrc, comme ça l'utilisateur peut les redéfinir si besoin !
-  - mettre toutes les variables en majuscules OU en minuscule (peut-être les variables en majuscules pour les principales, et celles du Makefile en minuscule
-  - renommer les variables correctement !
+  - FAIT | déplacer les variables inutiles à l'utilisateur dans un autre fichier de config qu'on inclue ? Ou bien les mettre avant le include configrc, comme ça l'utilisateur peut les redéfinir si besoin !
+  - FAIT | mettre toutes les variables en majuscules OU en minuscule (peut-être les variables en majuscules pour les principales, et celles du Makefile en minuscule
+  - FAIT | renommer les variables correctement !
 
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
 
@@ -37,6 +37,10 @@ DESTDIR
   - changer les VAR= en VAR:=
   - changer l'utilisation du shell par TXTs = $(shell ls $(dossier)/*$(ext)), par exemple.
 - Intégrer le script .sh dans le Makefile
+
+>>> Pour la v0.3 : 
+- Transformer variables en anglais
+- Documentation en anglais
 
 ===============================================================================
 

@@ -19,13 +19,27 @@ CIBLE = porteail
 ##--[[ divers ]]--##
 
 ACCUEIL = Accueil - $(TITRE)
-script_contenu = creation_categ.sh
+GEN_CATEGORIES = creation_categ.sh
 INDEX = index.xhtml
 # Extension des fichiers à prendre en compte dans le dossier contenant les 
 #+ catégories
 CATEGORIES_EXT = txt
 # Image de base si aucune mentionnée (par défaut dans le dossier IMAGES)
 DEFAUT_IMG = generique.png
+# Contenu HTML d'un élément
+ELEMENT = element.html
+# résultat de la génération des catégories
+CONTENU = categories.html
+# Contenu HTML à utiliser en début de catégorie
+ENTETE_CAT = categ_deb.html
+# Contenu HTML à utiliser en fin de catégorie
+ENQUEUE_CAT = categ_fin.html
+# Contenu HTML à utiliser après le contenu principal de la page
+POST_CONTENU = contenu_fin.html
+# Contenu HTML à utiliser en début de page finale
+ENTETE = entete.html
+# Contenu HTML à utiliser en fin de page finale
+ENQUEUE = enqueue.html
 
 ##--[[ dossiers ]]--##
 
@@ -57,15 +71,11 @@ MENU_ADDR = $(COMPOSANTS)/$(MENU)
 CSS_SANS_MENU_ADDR = $(CSS)/$(CSS_SANS_MENU)
 CSS_AVEC_MENU_ADDR = $(CSS)/$(CSS_AVEC_MENU)
 STYLE_ADDR = $(CSS)/$(STYLE)
-entete = $(COMPOSANTS)/entete.html
-enqueue = $(COMPOSANTS)/enqueue.html
-contenu_fin = $(COMPOSANTS)/contenu_fin.html
-# résultat de la génération des catégories
-contenu = categories.html
-# entête des catégories (contenu dans dossier composants)
-categ_deb = categ_deb.html
-# enqueue des catégories (contenu dans dossier composants)
-categ_fin = categ_fin.html 
-# code HTML de chaque élément
-elem = element.html
+ENTETE_ADDR = $(COMPOSANTS)/$(ENTETE)
+ENQUEUE_ADDR = $(COMPOSANTS)/$(ENQUEUE)
+POST_CONTENU_ADDR = $(COMPOSANTS)/$(POST_CONTENU)
+ENTETE_CAT_ADDR = $(COMPOSANTS)/$(ENTETE_CAT)
+ENQUEUE_CAT_ADDR = $(COMPOSANTS)/$(ENQUEUE_CAT)
+ELEMENT_ADDR = $(COMPOSANTS)/$(ELEMENT)
+CONTENU_ADDR = $(COMPOSANTS)/$(CONTENU)
 DEFAUT_IMG_ADDR = $(IMAGES)/$(DEFAUT_IMG)

@@ -66,9 +66,9 @@ else
   destination=$2 #"categories.html"
   extension=$3 # Extension des fichiers à prendre en compte
   dossier_composants=$4
-  categ_deb="${dossier_composants}/$5"
-  categ_fin="${dossier_composants}/$6"
-  elem="${dossier_composants}/$7"
+  categ_deb="$5"
+  categ_fin="$6"
+  elem="$7"
   dossier_image=$8
   dest_image=$9
   image_defaut=${10}
