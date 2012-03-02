@@ -12,13 +12,8 @@
 - Ajout d'un lien vers le site dont proviennent les images
 
 >>> Pour la v0.1.2 : 
-- Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
-  - FAIT | Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
-  - FAIT | ne laisser que la variable CSS_COULEUR ? => trouver une solution potable
-  - ne laisser que les variables fondamentales pour l'utilisateur comme le choix du titre, si intro, si menu
-  - FAIT | déplacer les variables inutiles à l'utilisateur dans un autre fichier de config qu'on inclue ? Ou bien les mettre avant le include configrc, comme ça l'utilisateur peut les redéfinir si besoin !
-  - FAIT | mettre toutes les variables en majuscules OU en minuscule (peut-être les variables en majuscules pour les principales, et celles du Makefile en minuscule
-  - FAIT | renommer les variables correctement !
+- Vérifier/optimiser les cibles du makefile
+- Vérifier/optimiser les dépendances du makefile
 
 >>> Pour la v0.1.3 : 
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
@@ -130,4 +125,10 @@ des éléments
 - Simplifier le fichier LISMOI
   - ne donner que quelques lignes simples pour lancer le programme : installer, configurer, lancer !
   - supprimer les chapitres inutiles
-
+- Simplifier le fichier Makefile au niveau des variables pour réduire leur nombre
+  - FAIT | Réorganiser les variables du GNUmakefile pour rendre plus simple le choix des variables par l'utilisateur. Afin qu'il n'ai JAMAIS à mettre d'autre variables dans le contenu. Par exemple jamais écrire cela : $(DOSSIER)/fichier.html !!!!
+  - FAIT | ne laisser que la variable CSS_COULEUR ? => trouver une solution potable
+  - FAIT | ne laisser que les variables fondamentales pour l'utilisateur comme le choix du titre, si intro, si menu
+  - FAIT | déplacer les variables inutiles à l'utilisateur dans un autre fichier de config qu'on inclue ? Ou bien les mettre avant le include configrc, comme ça l'utilisateur peut les redéfinir si besoin !
+  - FAIT | mettre toutes les variables en majuscules OU en minuscule (peut-être les variables en majuscules pour les principales, et celles du Makefile en minuscule
+  - FAIT | renommer les variables correctement !
