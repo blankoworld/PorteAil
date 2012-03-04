@@ -74,6 +74,7 @@ PROG_RM = `which rm`
 PROG_FIND = `which find`
 PROG_SORT = `which sort`
 PROG_WC = `which wc`
+PROG_MKDIR = `which mkdir`
 
 # vérification des programmes
 ifndef PROG_ECHO
@@ -106,6 +107,9 @@ endif
 ifndef PROG_WC
 error_wc = 1
 endif
+ifndef PROG_MKDIR
+error_mkdir = 1
+endif
 
 ## DEBUT
 # création de tous les fichiers
@@ -128,19 +132,21 @@ test:
 	$(if $(error_sort), @$(PROG_ECHO) -e "\t\tsort : MANQUANT." ; exit 1)
 	$(if $(error_wc), @$(PROG_ECHO) -e "\t\twc : MANQUANT." ; exit 1)
 	@$(PROG_ECHO) -e "\t…existence des dossiers '$(IMAGES)', '$(CATEGORIES)' et '$(CSS)'"
-	@$(PROG_TEST) -d $(IMAGES) || mkdir $(IMAGES)
-	@$(PROG_TEST) -d $(CATEGORIES) || mkdir $(CATEGORIES)
-	@$(PROG_TEST) -d $(CSS) || mkdir $(CSS)
+	@for i in $(IMAGES) $(CATEGORIES) $(CSS) ; \
+	do \
+		$(PROG_TEST) -d $$i || exit 1 ; \
+	done ; \
+  $(PROG_ECHO) -e "\t…création des dossiers cibles '$(CIBLE)' et '$(CIBLE)/$(IMAGES_CIBLE)'"
+	@for j in $(CIBLE) $(CIBLE)/$(IMAGES_CIBLE) ; \
+	do \
+	  $(PROG_TEST) -d $$j || $(PROG_MKDIR) $$j ; \
+	done
 	@$(PROG_ECHO) -e "\t…option introduction dans la page"
 	$(if $(INTRO), @$(PROG_TEST) -f $(INTRO_ADDR) || exit 1)
 	$(if $(INTRO), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
 	@$(PROG_ECHO) -e "\t…option ajout d'un menu (vérification de l'existence)"
 	$(if $(MENU), @$(PROG_TEST) -f $(MENU_ADDR) || exit 1)
 	$(if $(MENU), @$(PROG_ECHO) -e "\t\t-> activée", @$(PROG_ECHO) -e "\t\t-> désactivée")
-	@$(PROG_ECHO) -e "\t…création de la destination"
-	@$(PROG_TEST) -d $(CIBLE) || mkdir $(CIBLE)
-	@$(PROG_ECHO) -e "\t…création du dossier '$(IMAGES_CIBLE)'"
-	@$(PROG_TEST) -d $(CIBLE)/$(IMAGES_CIBLE) || mkdir $(CIBLE)/$(IMAGES_CIBLE)
 	@$(PROG_ECHO) -e "  …terminé."
 
 ## FICHIERS CSS

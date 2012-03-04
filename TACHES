@@ -11,9 +11,6 @@
 - Ajouter une option qui affiche sous chaque cadre la description de l'élément (ou bien une autre façon d'afficher les liens)
 - Ajout d'un lien vers le site dont proviennent les images
 
->>> Pour la v0.1.2 : 
-- Vérifier l'existence des dossiers suivants : COMPOSANTS, IMAGE, STYLE, CSS, CIBLE
-
 >>> Pour la v0.1.3 : 
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
 - favicon.ico ?
@@ -133,4 +130,4 @@ des éléments
   - FAIT | renommer les variables correctement !
 - Vérifier/optimiser les cibles du makefile
 - Vérifier/optimiser les dépendances du makefile
-
+- Vérifier l'existence des dossiers suivants : COMPOSANTS, IMAGE, STYLE, CSS, CIBLE
