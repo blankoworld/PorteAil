@@ -57,6 +57,8 @@ else
 	CSS_DEP = $(CSS_AVEC_MENU_ADDR) 
 endif
 INDEX_DEP = $(ENTETE_ADDR) $(ENQUEUE_ADDR) $(POST_CONTENU_ADDR)
+CSS_TOUS = $(CIBLE)/$(STYLE) $(CIBLE)/$(CSS_NOM)
+CONFIG = paconfigrc configrc
 
 # Éléments sources
 SOURCE = $(CATEGORIES)/*.$(CATEGORIES_EXT)
@@ -109,6 +111,7 @@ endif
 # création de tous les fichiers
 all: test index
 
+## TEST
 # divers tests sur l'existence des dossiers/fichiers
 # création si besoin
 test:
@@ -140,20 +143,22 @@ test:
 	@$(PROG_TEST) -d $(CIBLE)/$(IMAGES_CIBLE) || mkdir $(CIBLE)/$(IMAGES_CIBLE)
 	@$(PROG_ECHO) -e "  …terminé."
 
+## FICHIERS CSS
 # création du fichier CSS
-$(CIBLE)/$(CSS_NOM): $(CSS_DEP)
+$(CIBLE)/$(CSS_NOM): $(CONFIG) $(CSS_DEP)
 	@$(PROG_ECHO) -e "Création du fichier CSS…"
 	$(if $(MENU), @$(PROG_CP) $(CSS_AVEC_MENU_ADDR) $(CIBLE)/$(CSS_NOM), @$(PROG_CP) $(CSS_SANS_MENU_ADDR) $(CIBLE)/$(CSS_NOM))
 	@$(PROG_ECHO) -e "  …terminée."
 
 # création du fichier CSS de couleur
-$(CIBLE)/$(STYLE): $(STYLE_ADDR)
+$(CIBLE)/$(STYLE): $(CONFIG) $(STYLE_ADDR)
 	@$(PROG_ECHO) -e "Création du fichier CSS pour les couleurs…"
 	@$(PROG_CP) $(STYLE_ADDR) $(CIBLE)/$(STYLE)
 	@$(PROG_ECHO) -e "  …terminée."
 
+## CATEGORIES
 # création du fichier $(CONTENU_ADDR)
-$(CONTENU_ADDR): $(GEN_CATEGORIES) $(SOURCE) $(DEFAUT_IMG_ADDR)
+$(CONTENU_ADDR): $(CONFIG) $(GEN_CATEGORIES) $(SOURCE) $(DEFAUT_IMG_ADDR)
 	@$(PROG_SED) -i "s/DEBUG=1/DEBUG=0/g" $(GEN_CATEGORIES)
 	@$(PROG_ECHO) -e "Création du contenu avec les valeurs suivantes : "
 	@$(PROG_ECHO) -e "\t\t- Dossier catégorie : $(CATEGORIES)"
@@ -169,9 +174,11 @@ $(CONTENU_ADDR): $(GEN_CATEGORIES) $(SOURCE) $(DEFAUT_IMG_ADDR)
 	@$(PROG_ECHO) -e "\t\t- Dossier de destination global : $(CIBLE)"
 	@$(PROG_SH) $(GEN_CATEGORIES) $(CATEGORIES) $(CONTENU_ADDR) $(CATEGORIES_EXT) $(COMPOSANTS) $(ENTETE_CAT_ADDR) $(ENQUEUE_CAT_ADDR) $(ELEMENT_ADDR) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
 
+## INDEX
 # création de la page d'index
-index: $(INDEX_ADDR)
-$(INDEX_ADDR): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(INDEX_DEP) $(CONTENU_ADDR) $(CIBLE)/$(STYLE)
+index: $(CONFIG) $(INDEX_ADDR) $(CSS_TOUS)
+
+$(INDEX_ADDR): $(CONFIG) $(INDEX_DEP) $(CONTENU_ADDR)
 	@$(PROG_ECHO) -e "Création de la page de garde…"
 # entete
 	@$(PROG_ECHO) -e "\t…insertion de l'entête"
@@ -201,6 +208,7 @@ $(INDEX_ADDR): $(COMPOSANTS) $(CIBLE)/$(CSS_NOM) $(INDEX_DEP) $(CONTENU_ADDR) $(
 	@$(PROG_CAT) $(ENQUEUE_ADDR) >> $(INDEX_ADDR)
 	@$(PROG_ECHO) -e "  …terminée."
 
+## NETTOYAGE
 # nettoyage des fichiers générés
 clean:
 	@$(PROG_ECHO) -e "Nettoyage des fichiers en cours…"

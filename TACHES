@@ -12,8 +12,7 @@
 - Ajout d'un lien vers le site dont proviennent les images
 
 >>> Pour la v0.1.2 : 
-- Vérifier/optimiser les cibles du makefile
-- Vérifier/optimiser les dépendances du makefile
+- Vérifier l'existence des dossiers suivants : COMPOSANTS, IMAGE, STYLE, CSS, CIBLE
 
 >>> Pour la v0.1.3 : 
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
@@ -132,3 +131,6 @@ des éléments
   - FAIT | déplacer les variables inutiles à l'utilisateur dans un autre fichier de config qu'on inclue ? Ou bien les mettre avant le include configrc, comme ça l'utilisateur peut les redéfinir si besoin !
   - FAIT | mettre toutes les variables en majuscules OU en minuscule (peut-être les variables en majuscules pour les principales, et celles du Makefile en minuscule
   - FAIT | renommer les variables correctement !
+- Vérifier/optimiser les cibles du makefile
+- Vérifier/optimiser les dépendances du makefile
+
