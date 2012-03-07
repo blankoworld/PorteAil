@@ -114,6 +114,7 @@ text-decoration: none;
 }
 
 #corps a.cadre .element {
+display: block;
 height: 9em;
 margin-top: 1em;
 }
