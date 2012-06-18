@@ -11,6 +11,8 @@
 - favicon.ico ?
 - création du fichier configrc s'il n'existe pas (dans test)
 - Transformer la doc en README.asciidoc ?
+- Bug: si une URL possède plusieurs &
+- Bug: si caractères accentués dans les titres/description. Souci qui semble se régler en mettant HTML au lieu de XHTML pour la page index
 
 >>> Pour la v0.2 : 
 - Transformer le fichier GNUmakefile en makefile pour bmake
