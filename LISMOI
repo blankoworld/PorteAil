@@ -67,6 +67,11 @@ n’importe quel système d’exploitation POSIX.
 Le programme ne requièrt aucune installation particulière. Placez le où 
 vous voudrez.
 
+En revanche il est possible d'utiliser le script 'install.sh' pour copier 
+le contenu du dossier 'porteail' dans celui du dossier '~/public_html'.;
+
+Pour de plus amples informations sur ce script, lisez le chapitre 'install.sh'.
+
 ### CONFIGURATION ###
 
 Copiez le fichier 'configrc.exemple' (ou bien renommez le) en 'configrc'.
@@ -238,6 +243,25 @@ par
 
 Comme pour l'introduction, il suffit de supprimer le dièse '#' en début de 
 ligne.
+
+#--[[ Le fichier install.sh ]]--#
+
+'install.sh' est un script qui permet de déplacer le résultat du programme 
+PorteAil dans un dossier de son choix.
+
+Pour l'utiliser il suffit de lancer la commande suivante :
+
+    sh install.sh
+
+Par défaut le script essaie de copier le tout dans le dossier 'public_html' 
+du dossier personnel. Par exemple le dossier '/home/olivier/public_html' 
+si votre dossier personnel se trouve dans '/home/olivier'.
+
+Pour modifier les valeurs d'origine et de destination de la copie, éditez le 
+script et modifiez les valeurs suivantes :
+- SRCDIR : contient l'adresse relative du dossier où se situe les fichiers 
+ à copier
+- DESTDIR : contient l'adresse exacte où copier les fichiers (la destination).
 
 ### POUR ALLER PLUS LOIN ###
 
