@@ -214,6 +214,8 @@ do
       e_desc_tmp=$(eval echo \$elements_desc_${i})
       e_desc=${e_desc_tmp:-""}                              # description element
       e_url_tmp=$(eval echo \$elements_url_${i})
+      # modification de l'URL suite au bug sur les & dans SED
+      e_url_tmp=$(echo $e_url_tmp |sed -e 's|\&|\\&amp;|g' |sed -e 's|\=|\\=|g')
       e_url=${e_url_tmp:-""}                                # url element
       e_img_addr_tmp=$(eval echo \$elements_image_addr_${i})
       # Test de l'existence de l'image
