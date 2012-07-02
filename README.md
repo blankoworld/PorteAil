@@ -449,7 +449,7 @@ Les sources du programme peuvent être récupérées sur
 Pour toute suggestion, critique constructive, remarque, notification de bugs, 
 je vous invite à me joindre à l'adresse courriel suivante : 
 
-    olivier CHEZ dossmann POINT net
+    olivier+porteail CHEZ dossmann POINT net
 
 Pensez à ajouter, en début d'objet de votre courriel, l'élément suivant : 
 
