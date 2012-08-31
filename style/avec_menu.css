@@ -184,7 +184,3 @@ text-align: center;
 }
 
 /* DIVERS */
-/* permet de cacher les points virgules en fin de LI */
-.cache_cache {
-display: none;
-}
