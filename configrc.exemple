@@ -20,7 +20,7 @@ CIBLE = porteail
 #
 #ACCUEIL = Accueil - $(TITRE)
 #GEN_CATEGORIES = creation_categ.sh
-#INDEX = index.xhtml
+#INDEX = index.html
 ## Extension des fichiers à prendre en compte dans le dossier contenant les 
 ##+ catégories
 #CATEGORIES_EXT = txt
