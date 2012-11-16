@@ -33,9 +33,6 @@
 - permettre l'ajout d'un pied de page
 - afficher un marqueur graphique qui définit si on sort du site actuel ou pas (genre IN/OUT dans la configuration des éléments, ce qui affiche une icône différente)
 
->>> Pour la v0.4 : 
-- HTML 5 avec header et footer
-
 ===============================================================================
 
 ===============================================================================
@@ -135,3 +132,4 @@ des éléments
 - Vérifier l'existence des dossiers suivants : COMPOSANTS, IMAGE, STYLE, CSS, CIBLE
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Bug: si une URL possède plusieurs &
+- HTML 5 avec header et footer
