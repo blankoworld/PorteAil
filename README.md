@@ -35,7 +35,7 @@ joint avec les fichiers du programme.
 Le script makefile permet de générer un dossier contenant les fichiers 
 suivants : 
 
-  - index.xhtml : page de garde du portail web *PorteAil*
+  - index.html : page de garde du portail web *PorteAil*
   - defaut.css : feuille de style de PorteAil
   - img : dossier contenant l'ensemble des fichiers images (icônes) pour 
 l'affichage des éléments dans la page de garde
@@ -336,7 +336,7 @@ Configuration avancée :
 - GEN_CATEGORIES : script bash lancé au moment de la création des 
  catégories. C'est ce script qui génère les catégories pour la page
  finale.
-- INDEX : nom du fichier final. Par exemple *index.xhtml*
+- INDEX : nom du fichier final. Par exemple *index.html*
 - CATEGORIES_EXT : extension des fichiers qui seront lus pour générer
  les catégories
 - DEFAUT_IMG : nom de l'image - contenue par défaut dans le dossier img -

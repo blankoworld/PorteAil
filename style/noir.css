@@ -34,7 +34,7 @@ color: #000000;
 }
 
 /* ENTÊTE DE PAGE */
-#chapeau {
+header {
 background-color: #000000;
 color: #ffffff;
 }
@@ -47,30 +47,30 @@ color: #ffffff;
 }
 
 /* MENU */
-#cartable {
+aside#cartable {
 background-color: #000000;
 color: #ffffff;
 }
 
-#cartable h3 {
+aside#cartable h3 {
 color: #ffffff;
 border-color: #ffffff;
 }
 
-#cartable a:link {
+aside#cartable a:link {
 color: #aaaabb;
 }
 
-#cartable a:visited {
+aside#cartable a:visited {
 color: #aaaabb;
 }
 
-#cartable a:hover {
+aside#cartable a:hover {
 background-color: #aaaabb;
 color: #223355;
 }
 
 /* ENQUEUE DE PAGE */
-#soulier {
+footer {
 color: #000000;
 }
