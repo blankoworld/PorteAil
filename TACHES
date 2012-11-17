@@ -5,6 +5,12 @@
 - Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
 - Vérifier la présence des /, [ et ] dans les variables avant qu'elles soient mises dans un SED. Ceci à l'aide de ${var//a/b} pour modifier les chaînes A par B dans VAR.
 - Que donne une ligne vide dans le fichier de catégorie ? => à tester comme cas possible
+- Choisir le nombre de colonne d'élément : 
+#corps ul.ensemble_element li {
+width: 11em;
+margin: auto;
+}
+Mettre à width = auto. Si on veut 1 colonne, alors on met 11x1 + 1x1, si on veut deux colonne, alors on met 11x2 + 1x2, 3 colonnes font 11x3 + 1x3
 
 >>> Pour la v0.1.3 : 
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
