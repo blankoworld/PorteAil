@@ -90,6 +90,11 @@ left: 2%;
 min-height: 10em;
 list-style-type: none;
 padding: 0 5px;
+text-align: center;
+}
+
+#corps ul.ensemble_element li {
+display: inline-block;
 }
 
 /* ÉLÉMENT */
