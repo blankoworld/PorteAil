@@ -11,6 +11,7 @@ width: 11em;
 margin: auto;
 }
 Mettre à width = auto. Si on veut 1 colonne, alors on met 11x1 + 1x1, si on veut deux colonne, alors on met 11x2 + 1x2, 3 colonnes font 11x3 + 1x3
+- Permettre d'ajouter des fichiers statiques (pour permettre par exemple de donner un lien vers une version d'un logiciel sur la page d'accueil)
 
 >>> Pour la v0.1.3 : 
 - activer menu avec une variable du genre "MENU_ACTIVE = 1" (par exemple)
