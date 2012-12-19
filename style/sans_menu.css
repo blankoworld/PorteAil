@@ -137,7 +137,7 @@ clear: both;
 }
 
 /* MENU */
-aside#cartable {
+nav#cartable {
 position: absolute;
 height: auto;
 width: 20%;
@@ -152,7 +152,7 @@ border-bottom-left-radius: 25px;
 overflow: hidden;
 }
 
-aside#cartable h3 {
+nav#cartable h3 {
 width: 90%;
 text-align: center;
 border-bottom: solid;
@@ -162,14 +162,14 @@ border-radius: 12px;
 -webkit-border-radius: 12px;
 }
 
-aside#cartable a:link {
+nav#cartable a:link {
 text-decoration: underline;
 }
 
-aside#cartable a:visited {
+nav#cartable a:visited {
 }
 
-aside#cartable a:hover {
+nav#cartable a:hover {
 }
 
 /* ENQUEUE DE PAGE */
