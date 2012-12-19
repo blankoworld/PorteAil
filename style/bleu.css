@@ -46,25 +46,25 @@ color: #ffffff;
 }
 
 /* MENU */
-aside#cartable {
+nav#cartable {
 background-color: #223355;
 color: #ffffff;
 }
 
-aside#cartable h3 {
+nav#cartable h3 {
 color: #ffffff;
 border-color: #ffffff;
 }
 
-aside#cartable a:link {
+nav#cartable a:link {
 color: #aaaabb;
 }
 
-aside#cartable a:visited {
+nav#cartable a:visited {
 color: #aaaabb;
 }
 
-aside#cartable a:hover {
+nav#cartable a:hover {
 background-color: #aaaabb;
 color: #223355;
 }

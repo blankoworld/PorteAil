@@ -180,11 +180,18 @@ $(CONTENU_ADDR): $(CONFIG) $(GEN_CATEGORIES) $(SOURCE) $(DEFAUT_IMG_ADDR)
 	@$(PROG_ECHO) -e "\t\t- Dossier de destination global : $(CIBLE)"
 	@$(PROG_SH) $(GEN_CATEGORIES) $(CATEGORIES) $(CONTENU_ADDR) $(CATEGORIES_EXT) $(COMPOSANTS) $(ENTETE_CAT_ADDR) $(ENQUEUE_CAT_ADDR) $(ELEMENT_ADDR) $(IMAGES) $(IMAGES_CIBLE) $(DEFAUT_IMG_ADDR) $(CIBLE)
 
+## JAVASCRIPT
+# création du fichier html5.js
+html5.js: $(COMPOSANTS)
+	@$(PROG_ECHO) -e "Création du fichier html5.js…"
+	@$(PROG_CP) $(COMPOSANTS)/html5.js $(CIBLE)/html5.js
+	@$(PROG_ECHO) -e "  …terminée."
+
 ## INDEX
 # création de la page d'index
 index: $(CONFIG) $(INDEX_ADDR) $(CSS_TOUS)
 
-$(INDEX_ADDR): $(CONFIG) $(INDEX_DEP) $(CONTENU_ADDR)
+$(INDEX_ADDR): $(CONFIG) $(INDEX_DEP) $(CONTENU_ADDR) html5.js
 	@$(PROG_ECHO) -e "Création de la page de garde…"
 # entete
 	@$(PROG_ECHO) -e "\t…insertion de l'entête"
