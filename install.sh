@@ -6,9 +6,24 @@
 
 SRCDIR=./porteail
 DESTDIR=${HOME}/public_html
+STATICDIR=./static
+
+staticdir_content=0
+if test -d ${STATICDIR}
+then
+  content=`ls ${STATICDIR}|wc -l`
+  if test $content -gt 0
+  then
+    staticdir_content=1
+  fi
+fi
 
 process() {
-  rm -f ${DESTDIR}/* && cp -r ${SRCDIR}/* ${DESTDIR} && echo "...installed!"
+  rm -rf ${DESTDIR}/* && cp -r ${SRCDIR}/* ${DESTDIR} && echo "...installed!"
+  if test ${staticdir_content} -gt 0
+  then
+    cp -r ${STATICDIR}/* ${DESTDIR}
+  fi
 }
 
 echo "INSTALL to ${DESTDIR}..."
