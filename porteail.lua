@@ -9,17 +9,18 @@ require 'lfs'
 --[[ Variables ]]--
 
 -- Mandatories files
-configFile = './' .. 'configrc'
+local configFile = './' .. 'configrc'
 -- Default directories values
 local currentpath = os.getenv('CURDIR') or '.'
-default_dir_category = 'categ'
-default_dir_component = 'composants'
+local default_dir_category = 'categ'
+local default_dir_component = 'composants'
+local default_dir_destination = 'porteail'
 -- Default files values
-default_img_filename = 'generique.png'
-default_header_filename = 'entete.html'
-default_footer_filename = 'enqueue.html'
-default_categ_extension = 'txt'
-
+local default_img_filename = 'generique.png'
+local default_index_filename = 'index.html'
+local default_template_index_filename = 'index.html'
+-- Other defaults values
+local default_categ_extension = 'txt'
 
 --[[ Functions ]]--
 
@@ -40,6 +41,12 @@ function getConfig(file)
   end
   assert(f:close())
   return result
+end
+
+function replace(string, table)
+  return string:gsub("$(%b{})", function(string)
+    return table[string:sub(2,-2)]
+   end)
 end
 
 function listing (path, extension)
@@ -94,21 +101,22 @@ end
 
 -- fetch user defined values
 config = getConfig(configFile)
+
 -- create values for directories
 categ = config['CATEGORIES'] or default_dir_category
 component = config['COMPOSANTS'] or default_dir_component
+destination = config['CIBLE'] or default_dir_destination
 -- create values for files
-header_filename = config['ENTETE'] or default_header_filename
-footer_filename = config['ENQUEUE'] or default_footer_filename
+index_filename = config['INDEX'] or default_index_filename
+main_template = config['TEMPLATE_INDEX'] or default_template_index_filename
 -- other default values
 categ_extension = config['CATEGORIES_EXT'] or default_categ_extension
--- get header and footer content
-header_file = assert(io.open(currentpath .. '/' .. component .. '/' .. header_filename, 'r'))
-header = assert(header_file:read('*a'))
-assert(header_file:close())
-footer_file = assert(io.open(currentpath .. '/' .. component .. '/' .. footer_filename, 'r'))
-footer = assert(footer_file:read('*a'))
-assert(footer_file:close())
+
+-- get page
+index_file = assert(io.open(currentpath .. '/' .. component .. '/' .. index_filename, 'r'))
+index = assert(index_file:read('*a'))
+assert(index_file:close())
+
 -- Browse categ directory
 local categories_files = listing (currentpath .. '/' .. categ, categ_extension)
 if categories_files then
@@ -122,3 +130,22 @@ if categories_files then
 else
   print ("-- No category file found!")
 end
+
+-- Check if public directory exists
+if lfs.attributes(destination) == nil then
+  assert(lfs.mkdir(destination))
+end
+
+-- Create index file in destination directory
+result = assert(io.open(destination .. '/' .. main_template, 'wb'))
+-- create substitution table
+substitutions = {
+  TITLE=config['TITRE'] .. ' - Accueil',
+  PORTEAIL_TITLE=config['TITRE'],
+}
+-- replace variables in result
+assert(result:write(replace(index, substitutions)))
+-- close file
+assert(result:close())
+
+--[[ END ]]--
