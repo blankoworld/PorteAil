@@ -11,7 +11,7 @@ function process(filepath)
   -- parse given file
   for line in io.lines(filepath) do
     -- check if this line is a comment ("# my comment"), a category ("[[My category]]Its description") or an element ("Title##Description##URL##Image")
-    is_comment = string.find(line, '^#(.*)')
+    is_comment = string.find(line, '^#+.*')
     is_title = string.find(line, '%[%[(.*)%]%](.*)')
     is_element = string.find(line, '(.*)##(.*)##(.*)##(.*)')
     if is_comment then
