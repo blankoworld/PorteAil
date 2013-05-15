@@ -43,6 +43,7 @@ PROG_ECHO = `which echo`
 PROG_TEST = `which test`
 PROG_RM = `which rm`
 PROG_LUA = `which lua`
+PROG_SH = `which sh`
 PROG_MKDIR = `which mkdir`
 
 # vérification des programmes
@@ -57,6 +58,9 @@ error_rm = 1
 endif
 ifndef PROG_MKDIR
 error_mkdir = 1
+endif
+ifndef PROG_SH
+error_sh = 1
 endif
 ifndef PROG_LUA
 error_lua = 1
@@ -74,14 +78,9 @@ test:
 	@$(PROG_ECHO) -e "Lancement des tests…"
 	@$(PROG_ECHO) -e "\t…existence des différents programmes"
 	$(if $(error_test), @$(PROG_ECHO) -e "\t\ttest : MANQUANT." ; exit 1)
-	$(if $(error_sed), @$(PROG_ECHO) -e "\t\tsed : MANQUANT." ; exit 1)
-	$(if $(error_cat), @$(PROG_ECHO) -e "\t\tcat : MANQUANT." ; exit 1)
-	$(if $(error_cp), @$(PROG_ECHO) -e "\t\tcp : MANQUANT." ; exit 1)
+	$(if $(error_mkdir), @$(PROG_ECHO) -e "\t\tmkdir : MANQUANT." ; exit 1)
 	$(if $(error_sh), @$(PROG_ECHO) -e "\t\tsh : MANQUANT." ; exit 1)
 	$(if $(error_rm), @$(PROG_ECHO) -e "\t\trm : MANQUANT." ; exit 1)
-	$(if $(error_find), @$(PROG_ECHO) -e "\t\tfind : MANQUANT." ; exit 1)
-	$(if $(error_sort), @$(PROG_ECHO) -e "\t\tsort : MANQUANT." ; exit 1)
-	$(if $(error_wc), @$(PROG_ECHO) -e "\t\twc : MANQUANT." ; exit 1)
 	$(if $(error_lua), @$(PROG_ECHO) -e "\t\tlua : MANQUANT." ; exit 1)
 	@$(PROG_ECHO) -e "\t…existence des dossiers '$(IMAGES)', '$(CATEGORIES)' et '$(CSS)'"
 	@for i in $(IMAGES) $(CATEGORIES) $(CSS) ; \
@@ -107,6 +106,9 @@ homepage:
 	@$(PROG_ECHO) -e "Création de la page d'accueil…"
 	@$(PROG_LUA) create_homepage.lua || exit 1
 	@$(PROG_ECHO) -e "  …terminée."
+
+install:
+	@$(PROG_SH) install.sh || exit 1
 
 ## NETTOYAGE
 # nettoyage des fichiers générés
