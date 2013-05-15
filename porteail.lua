@@ -19,6 +19,8 @@ local default_dir_destination = 'porteail'
 local default_img_filename = 'generique.png'
 local default_index_filename = 'index.html'
 local default_template_index_filename = 'index.html'
+local default_template_categ_filename = 'categ.html'
+local default_template_element_filename = 'one_element.html'
 -- Other defaults values
 local default_categ_extension = 'txt'
 
@@ -68,9 +70,12 @@ function listing (path, extension)
   return files
 end
 
-function process(filepath)
+function process(filepath, template_categ, template_element)
   -- parse given file
+  result = template_categ
+  local elements = {}
   for line in io.lines(filepath) do
+    local element = ''
     -- check if this line is a comment ("# my comment"), a category ("[[My category]]Its description") or an element ("Title##Description##URL##Image")
     is_comment = string.find(line, '^#+.*')
     is_title = string.find(line, '%[%[(.*)%]%](.*)')
@@ -82,19 +87,27 @@ function process(filepath)
       for t in string.gmatch(line, '%[%[(.*)%]%].*') do title = title .. t end
       description =''
       for d in string.gmatch(line, '%[%[.*%]%](.*)') do description = description .. d end
-      print("TITLE: " .. '\n\t' .. title .. '\n\t' .. description)
+      result = replace(result, {CATEG_TITLE=title, CATEG_DESC=description})
     elseif is_element then
       title = ''
       description = ''
       url = ''
       img = ''
       for t in string.gmatch(line, '(.*)##.*##.*##.*') do title = title .. t end
-      for d in string.gmatch(line, '.*##(.*)##.*##.*') do description = description .. d end
-      for u in string.gmatch(line, '.*##.*##(.*)##.*') do url = url .. u end
+      for d in string.gmatch(line, '.*##.*##(.*)##.*') do description = description .. d end
+      for u in string.gmatch(line, '.*##(.*)##.*##.*') do url = url .. u end
       for i in string.gmatch(line, '.*##.*##.*##(.*)') do img = img .. i end
-      print("ELEMENT: " .. '\n\t' .. title .. '\n\t' .. description .. '\n\t' .. url .. '\n\t' .. img)
+      -- FIXME: do img process to have url, copy it and have a description
+      element = replace(template_element, {ELEMENT_URL=url, ELEMENT_DESC=description, ELEMENT_TITLE=title, IMG_TITLE=img})
+      table.insert(elements, element)
     end
   end
+  local text_elements = ''
+  for k, v in pairs(elements) do
+    text_elements = text_elements .. v
+  end
+  result = replace(result, {ELEMENTS=text_elements})
+  return result
 end
 
 --[[ Principal ]]--
@@ -109,22 +122,34 @@ destination = config['CIBLE'] or default_dir_destination
 -- create values for files
 index_filename = config['INDEX'] or default_index_filename
 main_template = config['TEMPLATE_INDEX'] or default_template_index_filename
+template_categ_filename = config['TEMPLATE_CATEG'] or default_template_categ_filename
+template_element_filename = config['TEMPLATE_ELEMENT'] or default_template_element_filename
 -- other default values
 categ_extension = config['CATEGORIES_EXT'] or default_categ_extension
 
--- get page
+-- get pages
 index_file = assert(io.open(currentpath .. '/' .. component .. '/' .. index_filename, 'r'))
 index = assert(index_file:read('*a'))
 assert(index_file:close())
+template_categ_file = assert(io.open(currentpath .. '/' .. component .. '/' .. template_categ_filename, 'r'))
+template_categ = assert(template_categ_file:read('*a'))
+assert(template_categ_file:close())
+template_element_file = assert(io.open(currentpath .. '/' .. component .. '/' .. template_element_filename, 'r'))
+template_element = assert(template_element_file:read('*a'))
+assert(template_element_file:close())
+-- FIXME: intro and menu
+local introduction = ''
+local menu = ''
 
 -- Browse categ directory
 local categories_files = listing (currentpath .. '/' .. categ, categ_extension)
+local content = ''
 if categories_files then
   for k,v in pairs(categories_files) do
     -- read category content
     attr = lfs.attributes(v)
     if attr and attr.mode == 'file' then
-      process(v)
+      content = content .. process(v, template_categ, template_element)
     end
   end
 else
@@ -142,9 +167,13 @@ result = assert(io.open(destination .. '/' .. main_template, 'wb'))
 substitutions = {
   TITLE=config['TITRE'] .. ' - Accueil',
   PORTEAIL_TITLE=config['TITRE'],
+  CONTENT=content,
+  INTRODUCTION=introduction,
+  MENU=menu,
 }
 -- replace variables in result
-assert(result:write(replace(index, substitutions)))
+homepage = replace(index, substitutions)
+assert(result:write(homepage))
 -- close file
 assert(result:close())
 
