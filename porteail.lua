@@ -34,6 +34,24 @@ local default_css_name = 'Défaut'
 
 --[[ Functions ]]--
 
+function readFile(path, mode)
+  result = ''
+  if not mode then
+    mode = 'r'
+  end
+  if mode ~= 'r' and mode ~= 'rb' then
+    print('Unknown read mode!')
+    os.exit(1)
+  end
+  attr = lfs.attributes(path)
+  if attr and attr.mode == 'file' then
+    f = assert(io.open(path, mode))
+    result = assert(f:read('*a'))
+    assert(f:close())
+  end
+  return result
+end
+
 function getConfig(file)
   result = {}
   f = assert(io.open(file, 'r'))
@@ -180,37 +198,25 @@ categ_extension = config['CATEGORIES_EXT'] or default_categ_extension
 css_name = config['CSS_NAME'] or default_css_name
 
 -- get pages
-index_file = assert(io.open(currentpath .. '/' .. component .. '/' .. index_filename, 'r'))
-index = assert(index_file:read('*a'))
-assert(index_file:close())
-template_categ_file = assert(io.open(currentpath .. '/' .. component .. '/' .. template_categ_filename, 'r'))
-template_categ = assert(template_categ_file:read('*a'))
-assert(template_categ_file:close())
-template_element_file = assert(io.open(currentpath .. '/' .. component .. '/' .. template_element_filename, 'r'))
-template_element = assert(template_element_file:read('*a'))
-assert(template_element_file:close())
+index = readFile(currentpath .. '/' .. component .. '/' .. index_filename, 'r')
+template_categ = readFile(currentpath .. '/' .. component .. '/' .. template_categ_filename, 'r')
+template_element = readFile(currentpath .. '/' .. component .. '/' .. template_element_filename, 'r')
 -- open menu file if menu have been activated
 local menu_content = ''
 if menu ~= '' then
-  menu_file = assert(io.open(component .. '/' .. menu, 'r'))
-  menu_content = assert(menu_file:read('*a'))
-  assert(menu_file:close())
+  menu_content = readFile(component .. '/' .. menu, 'r')
 end
 -- open introduction file if intro have been activated
 local introduction_content = ''
 if introduction ~= '' then
-  intro_file = assert(io.open(component .. '/' .. introduction, 'r'))
-  introduction_content = assert(intro_file:read('*a'))
-  assert(intro_file:close())
+  introduction_content = readFile(component .. '/' .. introduction, 'r')
 end
 
--- Check if public directory exists
-if lfs.attributes(destination) == nil then
-  assert(lfs.mkdir(destination))
-end
--- Check if image directory exists
-if lfs.attributes(destination .. '/' .. img_destination) == nil then
-  assert(lfs.mkdir(destination .. '/' .. img_destination))
+-- Check if public and image directory exists
+for i, dir in pairs({destination, destination .. '/' .. img_destination}) do
+  if lfs.attributes(dir) == nil then
+    assert(lfs.mkdir(dir))
+  end
 end
 
 -- Browse categ directory
@@ -260,9 +266,7 @@ for i, filepath in pairs(to_be_copied) do
     os.exit(1)
   end
   dest = destination .. '/' .. basename(filepath)
-  file = assert(io.open(filepath, 'r'))
-  filecontent = assert(file:read('*a'))
-  assert(file:close())
+  filecontent = readFile(filepath, 'r')
   destfile = assert(io.open(dest, 'wb'))
   assert(destfile:write(filecontent))
   assert(destfile:close())
