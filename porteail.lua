@@ -170,8 +170,10 @@ template_element_filename = config['TEMPLATE_ELEMENT'] or default_template_eleme
 default_img = config['DEFAUT_IMG'] or default_img_filename
 css_filename = config['STYLE'] or default_css_filename
 css_menu = default_css_menu_without
+local menu = ''
 if config['MENU'] then
   css_menu = default_css_menu_with
+  menu = config['MENU']
 end
 -- other default values
 categ_extension = config['CATEGORIES_EXT'] or default_categ_extension
@@ -187,9 +189,15 @@ assert(template_categ_file:close())
 template_element_file = assert(io.open(currentpath .. '/' .. component .. '/' .. template_element_filename, 'r'))
 template_element = assert(template_element_file:read('*a'))
 assert(template_element_file:close())
--- FIXME: intro and menu
+-- open menu file if menu have been activated
+local menu_content = ''
+if menu ~= '' then
+  menu_file = assert(io.open(component .. '/' .. menu, 'r'))
+  menu_content = assert(menu_file:read('*a'))
+  assert(menu_file:close())
+end
+-- FIXME: intro
 local introduction = ''
-local menu = ''
 
 -- Check if public directory exists
 if lfs.attributes(destination) == nil then
@@ -223,7 +231,7 @@ substitutions = {
   PORTEAIL_TITLE=config['TITRE'],
   CONTENT=content,
   INTRODUCTION=introduction,
-  MENU=menu,
+  MENU=menu_content,
   CSS_COLOR=css_filename,
   DEFAULT_CSS=css_menu,
 }
