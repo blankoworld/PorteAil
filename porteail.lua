@@ -17,15 +17,20 @@ local default_dir_component = 'composants'
 local default_dir_destination = 'porteail'
 local default_dir_img_destination = 'image'
 local default_dir_img_source = 'img'
+local default_dir_css_source = 'style'
 -- Default files values
 local default_img_filename = 'generique.png'
 local default_index_filename = 'index.html'
 local default_template_index_filename = 'index.html'
 local default_template_categ_filename = 'categ.html'
 local default_template_element_filename = 'one_element.html'
+local default_css_filename = 'noir.css'
+local default_css_menu_without = 'sans_menu.css'
+local default_css_menu_with = 'avec_menu.css'
 -- Other defaults values
 local default_categ_extension = 'txt'
 local DIR_SEP = '/'
+local default_css_name = 'Défaut'
 
 --[[ Functions ]]--
 
@@ -156,14 +161,21 @@ component = config['COMPOSANTS'] or default_dir_component
 destination = config['CIBLE'] or default_dir_destination
 img_destination = config['CIBLE_IMAGE'] or default_dir_img_destination
 img_source = config['IMAGES'] or default_dir_img_source
+css_source = config['CSS'] or default_dir_css_source
 -- create values for files
 index_filename = config['INDEX'] or default_index_filename
 main_template = config['TEMPLATE_INDEX'] or default_template_index_filename
 template_categ_filename = config['TEMPLATE_CATEG'] or default_template_categ_filename
 template_element_filename = config['TEMPLATE_ELEMENT'] or default_template_element_filename
 default_img = config['DEFAUT_IMG'] or default_img_filename
+css_filename = config['STYLE'] or default_css_filename
+css_menu = default_css_menu_without
+if config['MENU'] then
+  css_menu = default_css_menu_with
+end
 -- other default values
 categ_extension = config['CATEGORIES_EXT'] or default_categ_extension
+css_name = config['CSS_NAME'] or default_css_name
 
 -- get pages
 index_file = assert(io.open(currentpath .. '/' .. component .. '/' .. index_filename, 'r'))
@@ -212,11 +224,34 @@ substitutions = {
   CONTENT=content,
   INTRODUCTION=introduction,
   MENU=menu,
+  CSS_COLOR=css_filename,
+  DEFAULT_CSS=css_menu,
 }
 -- replace variables in result
 homepage = replace(index, substitutions)
 assert(result:write(homepage))
 -- close file
 assert(result:close())
+
+-- Copy miscellaneous files to destination
+to_be_copied = {
+  component .. '/' .. 'html5.js',
+  css_source .. '/' .. css_filename,
+  css_source .. '/' .. css_menu,
+}
+for i, filepath in pairs(to_be_copied) do
+  fileattr = lfs.attributes(filepath)
+  if not fileattr or fileattr.mode ~= 'file' then
+    print (filepath .. " doesn't exist or is not a file!")
+    os.exit(1)
+  end
+  dest = destination .. '/' .. basename(filepath)
+  file = assert(io.open(filepath, 'r'))
+  filecontent = assert(file:read('*a'))
+  assert(file:close())
+  destfile = assert(io.open(dest, 'wb'))
+  assert(destfile:write(filecontent))
+  assert(destfile:close())
+end
 
 --[[ END ]]--
