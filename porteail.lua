@@ -15,6 +15,8 @@ local currentpath = os.getenv('CURDIR') or '.'
 local default_dir_category = 'categ'
 local default_dir_component = 'composants'
 local default_dir_destination = 'porteail'
+local default_dir_img_destination = 'image'
+local default_dir_img_source = 'img'
 -- Default files values
 local default_img_filename = 'generique.png'
 local default_index_filename = 'index.html'
@@ -80,9 +82,30 @@ function basename (string, suffix)
   return basename
 end
 
-function process(filepath, template_categ, template_element)
+function processImage(image, source, img_destination, destination, default_img)
+  -- if no image given, use default one
+  if not image or image == nil or image == '' then
+    image = default_img
+  end
+  -- create image weblink
+  result = img_destination .. '/' .. basename(image)
+  -- check if this image exists
+  attr = lfs.attributes(destination .. '/' .. result)
+  if not attr then
+    img_path = source .. '/' .. image
+    f = assert(io.open(img_path, 'rb'))
+    img_src = assert(f:read('*a'))
+    assert(f:close())
+    img_dest = assert(io.open(destination .. '/' .. result, 'wb'))
+    assert(img_dest:write(img_src))
+    assert(img_dest:close())
+  end
+  return result
+end
+
+function process(filepath, template_categ, template_element, img_destination, destination, img_source, default_img)
   -- parse given file
-  result = template_categ
+  local categ_page = ''
   local elements = {}
   for line in io.lines(filepath) do
     local element = ''
@@ -97,7 +120,7 @@ function process(filepath, template_categ, template_element)
       for t in string.gmatch(line, '%[%[(.*)%]%].*') do title = title .. t end
       description =''
       for d in string.gmatch(line, '%[%[.*%]%](.*)') do description = description .. d end
-      result = replace(result, {CATEG_TITLE=title, CATEG_DESC=description})
+      categ_page = replace(template_categ, {CATEG_TITLE=title, CATEG_DESC=description})
     elseif is_element then
       title = ''
       description = ''
@@ -107,9 +130,10 @@ function process(filepath, template_categ, template_element)
       for d in string.gmatch(line, '.*##.*##(.*)##.*') do description = description .. d end
       for u in string.gmatch(line, '.*##(.*)##.*##.*') do url = url .. u end
       for i in string.gmatch(line, '.*##.*##.*##(.*)') do img = img .. i end
-      -- FIXME: do img process to have url, copy it and have a description
-      img_title = basename(img)
-      element = replace(template_element, {ELEMENT_URL=url, ELEMENT_DESC=description, ELEMENT_TITLE=title, IMG_TITLE=img_title})
+      img_description = " "
+      img_url = processImage(img, img_source, img_destination, destination, default_img)
+      url = url:gsub('%&', '%&amp;')
+      element = replace(template_element, {ELEMENT_URL=url, ELEMENT_DESC=description, ELEMENT_TITLE=title, IMG_URL=img_url, IMG_DESC=img_description})
       table.insert(elements, element)
     end
   end
@@ -117,7 +141,7 @@ function process(filepath, template_categ, template_element)
   for k, v in pairs(elements) do
     text_elements = text_elements .. v
   end
-  result = replace(result, {ELEMENTS=text_elements})
+  local result = replace(categ_page, {ELEMENTS=text_elements})
   return result
 end
 
@@ -130,11 +154,14 @@ config = getConfig(configFile)
 categ = config['CATEGORIES'] or default_dir_category
 component = config['COMPOSANTS'] or default_dir_component
 destination = config['CIBLE'] or default_dir_destination
+img_destination = config['CIBLE_IMAGE'] or default_dir_img_destination
+img_source = config['IMAGES'] or default_dir_img_source
 -- create values for files
 index_filename = config['INDEX'] or default_index_filename
 main_template = config['TEMPLATE_INDEX'] or default_template_index_filename
 template_categ_filename = config['TEMPLATE_CATEG'] or default_template_categ_filename
 template_element_filename = config['TEMPLATE_ELEMENT'] or default_template_element_filename
+default_img = config['DEFAUT_IMG'] or default_img_filename
 -- other default values
 categ_extension = config['CATEGORIES_EXT'] or default_categ_extension
 
@@ -152,6 +179,15 @@ assert(template_element_file:close())
 local introduction = ''
 local menu = ''
 
+-- Check if public directory exists
+if lfs.attributes(destination) == nil then
+  assert(lfs.mkdir(destination))
+end
+-- Check if image directory exists
+if lfs.attributes(destination .. '/' .. img_destination) == nil then
+  assert(lfs.mkdir(destination .. '/' .. img_destination))
+end
+
 -- Browse categ directory
 local categories_files = listing (currentpath .. '/' .. categ, categ_extension)
 local content = ''
@@ -160,16 +196,11 @@ if categories_files then
     -- read category content
     attr = lfs.attributes(v)
     if attr and attr.mode == 'file' then
-      content = content .. process(v, template_categ, template_element)
+      content = content .. process(v, template_categ, template_element, img_destination, destination, img_source, default_img)
     end
   end
 else
   print ("-- No category file found!")
-end
-
--- Check if public directory exists
-if lfs.attributes(destination) == nil then
-  assert(lfs.mkdir(destination))
 end
 
 -- Create index file in destination directory
