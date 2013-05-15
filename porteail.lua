@@ -233,6 +233,7 @@ substitutions = {
   INTRODUCTION=introduction,
   MENU=menu_content,
   CSS_COLOR=css_filename,
+  CSS_NAME=css_name,
   DEFAULT_CSS=css_menu,
 }
 -- replace variables in result
