@@ -1,0 +1,64 @@
+###########################
+## Configuration basique ##
+###########################
+
+# Titre de votre PorteAil
+TITRE = Titre par défaut
+# Feuille de style choisie
+STYLE = noir.css
+# Code HTML du menu (par défaut dans le dossier COMPOSANTS)
+#MENU = menu.html
+# Code HTML de l'introduction (par défaut dans le dossier COMPOSANTS)
+#INTRO = introduction.html
+CIBLE = porteail
+
+###########################
+## Configuration avancée ##
+###########################
+
+##--[[ divers ]]--##
+
+ACCUEIL = Accueil - $(TITRE)
+GEN_CATEGORIES = creation_categ.sh
+INDEX = index.html
+# Extension des fichiers à prendre en compte dans le dossier contenant les 
+#+ catégories
+CATEGORIES_EXT = txt
+# Image de base si aucune mentionnée (par défaut dans le dossier IMAGES)
+DEFAUT_IMG = generique.png
+# Contenu HTML d'un élément
+ELEMENT = element.html
+# résultat de la génération des catégories
+CONTENU = categories.html
+# Contenu HTML à utiliser en début de catégorie
+ENTETE_CAT = categ_deb.html
+# Contenu HTML à utiliser en fin de catégorie
+ENQUEUE_CAT = categ_fin.html
+# Contenu HTML à utiliser après le contenu principal de la page
+POST_CONTENU = contenu_fin.html
+# Contenu HTML à utiliser en début de page finale
+ENTETE = entete.html
+# Contenu HTML à utiliser en fin de page finale
+ENQUEUE = enqueue.html
+
+##--[[ dossiers ]]--##
+
+## SOURCES
+# Dossier contenant les éléments composants votre page
+COMPOSANTS = composants
+# dossier contenant le détail des catégories
+CATEGORIES = categ
+# dossier contenant les images
+IMAGES = img
+# dossier contenant les feuilles de style
+CSS = style
+
+## DESTINATION (cible)
+# dossier de destination des images
+IMAGES_CIBLE = image
+
+##--[[ style ]]--##
+
+CSS_SANS_MENU = sans_menu.css
+CSS_AVEC_MENU = avec_menu.css
+CSS_NOM = defaut.css

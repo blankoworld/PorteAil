@@ -1,0 +1,25 @@
+# old one TITRE
+TITLE = Titre par défaut
+STYLE = noir.css
+# old one CIBLE
+DESTINATION = porteail
+# old one ACCUEIL
+HOMEPAGE = Accueil - $(TITRE)
+GEN_CATEGORIES = creation_categ.sh
+INDEX = index.html
+CATEGORIES_EXT = txt
+# old one DEFAUT_IMG
+DEFAULT_IMG = generique.png
+# old one ELEMENT
+TEMPLATE_ELEMENT = element.html
+# new one TEMPLATE_INDEX
+TEMPLATE_INDEX = index.html
+# new one TEMPLATE_CATEG
+TEMPLATE_CATEG = categ.html
+# old one COMPOSANTS
+COMPONENTS = composants
+CATEGORIES = categ
+IMAGES = img
+CSS = style
+# old one CSS_NOM
+CSS_NAME = defaut.css

@@ -22,8 +22,8 @@ local default_dir_css_source = 'style'
 local default_img_filename = 'generique.png'
 local default_index_filename = 'index.html'
 local default_template_index_filename = 'index.html'
-local default_template_categ_filename = 'categ.html'
-local default_template_element_filename = 'one_element.html'
+local default_template_categ_filename = 'categories.html'
+local default_template_element_filename = 'element.html'
 local default_css_filename = 'noir.css'
 local default_css_menu_without = 'sans_menu.css'
 local default_css_menu_with = 'avec_menu.css'
@@ -31,6 +31,8 @@ local default_css_menu_with = 'avec_menu.css'
 local default_categ_extension = 'txt'
 local DIR_SEP = '/'
 local default_css_name = 'Défaut'
+local default_title = 'Titre par défaut'
+local default_homepage_title = 'Accueil - ' .. default_title
 
 --[[ Functions ]]--
 
@@ -175,9 +177,9 @@ config = getConfig(configFile)
 
 -- create values for directories
 categ = config['CATEGORIES'] or default_dir_category
-component = config['COMPOSANTS'] or default_dir_component
-destination = config['CIBLE'] or default_dir_destination
-img_destination = config['CIBLE_IMAGE'] or default_dir_img_destination
+component = config['COMPONENTS'] or default_dir_component
+destination = config['DESTINATION'] or default_dir_destination
+img_destination = config['IMAGE_DESTINATION'] or default_dir_img_destination
 img_source = config['IMAGES'] or default_dir_img_source
 css_source = config['CSS'] or default_dir_css_source
 -- create values for files
@@ -185,7 +187,7 @@ index_filename = config['INDEX'] or default_index_filename
 main_template = config['TEMPLATE_INDEX'] or default_template_index_filename
 template_categ_filename = config['TEMPLATE_CATEG'] or default_template_categ_filename
 template_element_filename = config['TEMPLATE_ELEMENT'] or default_template_element_filename
-default_img = config['DEFAUT_IMG'] or default_img_filename
+default_img = config['DEFAULT_IMG'] or default_img_filename
 css_filename = config['STYLE'] or default_css_filename
 css_menu = default_css_menu_without
 local menu = config['MENU'] or ''
@@ -238,8 +240,8 @@ end
 result = assert(io.open(destination .. '/' .. main_template, 'wb'))
 -- create substitution table
 substitutions = {
-  TITLE=config['TITRE'] .. ' - Accueil',
-  PORTEAIL_TITLE=config['TITRE'],
+  TITLE=config['HOMEPAGE'] or default_homepage_title,
+  PORTEAIL_TITLE=config['TITLE'] or default_title,
   CONTENT=content,
   INTRODUCTION=introduction_content,
   MENU=menu_content,
