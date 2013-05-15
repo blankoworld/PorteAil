@@ -39,6 +39,4 @@ DESTINATION = porteail
 #
 ###--[[ style ]]--##
 #
-#CSS_WITHOUT_MENU = sans_menu.css
-#CSS_WITH_MENU = avec_menu.css
 #CSS_NAME = defaut.css

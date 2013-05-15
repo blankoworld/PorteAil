@@ -34,11 +34,9 @@ TEMPLATE_CATEG = categories.html
 COMPONENTS = composants
 CATEGORIES = categ
 IMAGES = img
-IMAGES_DESTIONATION = image
+IMAGES_DESTINATION = image
 CSS = style
 
 ##--[[ style ]]--##
 
-CSS_WITHOUT_MENU = sans_menu.css
-CSS_WITH_MENU = avec_menu.css
 CSS_NAME = defaut.css
