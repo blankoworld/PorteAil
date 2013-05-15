@@ -108,7 +108,7 @@ homepage:
 	@$(PROG_ECHO) -e "  …terminée."
 
 install:
-	@$(PROG_SH) install.sh || exit 1
+	@SRCDIR=$(DESTINATION) DESTDIR=$(INSTALLDIR) $(PROG_SH) install.sh || exit 1
 
 ## NETTOYAGE
 # nettoyage des fichiers générés

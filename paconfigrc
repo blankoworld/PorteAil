@@ -36,6 +36,7 @@ CATEGORIES = categ
 IMAGES = img
 IMAGES_DESTINATION = image
 CSS = style
+INSTALLDIR = ${HOME}/public_html
 
 ##--[[ style ]]--##
 

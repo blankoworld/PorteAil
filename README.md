@@ -250,32 +250,26 @@ par
 Comme pour l'introduction, il suffit de supprimer le dièse **#** en début de 
 ligne.
 
-### Le fichier install.sh
+### Publication
 
-**install.sh** est un script qui permet de déplacer le résultat du programme 
-PorteAil dans un dossier de son choix.
+Pour publier le résultat dans un dossier web, il vous suffit d'utiliser la 
+commande suivante : 
 
-Pour l'utiliser il suffit de lancer la commande suivante :
+    make install
 
-    sh install.sh
+Ceci permet de déplacer le résultat du programme PorteAil dans un dossier 
+de votre choix.
 
 Par défaut le script essaie de copier le tout dans le dossier **public_html** 
 du dossier personnel. Par exemple le dossier **/home/olivier/public_html** 
 si votre dossier personnel se trouve dans **/home/olivier**.
 
 Pour modifier les valeurs d'origine et de destination de la copie, éditez le 
-script et modifiez les valeurs suivantes :
+fichier de configuration *configrc* et modifiez les valeurs suivantes :
 
-- SRCDIR : contient l'adresse relative du dossier où se situe les fichiers 
- à copier
-- DESTDIR : contient l'adresse exacte où copier les fichiers (la destination).
-
-NB : Il est possible d'avoir le même fonctionnement en utilisant la commande 
- suivante : 
-
-    make install
-
-Et tout sera copié de DESTDIR à SRCDIR.
+- DESTINATION : contient l'adresse relative du dossier où se situe les fichiers 
+ à copier (résultant d'une compilation de PorteAil)
+- INSTALLDIR : contient l'adresse exacte où copier les fichiers (la destination).
 
 ## Pour aller plus loin
 
@@ -355,6 +349,8 @@ Configuration avancée :
 - CATEGORIES : dossier contenant les fichiers sources des catégories.
 - IMAGES : dossier par défaut contenant les images pour les éléments.
 - CSS : dossier par défaut des feuilles de style
+- INSTALLDIR : dossier utilisé lors de la commande *make install* permettant 
+ de copier le résultat final dans un dossier web.
 - IMAGES_DESTINATION : nom du dossier qui contiendra les images utilisées par la
  page finale
 - CSS_NAME : nom du fichier CSS final
