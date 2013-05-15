@@ -23,6 +23,7 @@ local default_template_categ_filename = 'categ.html'
 local default_template_element_filename = 'one_element.html'
 -- Other defaults values
 local default_categ_extension = 'txt'
+local DIR_SEP = '/'
 
 --[[ Functions ]]--
 
@@ -70,6 +71,15 @@ function listing (path, extension)
   return files
 end
 
+function basename (string, suffix)
+  string = string or ''
+  local basename = string.gsub (string, '[^'.. DIR_SEP ..']*'.. DIR_SEP ..'', '')
+  if suffix then
+    basename = string.gsub (basename, suffix, '')
+  end
+  return basename
+end
+
 function process(filepath, template_categ, template_element)
   -- parse given file
   result = template_categ
@@ -98,7 +108,8 @@ function process(filepath, template_categ, template_element)
       for u in string.gmatch(line, '.*##(.*)##.*##.*') do url = url .. u end
       for i in string.gmatch(line, '.*##.*##.*##(.*)') do img = img .. i end
       -- FIXME: do img process to have url, copy it and have a description
-      element = replace(template_element, {ELEMENT_URL=url, ELEMENT_DESC=description, ELEMENT_TITLE=title, IMG_TITLE=img})
+      img_title = basename(img)
+      element = replace(template_element, {ELEMENT_URL=url, ELEMENT_DESC=description, ELEMENT_TITLE=title, IMG_TITLE=img_title})
       table.insert(elements, element)
     end
   end
