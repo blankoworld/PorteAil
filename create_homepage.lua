@@ -134,12 +134,17 @@ function process(filepath, template_categ, template_element, img_destination, de
   local categ_title = ''
   local categ_description = ''
   local categ_count = 0
+  -- parse category file
   for line in io.lines(filepath) do
     local element = ''
-    -- check if this line is a comment ("# my comment"), a category ("[[My category]]Its description") or an element ("Title##Description##URL##Image")
+    -- check if this line is:
+    -- a comment ("# my comment"),
+    -- a category ("[[My category]]Its description")
+    -- or an element ("Title##Description##URL##Image")
     is_comment = string.find(line, '^#+.*')
     is_title = string.find(line, '%[%[(.*)%]%](.*)')
     is_element = string.find(line, '(.*)##(.*)##(.*)##(.*)')
+    -- processing lines to fetch data
     if is_comment then
       -- do nothing because it's a comment
     elseif is_title then
@@ -156,20 +161,36 @@ function process(filepath, template_categ, template_element, img_destination, de
       for u in string.gmatch(line, '.*##(.*)##.*##.*') do url = url .. u end
       for i in string.gmatch(line, '.*##.*##.*##(.*)') do img = img .. i end
       img_description = " "
+      -- copy image and fetch result
       img_url = processImage(img, img_source, img_destination, destination, default_img)
+      -- replace some chars in URL to avoid HTML5 problems
       url = url:gsub('%&', '%&amp;')
+      -- create element's result
       element = replace(template_element, {ELEMENT_URL=url, ELEMENT_DESC=description, ELEMENT_TITLE=title, IMG_URL=img_url, IMG_DESC=img_description})
+      -- add it to elements table
       table.insert(elements, element)
     end
   end
+  -- check if category is ok
+  error_msg = '    ' .. filepath .. ' not imported: '
   if categ_count > 1 then
-    print ('    ' .. filepath .. ' not imported: too many categories.')
+    print (error_msg .. 'too many categories.')
+    return ''
+  elseif categ_count == 0 then
+    print (error_msg .. 'no category found.')
     return ''
   end
+  -- check elements
+  if table.getn(elements) < 1 then
+    print (error_msg .. 'no elements found.')
+    return ''
+  end
+  -- parse elements to add them to result
   local text_elements = ''
   for k, v in pairs(elements) do
     text_elements = text_elements .. v
   end
+  -- do substitutions on result
   local result = replace(template_categ, {CATEG_TITLE=categ_title, CATEG_DESC=categ_description, ELEMENTS=text_elements})
   return result
 end
