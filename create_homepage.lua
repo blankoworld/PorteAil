@@ -130,8 +130,10 @@ end
 
 function process(filepath, template_categ, template_element, img_destination, destination, img_source, default_img)
   -- parse given file
-  local categ_page = ''
   local elements = {}
+  local categ_title = ''
+  local categ_description = ''
+  local categ_count = 0
   for line in io.lines(filepath) do
     local element = ''
     -- check if this line is a comment ("# my comment"), a category ("[[My category]]Its description") or an element ("Title##Description##URL##Image")
@@ -141,11 +143,9 @@ function process(filepath, template_categ, template_element, img_destination, de
     if is_comment then
       -- do nothing because it's a comment
     elseif is_title then
-      title = ''
-      for t in string.gmatch(line, '%[%[(.*)%]%].*') do title = title .. t end
-      description =''
-      for d in string.gmatch(line, '%[%[.*%]%](.*)') do description = description .. d end
-      categ_page = replace(template_categ, {CATEG_TITLE=title, CATEG_DESC=description})
+      for t in string.gmatch(line, '%[%[(.*)%]%].*') do categ_title = categ_title .. t end
+      for d in string.gmatch(line, '%[%[.*%]%](.*)') do categ_description = categ_description .. d end
+      categ_count = categ_count + 1
     elseif is_element then
       title = ''
       description = ''
@@ -162,11 +162,15 @@ function process(filepath, template_categ, template_element, img_destination, de
       table.insert(elements, element)
     end
   end
+  if categ_count > 1 then
+    print ('    ' .. filepath .. ' not imported: too many categories.')
+    return ''
+  end
   local text_elements = ''
   for k, v in pairs(elements) do
     text_elements = text_elements .. v
   end
-  local result = replace(categ_page, {ELEMENTS=text_elements})
+  local result = replace(template_categ, {CATEG_TITLE=categ_title, CATEG_DESC=categ_description, ELEMENTS=text_elements})
   return result
 end
 
