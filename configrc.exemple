@@ -5,7 +5,7 @@
 # Homepage title
 TITLE = Default title
 # CSS color file
-STYLE = noir.css
+STYLE = black.css
 # Menu (if needed)
 #MENU = menu.html
 # Introduction (if needed)
