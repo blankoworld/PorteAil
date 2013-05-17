@@ -3,7 +3,7 @@
 ###########################
 
 # Homepage title
-TITLE = Default title
+TITLE = My portal
 # CSS color file
 STYLE = black.css
 # Menu (if needed)

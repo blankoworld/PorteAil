@@ -30,9 +30,9 @@ local default_css_menu_with = 'with_menu.css'
 -- Other defaults values
 local default_categ_extension = 'txt'
 local DIR_SEP = '/'
-local default_css_name = 'Défaut'
-local default_title = 'Titre par défaut'
-local default_homepage_title = 'Accueil - ' .. default_title
+local default_css_name = 'Default'
+local default_title = 'My portal'
+local default_homepage_title = ' - Homepage'
 
 --[[ Functions ]]--
 
@@ -265,7 +265,7 @@ end
 result = assert(io.open(destination .. '/' .. main_template, 'wb'))
 -- create substitution table
 substitutions = {
-  TITLE=config['HOMEPAGE'] or default_homepage_title,
+  TITLE=config['HOMEPAGE'] or (config['TITLE'] and config['TITLE'] .. default_homepage_title) or (default_title .. default_homepage_title),
   PORTEAIL_TITLE=config['TITLE'] or default_title,
   CONTENT=content,
   INTRODUCTION=introduction_content,
