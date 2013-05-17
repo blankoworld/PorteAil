@@ -1,8 +1,8 @@
-# [[Nom de la catégorie]]Description
-[[Divers]]Quelques éléments en vrac
-# Titre du lien##Adresse web en HTTP##Description du lien##Nom du fichier image
-Inkscape##http://inkscape.org/##Outil de création graphique vectorielle##apps/inkscape.png
-Wine##http://www.winehq.org/##Utilisez des outils Windows sous Linux, BSD, Mac ou Solaris##apps/wine.png
-Dogmazic##http://www.dogmazic.net/##Musique libre##devices/multimedia-player.png
-Vim##http://www.vim.org/##&Eacute;diteur en mode console##apps/utilities-terminal.png
-ChiliProject##https://www.chiliproject.org/##Outil de gestion de projet##status/script-error.png
+# [[Category name]]Description
+[[Miscellaneous]]Some elements
+# Link title ## HTTP website address ## Link description ## Image filename
+Inkscape##http://inkscape.org/##Vectorial creation software##apps/inkscape.png
+Wine##http://www.winehq.org/##Use Windows tools on Linux, BSD, Mac or Solaris##apps/wine.png
+Dogmazic##http://www.dogmazic.net/##Free music##devices/multimedia-player.png
+Vim##http://www.vim.org/##Shell mode editor##apps/utilities-terminal.png
+ChiliProject##https://www.chiliproject.org/##Project management tool##status/script-error.png
