@@ -48,18 +48,21 @@ commande suivante :
 
     apt-get install make
 
+Mais également **Lua 5.1**, installable à l'aide de la commande suivante : 
+
+    apt-get install lua5.1 luarocks
+
+Puis de **LuaFileSystem** : 
+
+    luarocks install luafilesystem
+
 Votre système devrais aussi détenir les commandes suivantes : 
 
-- GNU make
-- cp
 - rm
-- GNU sed
 - sh
 - echo
 - test
-- cat
-- wc
-- grep
+- mkdir
 
 Normalement ces éléments sont inclus de base ou disponibles dans
 n’importe quel système d’exploitation POSIX.
