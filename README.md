@@ -393,10 +393,10 @@ Déposez-y les images que vous allez utiliser.
 ## SOURCES
 
 Les sources du programme peuvent être récupérées sur 
- [un dépôt Git de l'auteur](http://git.dossmann.net/) ou via la commande suivante (à l'aide de l'outil 
- git) :
+ [le dépôt Gitorious](http://gitorious.org/porteail/) ou via la commande 
+ suivante (à l'aide de l'outil git) :
 
-    git clone http://git.dossmann.net/scripts/porteail.git
+    git clone https://git.gitorious.org/porteail/master.git
 
 ## Contact / Bugs
 
