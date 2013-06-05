@@ -1,0 +1,15 @@
+## Tout les robots
+User-Agent: *
+## Autorisations
+#Allow: /mondossier
+## Refus
+Disallow: /image/
+## Evite de dupliquer les donnees
+Disallow: /*.php$
+Disallow: /*.js$
+Disallow: /*.inc$
+Disallow: /*.css$
+
+## MSNBot
+User-Agent: MSNBot
+Disallow: / 
