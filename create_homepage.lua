@@ -18,6 +18,7 @@ local default_dir_destination = 'porteail'
 local default_dir_img_destination = 'image'
 local default_dir_img_source = 'img'
 local default_dir_css_source = 'style'
+local default_dir_lang = 'lang'
 -- Default files values
 local default_img_filename = 'generique.png'
 local default_index_filename = 'index.html'
@@ -33,6 +34,7 @@ local DIR_SEP = '/'
 local default_css_name = 'Default'
 local default_title = 'My portal'
 local default_homepage_title = ' - Homepage'
+local default_language = 'en'
 
 --[[ Functions ]]--
 
@@ -262,7 +264,7 @@ else
 end
 
 -- Create index file in destination directory
-result = assert(io.open(destination .. '/' .. main_template, 'wb'))
+index_result = assert(io.open(destination .. '/' .. main_template, 'wb'))
 -- create substitution table
 substitutions = {
   TITLE=config['HOMEPAGE'] or (config['TITLE'] and config['TITLE'] .. default_homepage_title) or (default_title .. default_homepage_title),
@@ -274,11 +276,20 @@ substitutions = {
   CSS_NAME=css_name,
   DEFAULT_CSS=css_menu,
 }
+
+-- Get language configuration
+language = config['LANG'] or default_language
+languagerc = getConfig(default_dir_lang .. '/' .. language)
+-- Add language translation to replacements table
+for k, v in pairs(languagerc) do
+  substitutions[k] = v
+end
+
 -- replace variables in result
 homepage = replace(index, substitutions)
-assert(result:write(homepage))
+assert(index_result:write(homepage))
 -- close file
-assert(result:close())
+assert(index_result:close())
 
 -- Copy miscellaneous files to destination
 to_be_copied = {

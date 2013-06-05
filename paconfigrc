@@ -19,6 +19,7 @@ DESTINATION = porteail
 
 ##--[[ miscellaneous ]]--##
 
+LANG = en
 HOMEPAGE = Homepage - $(TITLE)
 # File extension to be used to read categories
 CATEGORIES_EXT = txt
