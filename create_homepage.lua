@@ -29,6 +29,7 @@ local default_css_filename = 'black.css'
 local default_css_menu_without = 'without_menu.css'
 local default_css_menu_with = 'with_menu.css'
 -- Other defaults values
+local version = os.getenv('VERSION') or '(Unknown version)'
 local default_categ_extension = 'txt'
 local DIR_SEP = '/'
 local default_css_name = 'Default'
@@ -275,6 +276,7 @@ substitutions = {
   CSS_COLOR=css_filename,
   CSS_NAME=css_name,
   DEFAULT_CSS=css_menu,
+  VERSION=version,
 }
 
 -- Get language configuration

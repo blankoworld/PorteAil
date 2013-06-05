@@ -26,6 +26,8 @@
 
 ## VARIABLES ##
 
+VERSION=0.1.2-trunk
+
 ## CONFIG PAR DEFAUT
 include paconfigrc
 
@@ -104,7 +106,7 @@ test:
 # création de la page d'accueil
 homepage:
 	@$(PROG_ECHO) -e "Création de la page d'accueil…"
-	@$(PROG_LUA) create_homepage.lua || exit 1
+	@VERSION=$(VERSION) $(PROG_LUA) create_homepage.lua || exit 1
 	@$(PROG_ECHO) -e "  …terminée."
 
 install:
