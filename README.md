@@ -336,6 +336,8 @@ Configuration basique :
 
 Configuration avancée : 
 
+- LANG : Langue utilisée pour les traductions de la page (enqueue 
+ principalement)
 - HOMEPAGE : Titre de la page tel qu'il s'affichera sur un navigateur
 - CATEGORIES_EXT : extension des fichiers qui seront lus pour générer
  les catégories
