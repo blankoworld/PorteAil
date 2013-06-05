@@ -20,7 +20,7 @@ DESTINATION = porteail
 ##--[[ miscellaneous ]]--##
 
 #LANG = en
-#HOMEPAGE = Homepage - $(TITLE)
+#HOMEPAGE = Homepage - My portal
 ## File extension to be used to read categories
 #CATEGORIES_EXT = txt
 ## Default image
