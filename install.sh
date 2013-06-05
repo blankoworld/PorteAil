@@ -4,8 +4,8 @@
 
 # Copy porteail directory to user's public_html
 
-SRCDIR=./porteail
-DESTDIR=${HOME}/public_html
+SRCDIR=${SRCDIR:-'./porteail'}
+DESTDIR=${DESTDIR:-"${HOME}/public_html"}
 STATICDIR=./static
 
 staticdir_content=0
@@ -37,6 +37,7 @@ fi
 if ! test -d ${DESTDIR}
 then
   echo "${DESTDIR} directory not found!"
+  exit 1
 fi
 
 echo "This will delete ${DESTDIR} content and copy ${SRCDIR} into. Are you sure [y/n]?"
