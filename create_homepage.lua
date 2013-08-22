@@ -251,6 +251,8 @@ end
 
 -- Browse categ directory
 local categories_files = listing (currentpath .. '/' .. categ, categ_extension)
+-- sort table in order to show categories in the alphabetical order
+table.sort(categories_files)
 local content = ''
 if categories_files then
   for k,v in pairs(categories_files) do
