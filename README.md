@@ -15,7 +15,7 @@ PorteAil est un jeu de mot entre *Porte*, *portail* et *Ail*.
 
 La page officielle du projet, mais également page d'exemple est disponible à 
 l'adresse suivante : 
-[http://porteail.e-mergence.org/](http://porteail.e-mergence.org/ "Se rendre sur le site officiel du projet PorteAil")
+[http://porteail.depotoi.re/](http://porteail.depotoi.re/ "Se rendre sur le site officiel du projet PorteAil")
 
 ### Contact
 
