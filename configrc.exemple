@@ -1,64 +1,44 @@
 ###########################
-## Configuration basique ##
+##  Main configuration   ##
 ###########################
 
-# Titre de votre PorteAil
-TITRE = Titre par défaut
-# Feuille de style choisie
-STYLE = noir.css
-# Code HTML du menu (par défaut dans le dossier COMPOSANTS)
+# Homepage title
+TITLE = My portal
+# CSS color file
+STYLE = black.css
+# Menu (if needed)
 #MENU = menu.html
-# Code HTML de l'introduction (par défaut dans le dossier COMPOSANTS)
+# Introduction (if needed)
 #INTRO = introduction.html
-CIBLE = porteail
+# Destination directory
+DESTINATION = porteail
 
 ###########################
-## Configuration avancée ##
+##   Additional config   ##
 ###########################
-#
-###--[[ divers ]]--##
-#
-#ACCUEIL = Accueil - $(TITRE)
-#GEN_CATEGORIES = creation_categ.sh
-#INDEX = index.html
-## Extension des fichiers à prendre en compte dans le dossier contenant les 
-##+ catégories
+
+##--[[ miscellaneous ]]--##
+
+#LANG = en
+#HOMEPAGE = Homepage - My portal
+## File extension to be used to read categories
 #CATEGORIES_EXT = txt
-## Image de base si aucune mentionnée (par défaut dans le dossier IMAGES)
-#DEFAUT_IMG = generique.png
-## Contenu HTML d'un élément
-#ELEMENT = element.html
-## résultat de la génération des catégories
-#CONTENU = categories.html
-## Contenu HTML à utiliser en début de catégorie
-#ENTETE_CAT = categ_deb.html
-## Contenu HTML à utiliser en fin de catégorie
-#ENQUEUE_CAT = categ_fin.html
-## Contenu HTML à utiliser après le contenu principal de la page
-#POST_CONTENU = contenu_fin.html
-## Contenu HTML à utiliser en début de page finale
-#ENTETE = entete.html
-## Contenu HTML à utiliser en fin de page finale
-#ENQUEUE = enqueue.html
+## Default image
+#DEFAULT_IMG = generique.png
+## Templates
+#TEMPLATE_ELEMENT = element.html
+#TEMPLATE_INDEX = index.html
+#TEMPLATE_CATEG = categories.html
 #
-###--[[ dossiers ]]--##
+###--[[ directories ]]--##
 #
-### SOURCES
-## Dossier contenant les éléments composants votre page
-#COMPOSANTS = composants
-## dossier contenant le détail des catégories
+#COMPONENTS = composants
 #CATEGORIES = categ
-## dossier contenant les images
 #IMAGES = img
-## dossier contenant les feuilles de style
+#IMAGES_DESTINATION = image
 #CSS = style
-#
-### DESTINATION (cible)
-## dossier de destination des images
-#IMAGES_CIBLE = image
+#INSTALLDIR = ${HOME}/public_html
 #
 ###--[[ style ]]--##
 #
-#CSS_SANS_MENU = sans_menu.css
-#CSS_AVEC_MENU = avec_menu.css
-#CSS_NOM = defaut.css
+#CSS_NAME = defaut.css

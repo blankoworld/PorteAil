@@ -18,19 +18,24 @@ local default_dir_destination = 'porteail'
 local default_dir_img_destination = 'image'
 local default_dir_img_source = 'img'
 local default_dir_css_source = 'style'
+local default_dir_lang = 'lang'
 -- Default files values
 local default_img_filename = 'generique.png'
 local default_index_filename = 'index.html'
 local default_template_index_filename = 'index.html'
-local default_template_categ_filename = 'categ.html'
-local default_template_element_filename = 'one_element.html'
-local default_css_filename = 'noir.css'
-local default_css_menu_without = 'sans_menu.css'
-local default_css_menu_with = 'avec_menu.css'
+local default_template_categ_filename = 'categories.html'
+local default_template_element_filename = 'element.html'
+local default_css_filename = 'black.css'
+local default_css_menu_without = 'without_menu.css'
+local default_css_menu_with = 'with_menu.css'
 -- Other defaults values
+local version = os.getenv('VERSION') or '(Unknown version)'
 local default_categ_extension = 'txt'
 local DIR_SEP = '/'
-local default_css_name = 'Défaut'
+local default_css_name = 'Default'
+local default_title = 'My portal'
+local default_homepage_title = ' - Homepage'
+local default_language = 'en'
 
 --[[ Functions ]]--
 
@@ -128,22 +133,27 @@ end
 
 function process(filepath, template_categ, template_element, img_destination, destination, img_source, default_img)
   -- parse given file
-  local categ_page = ''
   local elements = {}
+  local categ_title = ''
+  local categ_description = ''
+  local categ_count = 0
+  -- parse category file
   for line in io.lines(filepath) do
     local element = ''
-    -- check if this line is a comment ("# my comment"), a category ("[[My category]]Its description") or an element ("Title##Description##URL##Image")
+    -- check if this line is:
+    -- a comment ("# my comment"),
+    -- a category ("[[My category]]Its description")
+    -- or an element ("Title##Description##URL##Image")
     is_comment = string.find(line, '^#+.*')
     is_title = string.find(line, '%[%[(.*)%]%](.*)')
     is_element = string.find(line, '(.*)##(.*)##(.*)##(.*)')
+    -- processing lines to fetch data
     if is_comment then
       -- do nothing because it's a comment
     elseif is_title then
-      title = ''
-      for t in string.gmatch(line, '%[%[(.*)%]%].*') do title = title .. t end
-      description =''
-      for d in string.gmatch(line, '%[%[.*%]%](.*)') do description = description .. d end
-      categ_page = replace(template_categ, {CATEG_TITLE=title, CATEG_DESC=description})
+      for t in string.gmatch(line, '%[%[(.*)%]%].*') do categ_title = categ_title .. t end
+      for d in string.gmatch(line, '%[%[.*%]%](.*)') do categ_description = categ_description .. d end
+      categ_count = categ_count + 1
     elseif is_element then
       title = ''
       description = ''
@@ -154,17 +164,37 @@ function process(filepath, template_categ, template_element, img_destination, de
       for u in string.gmatch(line, '.*##(.*)##.*##.*') do url = url .. u end
       for i in string.gmatch(line, '.*##.*##.*##(.*)') do img = img .. i end
       img_description = " "
+      -- copy image and fetch result
       img_url = processImage(img, img_source, img_destination, destination, default_img)
+      -- replace some chars in URL to avoid HTML5 problems
       url = url:gsub('%&', '%&amp;')
+      -- create element's result
       element = replace(template_element, {ELEMENT_URL=url, ELEMENT_DESC=description, ELEMENT_TITLE=title, IMG_URL=img_url, IMG_DESC=img_description})
+      -- add it to elements table
       table.insert(elements, element)
     end
   end
+  -- check if category is ok
+  error_msg = '    ' .. filepath .. ' not imported: '
+  if categ_count > 1 then
+    print (error_msg .. 'too many categories.')
+    return ''
+  elseif categ_count == 0 then
+    print (error_msg .. 'no category found.')
+    return ''
+  end
+  -- check elements
+  if table.getn(elements) < 1 then
+    print (error_msg .. 'no elements found.')
+    return ''
+  end
+  -- parse elements to add them to result
   local text_elements = ''
   for k, v in pairs(elements) do
     text_elements = text_elements .. v
   end
-  local result = replace(categ_page, {ELEMENTS=text_elements})
+  -- do substitutions on result
+  local result = replace(template_categ, {CATEG_TITLE=categ_title, CATEG_DESC=categ_description, ELEMENTS=text_elements})
   return result
 end
 
@@ -175,9 +205,9 @@ config = getConfig(configFile)
 
 -- create values for directories
 categ = config['CATEGORIES'] or default_dir_category
-component = config['COMPOSANTS'] or default_dir_component
-destination = config['CIBLE'] or default_dir_destination
-img_destination = config['CIBLE_IMAGE'] or default_dir_img_destination
+component = config['COMPONENTS'] or default_dir_component
+destination = config['DESTINATION'] or default_dir_destination
+img_destination = config['IMAGE_DESTINATION'] or default_dir_img_destination
 img_source = config['IMAGES'] or default_dir_img_source
 css_source = config['CSS'] or default_dir_css_source
 -- create values for files
@@ -185,7 +215,7 @@ index_filename = config['INDEX'] or default_index_filename
 main_template = config['TEMPLATE_INDEX'] or default_template_index_filename
 template_categ_filename = config['TEMPLATE_CATEG'] or default_template_categ_filename
 template_element_filename = config['TEMPLATE_ELEMENT'] or default_template_element_filename
-default_img = config['DEFAUT_IMG'] or default_img_filename
+default_img = config['DEFAULT_IMG'] or default_img_filename
 css_filename = config['STYLE'] or default_css_filename
 css_menu = default_css_menu_without
 local menu = config['MENU'] or ''
@@ -221,6 +251,8 @@ end
 
 -- Browse categ directory
 local categories_files = listing (currentpath .. '/' .. categ, categ_extension)
+-- sort table in order to show categories in the alphabetical order
+table.sort(categories_files)
 local content = ''
 if categories_files then
   for k,v in pairs(categories_files) do
@@ -235,23 +267,33 @@ else
 end
 
 -- Create index file in destination directory
-result = assert(io.open(destination .. '/' .. main_template, 'wb'))
+index_result = assert(io.open(destination .. '/' .. main_template, 'wb'))
 -- create substitution table
 substitutions = {
-  TITLE=config['TITRE'] .. ' - Accueil',
-  PORTEAIL_TITLE=config['TITRE'],
+  TITLE=config['HOMEPAGE'] or (config['TITLE'] and config['TITLE'] .. default_homepage_title) or (default_title .. default_homepage_title),
+  PORTEAIL_TITLE=config['TITLE'] or default_title,
   CONTENT=content,
   INTRODUCTION=introduction_content,
   MENU=menu_content,
   CSS_COLOR=css_filename,
   CSS_NAME=css_name,
   DEFAULT_CSS=css_menu,
+  VERSION=version,
 }
+
+-- Get language configuration
+language = config['LANG'] or default_language
+languagerc = getConfig(default_dir_lang .. '/' .. language)
+-- Add language translation to replacements table
+for k, v in pairs(languagerc) do
+  substitutions[k] = v
+end
+
 -- replace variables in result
 homepage = replace(index, substitutions)
-assert(result:write(homepage))
+assert(index_result:write(homepage))
 -- close file
-assert(result:close())
+assert(index_result:close())
 
 -- Copy miscellaneous files to destination
 to_be_copied = {
