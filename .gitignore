@@ -1,3 +1,4 @@
 porteail/*
 .gitignore
-configrc
+pub/*
+www/*

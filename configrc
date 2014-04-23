@@ -1,0 +1,44 @@
+###########################
+##  Main configuration   ##
+###########################
+
+# Homepage title
+TITLE = PorteAil
+# CSS color file
+STYLE = black.css
+# Menu (if needed)
+#MENU = menu.html
+# Introduction (if needed)
+INTRO = ../intro.html
+# Destination directory
+DESTINATION = pub
+
+###########################
+##   Additional config   ##
+###########################
+
+##--[[ miscellaneous ]]--##
+
+LANG = fr
+HOMEPAGE = PorteAil
+## File extension to be used to read categories
+CATEGORIES_EXT = pa
+## Default image
+#DEFAULT_IMG = generique.png
+## Templates
+#TEMPLATE_ELEMENT = element.html
+#TEMPLATE_INDEX = index.html
+#TEMPLATE_CATEG = categories.html
+#
+###--[[ directories ]]--##
+#
+#COMPONENTS = composants
+#CATEGORIES = categ
+#IMAGES = img
+#IMAGES_DESTINATION = image
+#CSS = style
+INSTALLDIR = www
+#
+###--[[ style ]]--##
+#
+#CSS_NAME = defaut.css
