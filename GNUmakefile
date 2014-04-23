@@ -26,7 +26,7 @@
 
 ## VARIABLES ##
 
-VERSION=0.1.3
+VERSION=0.1.3-trunk
 
 ## CONFIG PAR DEFAUT
 include paconfigrc
