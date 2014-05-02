@@ -1,0 +1,6 @@
+[[Nutritive]]
+Accueil##http://nutritive.org##Portail d'accueil du projet nutritive##categories/applications-internet.png
+Tartine##http://tartine.nutritive.org##pastebin nutritive##actions/edit-paste.png
+Wiki##http://wiki.nutritive.org##Wiki du projet##wiki.png
+Gestion##http://forge.e-mergence.org##Outil de gestion du projet##actions/chronometer.png
+Nouvelles##http://nouvelles.nutritive.org##Blog du projet##mimetypes/message-news.png
