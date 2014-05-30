@@ -1,4 +1,4 @@
 [[Divers]]
-Code konami##http://konami.dossmann.net##Code konami##actions/roll.png
+#Code konami##http://konami.dossmann.net##Code konami##actions/roll.png
 #Raccourci les URLs##http://b4n.fr##Raccourci les URL##actions/edit-cut.png
 #Cloud##http://nuage.b4n.fr##Un petit nuage##nuages.png
