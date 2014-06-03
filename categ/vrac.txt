@@ -1,8 +1,0 @@
-# [[Category name]]Description
-[[Miscellaneous]]Some elements
-# Link title ## HTTP website address ## Link description ## Image filename
-Inkscape##http://inkscape.org/##Vectorial creation software##apps/inkscape.png
-Wine##http://www.winehq.org/##Use Windows tools on Linux, BSD, Mac or Solaris##apps/wine.png
-Dogmazic##http://www.dogmazic.net/##Free music##devices/multimedia-player.png
-Vim##http://www.vim.org/##Shell mode editor##apps/utilities-terminal.png
-ChiliProject##https://www.chiliproject.org/##Project management tool##status/script-error.png

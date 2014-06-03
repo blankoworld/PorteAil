@@ -1,5 +1,0 @@
-# This is a comment
-[[Example category]]The description of my category
-Are you lost?##http://perdu.com##Go to perdu.com website##apps/preferences-system-session-services.png
-Exalead##http://exalead.fr##Visit Exalead##apps/preferences-web-browser-shortcuts.png
-Google PorteAil Search##http://www.google.com/search?q=porteail&ie=utf-8&oe=utf-8&client=ubuntu&channel=fs##Search PorteAil on Google##

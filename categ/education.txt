@@ -1,5 +1,0 @@
-# [[Category name]]Description
-[[Education]]Education topic
-# Link title ## HTTP website address ## Link description ## Image filename
-Seeks##http://www.seeks-project.info/search.php/websearch-hp##Decentralized search meta-engine##apps/nepomuk.png
-OOo4kids##http://wiki.ooo4kids.org/index.php/Main_Page/fr##Free desktop software for 7-12 year old kids##apps/okteta.png

@@ -1,0 +1,44 @@
+###########################
+##  Main configuration   ##
+###########################
+
+# Homepage title
+TITLE = Régis Hamann
+# CSS color file
+STYLE = black.css
+# Menu (if needed)
+#MENU = menu.html
+# Introduction (if needed)
+#INTRO = introduction.html
+# Destination directory
+DESTINATION = porteail
+
+###########################
+##   Additional config   ##
+###########################
+
+##--[[ miscellaneous ]]--##
+
+LANG = fr
+#HOMEPAGE = Homepage - My portal
+## File extension to be used to read categories
+#CATEGORIES_EXT = txt
+## Default image
+#DEFAULT_IMG = generique.png
+## Templates
+#TEMPLATE_ELEMENT = element.html
+#TEMPLATE_INDEX = index.html
+#TEMPLATE_CATEG = categories.html
+#
+###--[[ directories ]]--##
+#
+#COMPONENTS = composants
+#CATEGORIES = categ
+#IMAGES = img
+#IMAGES_DESTINATION = image
+#CSS = style
+#INSTALLDIR = ${HOME}/public_html
+#
+###--[[ style ]]--##
+#
+#CSS_NAME = defaut.css

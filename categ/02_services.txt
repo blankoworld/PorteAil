@@ -1,0 +1,6 @@
+[[Mes services]]Ce que j'héberge
+# Link title ## HTTP website address ## Link description ## Image filename
+Shaarli##http://r129i.eu/links/##Mon Shaarli (Sebsauvage)##shaarli.png
+Leed##http://r129i.eu/leed/##Mes flux RSS avec Leed (Idleman)##apps/akregator.png
+Media##http://r129i.eu/media/##Media avec PHPmyLMB-XT (Mitsu Karenai)##apps/kmplayer.png
+Poche##http://r129i.eu/wallabag/##Mon poche Libre (Nicolas Loeuillet)##apps/knewsticker.png
