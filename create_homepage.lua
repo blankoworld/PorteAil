@@ -297,7 +297,6 @@ assert(index_result:close())
 
 -- Copy miscellaneous files to destination
 to_be_copied = {
-  component .. '/' .. 'html5.js',
   css_source .. '/' .. css_filename,
   css_source .. '/' .. css_menu,
 }

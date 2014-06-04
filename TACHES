@@ -133,7 +133,8 @@ des éléments
 - ajouter les fichiers générés pour chaque section du makefile (ceci de manière intelligente… si possible !)
 - Bug: si une URL possède plusieurs &
 - HTML 5 avec header et footer
-- Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)- Permettre d'ajouter des fichiers statiques (pour permettre par exemple de donner un lien vers une version d'un logiciel sur la page d'accueil)
+- Trouver une méthode plus fine pour trouver le nombre de catégories par fichier (autre qu'un grep par exemple)
+- Permettre d'ajouter des fichiers statiques (pour permettre par exemple de donner un lien vers une version d'un logiciel sur la page d'accueil)
 - aside en NAV !!!
 - faire une section install dans le makefile permettant d'installer dans DESTDIR
 - Transformer variables en anglais
