@@ -37,7 +37,7 @@ LANG = fr
 #IMAGES = img
 #IMAGES_DESTINATION = image
 #CSS = style
-#INSTALLDIR = ${HOME}/public_html
+INSTALLDIR = ./www
 #
 ###--[[ style ]]--##
 #
