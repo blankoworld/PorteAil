@@ -1,3 +1,3 @@
 [[Hambourg]]
 Sur Free##http://hambourg.free.fr##Mon voyage à Hambourg en 2005##actions/help-contextual.png
-Redirection##http://hambourg.fr.st##Mon voyage à Hambourg en 2005##actions/help-contextual.png
+#Redirection##http://hambourg.fr.st##Mon voyage à Hambourg en 2005##actions/help-contextual.png
