@@ -1,3 +1,21 @@
+# Dependancies
+
+  * moonbox (Cf. https://github.com/kernelp4nic/moonbox)
+
+# Installation
+
+```bash
+moonbox install
+make
+make install
+porteail --help
+```
+
+
+
+
+----
+
 # Programme PorteAil ##
 
 ## À propos

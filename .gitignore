@@ -1,3 +1,4 @@
-porteail/*
+result/*
 .gitignore
-configrc
+.moonbox
+tmp/*

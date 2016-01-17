@@ -1,0 +1,11 @@
+# 
+#   WARNING: This file is an example, needs to be edited
+#   in order to work with your lua rocks
+#   
+# penlight                                                   # without version, will install the latest
+# redis-lua 2.0.4-1                                          # provide a rock version
+# gin 0.1.4-1 http://gin.io/repo                             # you can also provide a custom server
+# http://luarocks.org/repositories/rocks/uuid-0.2-1.rockspec # you can provide a rockspec url too
+argparse
+luafilesystem
+moonscript
