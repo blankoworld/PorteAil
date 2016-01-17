@@ -1,18 +1,24 @@
 # Dependancies
 
+  * luarocks
+  * lua-sec (required by luarocks to install moonbox)
   * moonbox (Cf. https://github.com/kernelp4nic/moonbox)
 
-# Installation
+# Install
 
 ```bash
 moonbox install
+source moonbox env enter
 make
-make install
-porteail --help
+PREFIX=.moonbox make install
+.moonbox/bin/porteail --help
 ```
 
+# Uninstall
 
-
+```bash
+PREFIX=.moonbox make uninstall
+```
 
 ----
 

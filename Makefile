@@ -19,6 +19,10 @@ test:
 compile: test
 	moonc -t "${TMPDIR}" "${PWD}/${PROJECT}/config.moon"
 	moonc -t "${TMPDIR}" "${PWD}/porteail.moon"
+	# Create a usable Lua file
+	echo "#!/usr/bin/env lua" > "${TMPDIR}/${PROJECT}.lua.new"
+	cat "${TMPDIR}/${PROJECT}.lua" >> "${TMPDIR}/${PROJECT}.lua.new"
+	mv "${TMPDIR}/${PROJECT}.lua.new" "${TMPDIR}/${PROJECT}.lua"
 
 install:
 	mkdir -p "${DESTDIR}${BINDIR}"
@@ -28,7 +32,7 @@ install:
 
 uninstall:
 	rm -f "${DESTDIR}${BINDIR}/${PROJECT}"
-	rm -f ${LUA_SHAREDIR}/${PROJECT}/config.lua
+	rm -f "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}/config.lua"
 	rmdir "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}"
 
 clean:
