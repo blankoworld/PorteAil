@@ -2,6 +2,7 @@
 
 argparse = require "argparse"
 config = require "porteail.config"
+page = require "porteail.page"
 lfs = require "lfs"
 
 root = lfs.currentdir!
@@ -16,7 +17,7 @@ parser\option "-c --config-file", "Use a specific configuration file.",
 command = parser\command "build", "Build portal"
 command\argument "config", "configuration file", "confs/default"
 
--- Retrieve user given command
+-- Get program arguments
 opt = parser\parse arg
 
 -- Open configuration
@@ -27,7 +28,12 @@ if not cfg
 
 -- What's going on?
 if opt.build
-  print "je compile"
+  print "Create homepage"
+  r, e = page.create_homepage root, cfg
+  if e
+    print e
+    os.exit 1
+  print "Done."
 else
   print "Use --help instead"
   os.exit 1

@@ -18,6 +18,8 @@ test:
 
 compile: test
 	moonc -t "${TMPDIR}" "${PWD}/${PROJECT}/config.moon"
+	moonc -t "${TMPDIR}" "${PWD}/${PROJECT}/fs.moon"
+	moonc -t "${TMPDIR}" "${PWD}/${PROJECT}/page.moon"
 	moonc -t "${TMPDIR}" "${PWD}/porteail.moon"
 	# Create a usable Lua file
 	echo "#!/usr/bin/env lua" > "${TMPDIR}/${PROJECT}.lua.new"
@@ -29,10 +31,14 @@ install:
 	mkdir -p "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}"
 	install -m0755 ${TMPDIR}/${PROJECT}.lua "${DESTDIR}${BINDIR}/${PROJECT}"
 	install -m0644 ${TMPDIR}/config.lua "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}/config.lua"
+	install -m0644 ${TMPDIR}/fs.lua "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}/fs.lua"
+	install -m0644 ${TMPDIR}/page.lua "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}/page.lua"
 
 uninstall:
 	rm -f "${DESTDIR}${BINDIR}/${PROJECT}"
 	rm -f "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}/config.lua"
+	rm -f "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}/fs.lua"
+	rm -f "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}/page.lua"
 	rmdir "${DESTDIR}${LUA_SHAREDIR}/${PROJECT}"
 
 clean:
