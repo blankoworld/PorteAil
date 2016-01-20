@@ -1,5 +1,7 @@
 # Programme PorteAil ##
 
+**ATTENTION : Ce projet est ABANDONNÉ au profit d'[hugo-portal](https://github.com/blankoworld/hugo-portal) qui le remplace haut la main.**
+
 ## À propos
 
 PorteAil est un portail web statique dont le but principal est, comme son nom 
