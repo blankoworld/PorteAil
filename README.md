@@ -13,11 +13,9 @@ informations.
 
 PorteAil est un jeu de mot entre *Porte*, *portail* et *Ail*.
 
-### Site Web / Exemple
+### Démo
 
-La page officielle du projet, mais également page d'exemple est disponible à 
-l'adresse suivante : 
-[http://porteail.depotoi.re/](http://porteail.depotoi.re/ "Se rendre sur le site officiel du projet PorteAil")
+Visitez [http://depotoi.re/](http://depotoi.re/) qui utilise désormais [hugo-portal](https://github.com/blankoworld/hugo-portal) avec le thème de PorteAil.
 
 ### Contact
 
@@ -58,7 +56,7 @@ Puis de **LuaFileSystem** :
 
     luarocks install luafilesystem
 
-Votre système devrais aussi détenir les commandes suivantes : 
+Votre système devrait aussi détenir les commandes suivantes : 
 
 - rm
 - sh
@@ -400,10 +398,10 @@ Déposez-y les images que vous allez utiliser.
 ## SOURCES
 
 Les sources du programme peuvent être récupérées sur 
- [le dépôt Gitorious](http://gitorious.org/porteail/) ou via la commande 
+ [le dépôt Github](http://github.com/blankoworld/porteail/) ou via la commande 
  suivante (à l'aide de l'outil git) :
 
-    git clone https://git.gitorious.org/porteail/master.git
+    git clone https://github.com/blankoworld/porteail.git
 
 ## Contact / Bugs
 
